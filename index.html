@@ -16,6 +16,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/ScrollTrigger.min.js"></script>
     <script src="js/animations.js"></script>
     <script src="https://kit.fontawesome.com/your-fontawesome-kit.js" crossorigin="anonymous"></script>
+    <script src="js/form-handler.js"></script>
 </head>
 <body>
     <header>
@@ -116,19 +117,20 @@
             <div class="container">
                 <h2>Inizia il Tuo Viaggio Visivo</h2>
                 <p>Sei pronto a trasformare la tua visione in una realtà mozzafiato? Contattiamoci e creiamo magia insieme.</p>
-                <form id="contact-form" action="#" method="POST">
+                <form id="contact-form" action="https://formspree.io/f/mrbggaba" method="POST">
                     <div class="form-group">
                         <label for="name">Nome</label>
                         <input type="text" id="name" name="name" required>
                     </div>
                     <div class="form-group">
                         <label for="email">Email</label>
-                        <input type="email" id="email" name="email" required>
+                        <input type="email" id="email" name="_replyto" required>
                     </div>
                     <div class="form-group">
                         <label for="message">Il Tuo Messaggio</label>
                         <textarea id="message" name="message" required></textarea>
                     </div>
+                    <input type="hidden" name="_subject" value="Nuovo messaggio dal sito web">
                     <button type="submit" class="cta-button">Invia</button>
                 </form>
             </div>
