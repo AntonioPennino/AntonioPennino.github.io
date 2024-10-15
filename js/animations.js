@@ -3,20 +3,25 @@ document.addEventListener('DOMContentLoaded', () => {
     const menu = document.querySelector('.menu');
     const header = document.querySelector('header');
 
-    menuToggle.addEventListener('click', () => {
-        menu.classList.toggle('active');
-        menuToggle.classList.toggle('active');
-    });
+    if (menuToggle && menu) {
+        menuToggle.addEventListener('click', () => {
+            menu.classList.toggle('active');
+            menuToggle.classList.toggle('active');
+        });
+    }
 
-    window.addEventListener('scroll', () => {
-        if (window.scrollY > 50) {
-            header.style.backgroundColor = 'rgba(0, 0, 0, 0.8)';
-        } else {
-            header.style.backgroundColor = 'transparent';
-        }
-    });
+    if (header) {
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                header.style.backgroundColor = 'rgba(0, 0, 0, 0.8)';
+            } else {
+                header.style.backgroundColor = 'transparent';
+            }
+        });
+    }
 
-    if ('IntersectionObserver' in window) {
+    // Verifica che GSAP sia caricato prima di utilizzarlo
+    if (typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') {
         gsap.registerPlugin(ScrollTrigger);
 
         // Animazione hero
@@ -97,12 +102,16 @@ document.addEventListener('DOMContentLoaded', () => {
                 toggleActions: 'play none none reverse'
             }
         });
+    } else {
+        console.warn('GSAP or ScrollTrigger not loaded. Animations will not run.');
     }
 
     // Effetto parallasse per l'hero image
-    window.addEventListener('scroll', () => {
-        const heroImage = document.querySelector('.hero-image');
-        const scrollPosition = window.pageYOffset;
-        heroImage.style.transform = `translateY(${scrollPosition * 0.5}px)`;
-    });
+    const heroImage = document.querySelector('.hero-image');
+    if (heroImage) {
+        window.addEventListener('scroll', () => {
+            const scrollPosition = window.pageYOffset;
+            heroImage.style.transform = `translateY(${scrollPosition * 0.5}px)`;
+        });
+    }
 });
