@@ -60,20 +60,70 @@ document.addEventListener('DOMContentLoaded', () => {
                     toggleActions: 'play none none reverse'
                 }
             });
-        });
-
-        // Animazione skills
-        gsap.from('.skills li', {
+        });        // Animazione skills container
+        gsap.from('.skill-item', {
             opacity: 0,
-            scale: 0,
-            duration: 0.5,
-            stagger: 0.1,
+            y: 30,
+            duration: 0.8,
+            stagger: 0.2,
             scrollTrigger: {
-                trigger: '.skills',
+                trigger: '.skills-container',
                 start: 'top 80%',
                 end: 'bottom 20%',
                 toggleActions: 'play none none reverse'
             }
+        });
+
+        // Animazione statistiche
+        gsap.from('.stat-item', {
+            opacity: 0,
+            scale: 0.5,
+            duration: 0.8,
+            stagger: 0.2,
+            scrollTrigger: {
+                trigger: '.stats',
+                start: 'top 80%',
+                end: 'bottom 20%',
+                toggleActions: 'play none none reverse'
+            }
+        });
+
+        // Animazione servizi
+        gsap.from('.service-item', {
+            opacity: 0,
+            y: 50,
+            duration: 0.8,
+            stagger: 0.2,
+            scrollTrigger: {
+                trigger: '.services-grid',
+                start: 'top 80%',
+                end: 'bottom 20%',
+                toggleActions: 'play none none reverse'
+            }
+        });
+
+        // Animazione numeri delle statistiche con contatore
+        gsap.utils.toArray('.stat-number').forEach(stat => {
+            const target = parseInt(stat.textContent);
+            gsap.from(stat, {
+                textContent: 0,
+                duration: 2,
+                ease: "power1.out",
+                scrollTrigger: {
+                    trigger: stat,
+                    start: 'top 80%',
+                    toggleActions: 'play none none none'
+                },
+                onUpdate: function() {
+                    if (stat.textContent.includes('+')) {
+                        stat.textContent = Math.ceil(this.targets()[0].textContent) + '+';
+                    } else if (stat.textContent.includes('%')) {
+                        stat.textContent = Math.ceil(this.targets()[0].textContent) + '%';
+                    } else {
+                        stat.textContent = Math.ceil(this.targets()[0].textContent);
+                    }
+                }
+            });
         });
 
         // Animazione form di contatto
