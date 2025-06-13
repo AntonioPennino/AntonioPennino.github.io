@@ -10,6 +10,11 @@
     --z-index-hero-image: 10;
 }
 
+/* Aggiunta dello smooth scrolling per un'esperienza utente migliore */
+html {
+    scroll-behavior: smooth;
+}
+
 /* Fix Header */
 header {
     z-index: var(--z-index-header);
@@ -68,6 +73,13 @@ header {
 .contact-info {
     box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
     height: auto;
+    padding: 35px;
+    background: rgba(15, 15, 15, 0.6);
+}
+
+.contact-info h3 {
+    margin-bottom: 25px;
+    font-size: 1.9rem;
 }
 
 .benefits-list {
@@ -79,19 +91,25 @@ header {
 .benefits-list li {
     display: flex;
     align-items: flex-start;
-    gap: 10px;
-    margin-bottom: 15px;
-    font-size: 0.95rem;
+    gap: 12px;
+    margin-bottom: 22px;
+    font-size: 1.05rem;
+    color: var(--text-color);
+    line-height: 1.4;
 }
 
 .benefits-list li i {
     color: var(--accent-color);
     margin-top: 4px;
     flex-shrink: 0;
+    width: 16px;
+    text-align: center;
+    font-size: 1.1rem;
 }
 
 .benefits-list li strong {
     color: var(--accent-color);
+    font-weight: 700;
 }
 
 .contact-form-container {
@@ -263,13 +281,14 @@ footer {
 .social-links a {
     display: flex;
     align-items: center;
-    gap: 8px;
-    color: rgba(255, 255, 255, 0.7);
+    justify-content: center;
+    width: 45px;
+    height: 45px;
+    color: rgba(255, 255, 255, 0.9);
     text-decoration: none;
     transition: all 0.3s ease;
-    padding: 8px 12px;
-    background: rgba(255, 255, 255, 0.05);
-    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
 }
 
 .social-links a:hover {
@@ -280,7 +299,7 @@ footer {
 }
 
 .social-links i {
-    font-size: 1.2rem;
+    font-size: 1.4rem;
 }
 
 .footer-bottom {
@@ -298,6 +317,40 @@ footer {
 
 .footer-bottom a:hover {
     color: var(--accent-color);
+}
+
+/* Miglioramenti specifici per la sezione contatti basati sull'immagine fornita */
+.contact-info {
+    padding: 35px;
+    background: rgba(15, 15, 15, 0.6);
+}
+
+.contact-info h3 {
+    margin-bottom: 25px;
+    font-size: 1.9rem;
+}
+
+.benefits-list li {
+    margin-bottom: 22px;
+    line-height: 1.4;
+}
+
+.benefits-list li i {
+    color: var(--accent-color);
+    font-size: 1.1rem;
+    margin-top: 2px;
+}
+
+.benefits-list li strong {
+    font-weight: 700;
+}
+
+.contact-methods {
+    margin-top: 35px;
+}
+
+.contact-method {
+    padding: 18px 0;
 }
 
 /* Responsive Fixes */
