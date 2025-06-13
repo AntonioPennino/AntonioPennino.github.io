@@ -1,0 +1,329 @@
+---
+// src/components/Contact.astro
+---
+
+<section id="contact" class="contact" itemscope itemtype="https://schema.org/ContactPage">
+    <div class="container">
+        <h2>Raccontami la tua idea</h2>
+        <p class="section-subtitle">Ogni grande video inizia con una conversazione. Parliamone insieme</p>
+        
+        <div class="contact-content">
+            <div class="contact-info">
+                <h3>Come lavoriamo insieme</h3>
+                <ul class="benefits-list">
+                    <li><i class="fas fa-coffee"></i> <strong>Prima chiacchierata</strong> per capire la tua visione</li>
+                    <li><i class="fas fa-lightbulb"></i> <strong>Sviluppo del concept</strong> creativo insieme</li>
+                    <li><i class="fas fa-calendar"></i> <strong>Pianificazione condivisa</strong> di tempi e modalità</li>
+                    <li><i class="fas fa-heart"></i> <strong>Revisioni collaborative</strong> finché non sei felice</li>
+                    <li><i class="fas fa-camera"></i> <strong>Riprese professionali</strong> con attrezzatura 4K</li>
+                    <li><i class="fas fa-magic"></i> <strong>Post-produzione artigianale</strong> curata nei dettagli</li>
+                </ul>
+                
+                <div class="contact-methods">
+                    <div class="contact-method">
+                        <i class="fas fa-envelope"></i>
+                        <div>
+                            <h4>Scrivimi una mail</h4>
+                            <p>Ti rispondo sempre entro 24 ore</p>
+                        </div>
+                    </div>
+                    <div class="contact-method">
+                        <i class="fas fa-phone"></i>
+                        <div>
+                            <h4>Chiamami quando vuoi</h4>
+                            <p>Una chiacchierata vale più di mille email</p>
+                        </div>
+                    </div>
+                    <div class="contact-method">
+                        <i class="fas fa-calendar"></i>
+                        <div>
+                            <h4>Incontriamoci di persona</h4>
+                            <p>Per progetti importanti preferisco guardarci negli occhi</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="contact-form-container">
+                <form id="contact-form" action="https://formspree.io/f/mrbggaba" method="POST" itemscope itemtype="https://schema.org/ContactForm">
+                    <div class="form-group">
+                        <label for="name">Come ti chiami? *</label>
+                        <input type="text" id="name" name="name" required itemprop="name" placeholder="Il tuo nome">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email">La tua email *</label>
+                        <input type="email" id="email" name="_replyto" required itemprop="email" placeholder="La tua email">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="company">La tua azienda</label>
+                        <input type="text" id="company" name="company" itemprop="organization" placeholder="Se rappresenti un'azienda (opzionale)">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="project-type">Che tipo di video hai in mente? *</label>
+                        <select id="project-type" name="project-type" required>
+                            <option value="">Scegli il tipo di progetto</option>
+                            <option value="video-aziendale">Video Aziendale/Corporate</option>
+                            <option value="spot-pubblicitario">Spot Pubblicitario</option>
+                            <option value="documentario">Documentario</option>
+                            <option value="video-evento">Video Evento</option>
+                            <option value="social-media">Contenuti Social Media</option>
+                            <option value="post-produzione">Solo Post-Produzione</option>
+                            <option value="altro">Altro (spiegami nel messaggio)</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="budget">Budget orientativo</label>
+                        <select id="budget" name="budget">
+                            <option value="">Indicami il budget (opzionale)</option>
+                            <option value="500-1000">€500 - €1.000</option>
+                            <option value="1000-2500">€1.000 - €2.500</option>
+                            <option value="2500-5000">€2.500 - €5.000</option>
+                            <option value="5000+">€5.000+</option>
+                            <option value="da-discutere">Parliamone insieme</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="message">Raccontami la tua idea *</label>
+                        <textarea id="message" name="message" required itemprop="text" placeholder="Cosa vorresti comunicare? Chi è il tuo pubblico? Hai già un'idea di stile? Raccontami tutto quello che ti viene in mente..."></textarea>
+                    </div>
+                    
+                    <input type="hidden" name="_subject" value="Nuovo progetto video - Richiesta da sito web">
+                    <input type="hidden" name="_next" value="/?grazie=1"> {/* Updated to relative path for Astro */}
+                    
+                    <button type="submit" class="cta-button primary full-width">
+                        <i class="fas fa-heart"></i>
+                        Invia la tua idea
+                    </button>
+                    
+                    <p class="form-note">Ti risponderò presto per organizzare una chiacchierata</p>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+
+<style>
+/* Styles extracted from style.css and fixes.css related to #contact */
+.contact {
+    background-color: #f9f9f9; /* Light gray background */
+    padding: 80px 0;
+    text-align: center;
+}
+
+.contact h2 {
+    font-size: 2.8em;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.contact .section-subtitle {
+    font-size: 1.2em;
+    color: #666;
+    margin-bottom: 60px;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.contact-content {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 40px;
+    text-align: left;
+    align-items: flex-start; /* Align items to the top */
+}
+
+.contact-info, .contact-form-container {
+    flex: 1;
+    min-width: 300px; /* Ensure responsiveness */
+}
+
+.contact-info h3 {
+    font-size: 1.8em;
+    color: #333;
+    margin-bottom: 30px;
+}
+
+.benefits-list {
+    list-style: none;
+    padding: 0;
+    margin-bottom: 40px;
+}
+
+.benefits-list li {
+    font-size: 1.1em;
+    color: #555;
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+}
+
+.benefits-list i {
+    color: var(--primary-color); /* Use CSS variable */
+    margin-right: 15px;
+    font-size: 1.5em;
+    width: 30px; /* Ensure consistent icon spacing */
+    text-align: center;
+}
+
+.contact-methods {
+    display: grid;
+    gap: 20px;
+}
+
+.contact-method {
+    display: flex;
+    align-items: center;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+}
+
+.contact-method i {
+    font-size: 2em;
+    color: var(--primary-color);
+    margin-right: 20px;
+}
+
+.contact-method h4 {
+    font-size: 1.2em;
+    color: #333;
+    margin-bottom: 5px;
+}
+
+.contact-method p {
+    font-size: 0.95em;
+    color: #666;
+    margin: 0;
+}
+
+.contact-form-container {
+    background-color: #fff;
+    padding: 40px;
+    border-radius: 8px;
+    box-shadow: 0 5px 25px rgba(0,0,0,0.1);
+}
+
+.form-group {
+    margin-bottom: 25px;
+}
+
+.form-group label {
+    display: block;
+    font-size: 1em;
+    color: #444;
+    margin-bottom: 8px;
+    font-weight: 600;
+}
+
+.form-group input[type="text"],
+.form-group input[type="email"],
+.form-group select,
+.form-group textarea {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    font-size: 1em;
+    color: #555;
+    box-sizing: border-box; /* Ensures padding doesn't affect width */
+    transition: border-color 0.3s ease;
+}
+
+.form-group input[type="text"]:focus,
+.form-group input[type="email"]:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+    border-color: var(--primary-color);
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(var(--primary-color-rgb), 0.2); /* Use RGB for box-shadow */
+}
+
+
+.form-group textarea {
+    min-height: 150px;
+    resize: vertical;
+}
+
+.cta-button.primary.full-width {
+    width: 100%;
+    padding: 15px;
+    font-size: 1.1em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.cta-button.primary.full-width i {
+    margin-right: 10px;
+}
+
+.form-note {
+    font-size: 0.9em;
+    color: #777;
+    margin-top: 20px;
+    text-align: center;
+}
+
+/* Responsive adjustments */
+@media (max-width: 992px) {
+    .contact-content {
+        flex-direction: column;
+    }
+    .contact-info, .contact-form-container {
+        width: 100%;
+    }
+}
+
+@media (max-width: 768px) {
+    .contact h2 {
+        font-size: 2.4em;
+    }
+    .contact .section-subtitle {
+        font-size: 1.1em;
+    }
+    .contact-form-container {
+        padding: 30px;
+    }
+}
+
+@media (max-width: 576px) {
+    .contact h2 {
+        font-size: 2em;
+    }
+    .contact .section-subtitle {
+        font-size: 1em;
+        margin-bottom: 40px;
+    }
+    .benefits-list li {
+        font-size: 1em;
+    }
+    .contact-method h4 {
+        font-size: 1.1em;
+    }
+    .contact-method p {
+        font-size: 0.9em;
+    }
+    .form-group input[type="text"],
+    .form-group input[type="email"],
+    .form-group select,
+    .form-group textarea {
+        padding: 10px 12px;
+        font-size: 0.95em;
+    }
+}
+
+/* Fixes from fixes.css if any specific to contact */
+/* Assuming --primary-color and --primary-color-rgb are defined in BaseLayout.astro or a global CSS file */
+:root {
+    --primary-color: #007bff; /* Example primary color */
+    --primary-color-rgb: 0, 123, 255; /* Example RGB for primary color */
+}
+
+</style>

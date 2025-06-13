@@ -1,0 +1,230 @@
+/* Contenuto di style.css */
+:root {
+    --primary-color: #0a0a0a;
+    --secondary-color: #1a1a1a;
+    --tertiary-color: #2a2a2a;
+    --text-color: #ffffff;
+    --accent-color: #00d4ff;
+    --accent-secondary: #ff6b35;
+    --accent-tertiary: #ffd700;
+    --gradient-primary: linear-gradient(135deg, #00d4ff 0%, #ff6b35 50%, #ffd700 100%);
+    --gradient-dark: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 50%, #2a2a2a 100%);
+    --gradient-hero: linear-gradient(135deg, rgba(0, 212, 255, 0.1) 0%, rgba(255, 107, 53, 0.1) 50%, rgba(255, 215, 0, 0.1) 100%);
+    --shadow-glow: 0 0 30px rgba(0, 212, 255, 0.3);
+    --shadow-intense: 0 10px 40px rgba(0, 0, 0, 0.8);
+    --transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    --transition-fast: all 0.2s ease;
+    --border-radius: 20px;
+    --border-radius-small: 12px;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    line-height: 1.6;
+    color: var(--text-color);
+    background: var(--gradient-dark);
+    background-attachment: fixed;
+    overflow-x: hidden;
+    transition: overflow 0.3s ease;
+}
+
+/* Scrollbar personalizzata */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--primary-color);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--gradient-primary);
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--accent-color);
+}
+
+.container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 40px;
+}
+
+h1, h2, h3 {
+    font-weight: 700;
+    letter-spacing: -0.02em;
+}
+
+/* Questo stile per h2 è stato spostato nei singoli componenti per evitare conflitti o sovrascritture indesiderate */
+/* h2 {
+    background: var(--gradient-primary);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    font-size: 48px;
+    text-align: center;
+    margin-bottom: 20px;
+    position: relative;
+}
+
+h2::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100px;
+    height: 4px;
+    background: var(--gradient-primary);
+    border-radius: 2px;
+} */
+
+section {
+    padding: 100px 0;
+}
+
+.cta-button {
+    display: inline-block;
+    padding: 12px 30px;
+    background-color: var(--accent-color);
+    color: var(--primary-color);
+    text-decoration: none;
+    font-weight: 600;
+    transition: var(--transition);
+    border-radius: 30px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.cta-button:hover {
+    background-color: var(--text-color);
+    color: var(--accent-color);
+    box-shadow: 0 0 20px rgba(0, 255, 255, 0.5);
+}
+
+.pulse {
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+}
+
+/* Stili globali per blog, faq, privacy - hero sections */
+.blog-hero, .faq-hero, .privacy-hero {
+    background: linear-gradient(135deg, #000000 0%, #1a1a1a 100%);
+    padding: 120px 0 80px;
+    text-align: center;
+}
+
+.blog-hero h1, .faq-hero h1, .privacy-hero h1 {
+    font-size: 48px;
+    margin-bottom: 20px;
+    color: var(--accent-color);
+}
+
+/* Stili globali per blog, faq, privacy - content sections */
+.blog-content, .faq-content, .privacy-content {
+    padding: 80px 0;
+}
+
+/* Performance optimizations */
+.hero-image,
+.about-image img,
+.service-card,
+.testimonial-card {
+    transform: translateZ(0);
+    backface-visibility: hidden;
+    perspective: 1000px;
+}
+
+/* Smooth animations for reduced motion users */
+@media (prefers-reduced-motion: reduce) {
+    .particle,
+    .film-grain,
+    .lens-flare {
+        display: none;
+    }
+    
+    .hero-content,
+    .service-card,
+    .testimonial-card {
+        transform: none !important;
+        transition: none !important;
+    }
+}
+
+/* Improved text selection */
+::selection {
+    background: rgba(0, 212, 255, 0.3);
+    color: #ffffff;
+}
+
+::-moz-selection {
+    background: rgba(0, 212, 255, 0.3);
+    color: #ffffff;
+}
+
+/* Enhanced focus styles for accessibility */
+.cta-button:focus,
+.service-cta:focus,
+.menu a:focus {
+    outline: 3px solid var(--accent-color);
+    outline-offset: 4px;
+    box-shadow: 0 0 0 6px rgba(0, 212, 255, 0.2);
+}
+
+/* Responsive Mobile - Alcuni stili globali per mobile, altri sono nei componenti */
+@media (max-width: 768px) {
+    .container {
+        padding: 0 20px; /* Ridotto padding per mobile */
+    }
+
+    section {
+        padding: 60px 0; /* Ridotto padding sezioni per mobile */
+    }
+
+    .blog-hero h1, .faq-hero h1, .privacy-hero h1 {
+        font-size: 36px; /* Dimensione font ridotta per mobile */
+    }
+
+    .blog-hero, .faq-hero, .privacy-hero {
+        padding: 80px 0 60px;
+    }
+
+    .blog-content, .faq-content, .privacy-content {
+        padding: 60px 0;
+    }
+}
+
+@media (max-width: 480px) {
+    .container {
+        padding: 0 15px;
+    }
+    section {
+        padding: 40px 0;
+    }
+    .blog-hero h1, .faq-hero h1, .privacy-hero h1 {
+        font-size: 30px;
+    }
+}
+
+/* 
+  Eventuali riferimenti a url('../imgs/...') o url('imgs/...') devono essere aggiornati a url('/imgs/...')
+  Al momento, non ci sono riferimenti diretti a immagini in questo file CSS globale, 
+  poiché le immagini sono gestite principalmente a livello di componente o inline HTML.
+  Se ci fossero, andrebbero corretti qui. Esempio:
+  .background-image {
+    background-image: url('/imgs/nome-immagine.jpg');
+  }
+*/

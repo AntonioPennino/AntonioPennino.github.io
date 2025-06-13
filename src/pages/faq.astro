@@ -1,0 +1,291 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const pageTitle = "FAQ Videomaking | Le Tue Domande, Le Mie Risposte – Antonio Pennino";
+const pageDescription = "Hai domande sul videomaking? Qui trovi le risposte di Antonio Pennino. Costi, processi, tempistiche: tutto ciò che devi sapere per il tuo prossimo video.";
+---
+
+<BaseLayout title={pageTitle} description={pageDescription}>
+  <slot name="head-structured-data">
+    <script type="application/ld+json" set:html={`
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Quanto costa un video aziendale professionale?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "I video aziendali professionali partono da €1.200 e includono pre-produzione, riprese, post-produzione completa e 2 revisioni. Il prezzo finale dipende dalla durata, complessità e tempistiche del progetto."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Quanto tempo serve per realizzare un video?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "I tempi dipendono dal tipo di progetto: video aziendali 7-14 giorni, spot pubblicitari 5-10 giorni, documentari 2-4 settimane. Offriamo anche servizio express con supplemento."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "In che formato vengono consegnati i video?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Consegniamo i video in tutti i formati richiesti: MP4 HD/4K per web e social, MOV per editing, formati specifici per TV e cinema. Include anche versioni ottimizzate per ogni piattaforma social."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Offrite servizi in tutta Italia?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Sì, operiamo in tutta Italia. Per progetti fuori regione includiamo i costi di trasferta nel preventivo. Offriamo anche servizi di post-produzione remota."
+          }
+        }
+      ]
+    }
+    `}/>
+  </slot>
+  <section class="faq-hero">
+    <div class="container">
+        <h1><span aria-hidden="true">🤔</span> Le Tue Domande sul Videomaking</h1>
+        <p>Curiosità, dubbi, richieste? Qui trovi le risposte chiare e dirette per iniziare al meglio il tuo progetto video.</p>
+    </div>
+  </section>
+
+  <section class="faq-content">
+      <div class="container">
+          <div class="faq-grid">
+              <div class="faq-category">
+                  <h2><span aria-hidden="true">💰</span> Prezzi e Costi</h2>
+                  
+                  <div class="faq-item">
+                      <h3>Quanto costa un video aziendale professionale?</h3>
+                      <p>I video aziendali professionali partono da <strong>€1.200</strong> e includono:</p>
+                      <ul>
+                          <li>✅ Pre-produzione completa (brief, storyboard, planning)</li>
+                          <li>✅ Riprese con attrezzatura 4K professionale</li>
+                          <li>✅ Post-produzione avanzata (editing, color grading, audio)</li>
+                          <li>✅ Motion graphics e titoli personalizzati</li>
+                          <li>✅ 2 revisioni incluse</li>
+                          <li>✅ Consegna in tutti i formati richiesti</li>
+                      </ul>
+                      <p>Il prezzo finale dipende da durata, complessità e tempistiche del progetto.</p>
+                  </div>
+
+                  <div class="faq-item">
+                      <h3>Offrite preventivi gratuiti?</h3>
+                      <p><strong>Sì, sempre!</strong> Ogni preventivo è gratuito e personalizzato. Ti rispondo entro 24 ore con un'analisi dettagliata del progetto e un prezzo fisso senza sorprese.</p>
+                  </div>
+
+                  <div class="faq-item">
+                      <h3>Accettate pagamenti rateali?</h3>
+                      <p>Sì, per progetti sopra i €2.000 offriamo pagamento rateale:</p>
+                      <ul>
+                          <li>50% all'inizio del progetto</li>
+                          <li>50% alla consegna finale</li>
+                      </ul>
+                      <p>Accettiamo bonifico bancario, PayPal e contanti.</p>
+                  </div>
+              </div>
+
+              <div class="faq-category">
+                  <h2><span aria-hidden="true">⏰</span> Tempi e Processo</h2>
+                  
+                  <div class="faq-item">
+                      <h3>Quanto tempo serve per realizzare un video?</h3>
+                      <p>I tempi variano per tipo di progetto:</p>
+                      <ul>
+                          <li><strong>Video aziendale:</strong> 7-14 giorni lavorativi</li>
+                          <li><strong>Spot pubblicitario:</strong> 5-10 giorni lavorativi</li>
+                          <li><strong>Documentario:</strong> 2-4 settimane</li>
+                          <li><strong>Post-produzione only:</strong> 3-7 giorni</li>
+                      </ul>
+                      <p>Offriamo anche <strong>servizio express</strong> con consegna in 2-3 giorni (supplemento del 30%).</p>
+                  </div>
+
+                  <div class="faq-item">
+                      <h3>Come funziona il processo di lavoro?</h3>
+                      <p>Il mio processo è strutturato in 5 fasi:</p>
+                      <ol>
+                          <li><strong>Brief iniziale</strong> - Analizziamo obiettivi, target e messaggio</li>
+                          <li><strong>Pre-produzione</strong> - Storyboard, location scouting, planning</li>
+                          <li><strong>Produzione</strong> - Riprese con attrezzatura 4K professionale</li>
+                          <li><strong>Post-produzione</strong> - Editing, color grading, motion graphics, audio</li>
+                          <li><strong>Consegna</strong> - File finali in tutti i formati + revisioni</li>
+                      </ol>
+                  </div>
+
+                  <div class="faq-item">
+                      <h3>Quante revisioni sono incluse?</h3>
+                      <p><strong>2 revisioni sono sempre incluse</strong> nel prezzo base. Revisioni aggiuntive €150 ciascuna. La mia filosofia è fare il lavoro giusto al primo colpo!</p>
+                  </div>
+              </div>
+
+              <div class="faq-category">
+                  <h2><span aria-hidden="true">🎬</span> Servizi e Qualità</h2>
+                  
+                  <div class="faq-item">
+                      <h3>In che formato vengono consegnati i video?</h3>
+                      <p>Consegno i video in <strong>tutti i formati richiesti</strong>:</p>
+                      <ul>
+                          <li>MP4 HD (1080p) e 4K per web e presentazioni</li>
+                          <li>MOV ProRes per ulteriori editing</li>
+                          <li>Formati ottimizzati per ogni social (Instagram, TikTok, YouTube, LinkedIn)</li>
+                          <li>Formati broadcast per TV</li>
+                          <li>GIF animate per email marketing</li>
+                      </ul>
+                  </div>
+
+                  <div class="faq-item">
+                      <h3>Che attrezzatura utilizzate?</h3>
+                      <p>Utilizzo solo <strong>attrezzatura professionale</strong>:</p>
+                      <ul>
+                          <li>Camere 4K (Sony FX6, Canon C70)</li>
+                          <li>Obiettivi cinematografici</li>
+                          <li>Audio recorder Zoom H6 + microfoni Rode</li>
+                          <li>Illuminazione LED professionale</li>
+                          <li>Gimbal DJI Ronin per riprese stabili</li>
+                          <li>Droni certificati per riprese aeree</li>
+                      </ul>
+                  </div>
+
+                  <div class="faq-item">
+                      <h3>Offrite servizi di copywriting per i video?</h3>
+                      <p><strong>Sì!</strong> Includo sempre la scrittura di:</p>
+                      <ul>
+                          <li>Script e sceneggiature</li>
+                          <li>Voice-over professionali</li>
+                          <li>Titoli e call-to-action efficaci</li>
+                          <li>Descrizioni ottimizzate per YouTube e social</li>
+                      </ul>
+                  </div>
+              </div>
+
+              <div class="faq-category">
+                  <h2><span aria-hidden="true">🗺️</span> Copertura e Logistica</h2>
+                  
+                  <div class="faq-item">
+                      <h3>Operate in tutta Italia?</h3>
+                      <p><strong>Sì, in tutta Italia!</strong> I costi di trasferta vengono inclusi nel preventivo per progetti fuori dalla mia zona di base. Offro anche:</p>
+                      <ul>
+                          <li>Servizi di post-produzione remota</li>
+                          <li>Consulenza video via call</li>
+                          <li>Formazione team aziendale</li>
+                      </ul>
+                  </div>
+
+                  <div class="faq-item">
+                      <h3>Lavorate anche all'estero?</h3>
+                      <p>Sì, per progetti internazionali di alto valore. I costi di viaggio e soggiorno vengono concordati in fase di preventivo.</p>
+                  </div>
+              </div>
+
+              <div class="faq-category">
+                  <h2><span aria-hidden="true">🎯</span> Specializzazioni</h2>
+                  
+                  <div class="faq-item">
+                      <h3>Quale tipo di video realizzate meglio?</h3>
+                      <p>Sono specializzato in:</p>
+                      <ul>
+                          <li><strong>Video aziendali e corporate</strong> che convertono</li>
+                          <li><strong>Spot pubblicitari</strong> per TV e social media</li>
+                          <li><strong>Documentari</strong> e storytelling cinematografico</li>
+                          <li><strong>Video eventi</strong> e interviste professionali</li>
+                          <li><strong>Content per social media</strong> che diventano virali</li>
+                      </ul>
+                  </div>
+
+                  <div class="faq-item">
+                      <h3>Realizzate anche video per matrimoni?</h3>
+                      <p>Mi concentro esclusivamente su <strong>video aziendali e commerciali</strong>. Per matrimoni posso raccomandare colleghi specializzati nel settore wedding.</p>
+                  </div>
+              </div>
+          </div>
+
+          <div class="faq-cta">
+              <h2><span aria-hidden="true">🚀</span> Non trovi la risposta che cerchi?</h2>
+              <p>Contattami direttamente per una consulenza gratuita personalizzata</p>
+              <a href="/#contact" class="cta-button primary"><span aria-hidden="true">💬</span> Contattami Ora</a>
+          </div>
+      </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .faq-hero {
+    background-color: var(--color-primary-dark);
+    color: var(--color-light);
+    padding: 4rem 0;
+    text-align: center;
+  }
+
+  .faq-hero h1 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+  }
+
+  .faq-content {
+    padding: 3rem 0;
+  }
+
+  .faq-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-bottom: 3rem;
+  }
+
+  .faq-category h2 {
+    font-size: 1.8rem;
+    color: var(--color-primary);
+    margin-bottom: 1.5rem;
+    border-bottom: 2px solid var(--color-accent);
+    padding-bottom: 0.5rem;
+  }
+
+  .faq-item {
+    background-color: var(--color-light-gray);
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  }
+
+  .faq-item h3 {
+    font-size: 1.3rem;
+    margin-bottom: 0.75rem;
+    color: var(--color-secondary);
+  }
+
+  .faq-item p, .faq-item ul, .faq-item ol {
+    font-size: 1rem;
+    line-height: 1.6;
+    margin-bottom: 0.5rem;
+  }
+
+  .faq-item ul, .faq-item ol {
+    padding-left: 1.5rem;
+  }
+  .faq-item ul li {
+    margin-bottom: 0.3rem;
+  }
+
+  .faq-cta {
+    text-align: center;
+    padding: 2rem;
+    background-color: var(--color-primary-light);
+    border-radius: 8px;
+  }
+
+  .faq-cta h2 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    color: var(--color-primary-dark);
+  }
+  .faq-cta .cta-button {
+    margin-top: 1rem;
+  }
+</style>

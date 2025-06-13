@@ -1,0 +1,22 @@
+---
+// src/pages/blog/[slug].astro
+import { getCollection, getEntryBySlug } from 'astro:content';
+import BlogPostLayout from '../../layouts/BlogPostLayout.astro'; // Importa il layout
+
+export async function getStaticPaths() {
+  const allPosts = await getCollection('blog', ({data}) => {
+    // Filtra i post in bozza in produzione
+    return import.meta.env.PROD ? data.draft !== true : true;
+  });
+  return allPosts.map(post => ({
+    params: { slug: post.slug },
+    props: { post },
+  }));
+}
+
+const { post } = Astro.props;
+const { Content } = await post.render(); // Ottiene il componente per renderizzare il Markdown
+---
+<BlogPostLayout frontmatter={post.data}>
+  <Content />
+</BlogPostLayout>

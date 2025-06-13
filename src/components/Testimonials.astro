@@ -1,0 +1,193 @@
+---
+// src/components/Testimonials.astro
+---
+<section id="testimonials" class="testimonials" itemscope itemtype="https://schema.org/ReviewAction">
+    <div class="container">
+        <h2>🏆 Cosa Dicono i Miei Clienti</h2>
+        <p class="section-subtitle">Testimonianze reali di aziende che hanno scelto Antonio Pennino</p>
+        
+        <div class="testimonials-grid">
+            <div class="testimonial-item" itemscope itemtype="https://schema.org/Review">
+                <div class="stars" role="img" aria-label="Valutazione: 5 su 5 stelle">⭐⭐⭐⭐⭐</div>
+                <blockquote itemprop="reviewBody">
+                    "Antonio ha trasformato la nostra visione aziendale in un video straordinario. La sua professionalità e creatività sono uniche nel settore. Il ROI del nostro video promozionale ha superato ogni aspettativa!"
+                </blockquote>
+                <div class="testimonial-author" itemprop="author" itemscope itemtype="https://schema.org/Person">
+                    <strong itemprop="name">Marco Rossi</strong>
+                    <span itemprop="jobTitle">CEO, FeedEat Startup</span>
+                </div>
+            </div>
+            
+            <div class="testimonial-item" itemscope itemtype="https://schema.org/Review">
+                <div class="stars" role="img" aria-label="Valutazione: 5 su 5 stelle">⭐⭐⭐⭐⭐</div>
+                <blockquote itemprop="reviewBody">
+                    "Professionalità assoluta! Antonio ha gestito il nostro progetto documentario con competenza eccezionale. Ogni frame racconta una storia. Consigliatissimo!"
+                </blockquote>
+                <div class="testimonial-author" itemprop="author" itemscope itemtype="https://schema.org/Person">
+                    <strong itemprop="name">Prof.ssa Laura Bianchi</strong>
+                    <span itemprop="jobTitle">Università degli Studi di Camerino</span>
+                </div>
+            </div>
+            
+            <div class="testimonial-item" itemscope itemtype="https://schema.org/Review">
+                <div class="stars" role="img" aria-label="Valutazione: 5 su 5 stelle">⭐⭐⭐⭐⭐</div>
+                <blockquote itemprop="reviewBody">
+                    "Il miglior videomaker con cui abbiamo mai collaborato. Creatività, puntualità e risultati che superano le aspettative. Il nostro fatturato è cresciuto del 40% dopo il suo spot!"
+                </blockquote>
+                <div class="testimonial-author" itemprop="author" itemscope itemtype="https://schema.org/Person">
+                    <strong itemprop="name">Giulia Verdi</strong>
+                    <span itemprop="jobTitle">Marketing Director, TechCorp</span>
+                </div>
+            </div>
+        </div>
+        
+        <div class="testimonial-cta">
+            <h3>🚀 Vuoi Essere il Prossimo Success Story?</h3>
+            <a href="#contact" class="cta-button primary">Inizia Ora il Tuo Progetto</a>
+        </div>
+    </div>
+</section>
+
+<style>
+/* Styles for Testimonials section, adapted from style.css */
+.testimonials {
+    padding: var(--section-padding, 60px 0);
+    background-color: var(--background-light, #ffffff); /* Or a slightly off-white like #fdfdfd */
+}
+
+.testimonials .container {
+    max-width: var(--container-width, 1100px);
+    margin: 0 auto;
+    padding: 0 var(--container-padding, 15px);
+}
+
+.testimonials h2 {
+    text-align: center;
+    font-size: clamp(2rem, 4vw, 2.8rem);
+    margin-bottom: 0.5em;
+    color: var(--text-color-dark, #333);
+}
+
+.testimonials .section-subtitle {
+    text-align: center;
+    font-size: clamp(1rem, 2.5vw, 1.2rem);
+    color: var(--text-color-medium, #555);
+    margin-bottom: 2.5em;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.testimonials-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    margin-bottom: 3em;
+}
+
+.testimonial-item {
+    background-color: var(--background-card, #f9f9f9); /* Slightly different from section bg */
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.07);
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.testimonial-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+}
+
+.testimonial-item .stars {
+    font-size: 1.3rem;
+    color: var(--star-color, #ffc107); /* Gold color for stars */
+    margin-bottom: 1em;
+}
+
+.testimonial-item blockquote {
+    font-size: clamp(1rem, 2.5vw, 1.1rem);
+    line-height: 1.7;
+    color: var(--text-color-dark, #333);
+    margin: 0 0 1.5em 0;
+    font-style: italic;
+    flex-grow: 1; /* Allows blockquote to take available space */
+    border-left: 3px solid var(--primary-color, #007bff);
+    padding-left: 15px;
+}
+
+.testimonial-author {
+    margin-top: auto; /* Pushes author to the bottom if items have different heights */
+    text-align: right;
+}
+
+.testimonial-author strong {
+    display: block;
+    font-size: 1.05rem;
+    color: var(--primary-color, #007bff);
+    font-weight: 600;
+}
+
+.testimonial-author span {
+    font-size: 0.9rem;
+    color: var(--text-color-light, #777);
+}
+
+.testimonial-cta {
+    text-align: center;
+    margin-top: 2em;
+    padding: 20px;
+    background-color: var(--background-accent, #eef7ff); /* A light accent background */
+    border-radius: 8px;
+}
+
+.testimonial-cta h3 {
+    font-size: clamp(1.5rem, 3vw, 1.8rem);
+    color: var(--text-color-dark, #333);
+    margin-bottom: 0.75em;
+}
+
+.testimonial-cta .cta-button.primary {
+    background-color: var(--primary-color, #007bff);
+    color: #fff;
+    padding: 12px 30px;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1.1rem;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    display: inline-block; /* To allow margin and padding */
+}
+
+.testimonial-cta .cta-button.primary:hover {
+    background-color: var(--primary-hover-color, #0056b3);
+    transform: translateY(-3px);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .testimonials h2 {
+        font-size: 1.8rem;
+    }
+    .testimonials .section-subtitle {
+        font-size: 1rem;
+    }
+    .testimonial-item blockquote {
+        font-size: 1rem;
+    }
+    .testimonial-cta h3 {
+        font-size: 1.3rem;
+    }
+    .testimonial-cta .cta-button.primary {
+        font-size: 1rem;
+        padding: 10px 25px;
+    }
+}
+
+@media (max-width: 480px) {
+    .testimonials-grid {
+        grid-template-columns: 1fr; /* Stack testimonials on very small screens */
+    }
+}
+</style>

@@ -1,0 +1,104 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+
+const pageTitle = "Il Blog del Videomaker | Storie, Tecniche e Consigli da Antonio Pennino";
+const pageDescription = "Entra nel mondo del videomaking con Antonio Pennino. Scopri storie, tecniche di produzione video e consigli per creare video che emozionano e convertono.";
+
+const allPosts = await getCollection('blog', ({ data }) => {
+  return import.meta.env.PROD ? data.draft !== true : true;
+});
+// Sort posts by date
+allPosts.sort((a, b) => new Date(b.data.pubDate).valueOf() - new Date(a.data.pubDate).valueOf());
+---
+
+<BaseLayout title={pageTitle} description={pageDescription} pageType="blog">
+  <section class="blog-hero">
+    <div class="container">
+      <h1><span aria-hidden="true">🎬</span> Il Mio Blog sul Videomaking</h1>
+      <p>Storie, tecniche e segreti per video che lasciano il segno, raccontati da chi li crea ogni giorno.</p>
+    </div>
+  </section>
+
+  <section class="blog-content">
+    <div class="container">
+      {allPosts.length === 0 ? (
+        <p>Nessun articolo ancora pubblicato. Torna presto!</p>
+      ) : (
+        allPosts.map(post => (
+          <article class="blog-post">
+            <a href={`/blog/${post.slug}/`}>
+              <h2>{post.data.title}</h2>
+            </a>
+            <p class="blog-meta">
+              Pubblicato il <time datetime={new Date(post.data.pubDate).toISOString()}>
+                {new Date(post.data.pubDate).toLocaleDateString('it-IT', { year: 'numeric', month: 'long', day: 'numeric' })}
+              </time>
+              {post.data.author && ` da ${post.data.author}`}
+            </p>
+            <p>{post.data.description}</p>
+            <a href={`/blog/${post.slug}/`} class="read-more">Leggi di più &rarr;</a>
+          </article>
+        ))
+      )}
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .blog-hero {
+    background-color: var(--color-primary-dark);
+    color: var(--color-light);
+    padding: 4rem 0;
+    text-align: center;
+  }
+
+  .blog-hero h1 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+  }
+
+  .blog-content {
+    padding: 3rem 0;
+  }
+
+  .blog-post {
+    background-color: var(--color-light);
+    padding: 2rem;
+    margin-bottom: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .blog-post:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+  }
+
+  .blog-post h2 {
+    font-size: 1.8rem;
+    margin-bottom: 0.5rem;
+    color: var(--color-primary);
+  }
+  .blog-post a h2:hover {
+    text-decoration: underline;
+  }
+
+  .blog-meta {
+    font-size: 0.9rem;
+    color: var(--color-text-muted);
+    margin-bottom: 1rem;
+  }
+
+  .read-more {
+    display: inline-block;
+    margin-top: 1rem;
+    color: var(--color-primary);
+    text-decoration: none;
+    font-weight: bold;
+  }
+  .read-more:hover {
+    text-decoration: underline;
+  }
+</style>

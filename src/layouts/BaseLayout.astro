@@ -1,0 +1,341 @@
+---
+// src/layouts/BaseLayout.astro
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+
+export interface Props {
+	title: string;
+	description: string;
+	canonicalURL?: string;
+	ogImage?: string;
+	pageType?: string; // e.g., 'website', 'article'
+}
+
+const {
+	title = "🎬 Antonio Pennino | Videomaker che racconta storie che rimangono",
+	description = "Videomaker e filmmaker che trasforma idee in storie visive autentiche. Oltre 3 anni di esperienza, 50+ progetti realizzati con cura artigianale. Ogni video è un viaggio creativo unico.",
+	canonicalURL = new URL(Astro.url.pathname, Astro.site).href,
+	ogImage = new URL("/imgs/og-image.jpg", Astro.site).href,
+	pageType = "website",
+} = Astro.props;
+
+const siteName = "Antonio Pennino - Videomaker e Storyteller";
+---
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{title}</title>
+    <meta name="description" content={description}>
+    <link rel="canonical" href={canonicalURL}>
+    <link rel="icon" type="image/x-icon" href="/imgs/profile.ico"> {/* AGGIORNATO FAVICON PATH */}
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+    <meta name="author" content="Antonio Pennino">
+    <meta name="keywords" content="videomaker italia, filmmaker creativo, storytelling video, produzione video artigianale, montaggio cinematografico, video emozionali, documentari autentici, video aziendali coinvolgenti, post-produzione curata, narrativa visiva, cinema d'autore, regia creativa, video marketing umano, content creator italia, riprese professionali, editing narrativo, color grading cinematografico, sound design, motion graphics eleganti, video commerciali autentici">
+
+    <!-- Geo Tags -->
+    <meta name="geo.region" content="IT">
+    <meta name="geo.placename" content="Italia">
+    <meta name="geo.position" content="42.8333;12.8333">
+    <meta name="ICBM" content="42.8333, 12.8333">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content={pageType}>
+    <meta property="og:url" content={canonicalURL}>
+    <meta property="og:title" content={title}>
+    <meta property="og:description" content={description}>
+    <meta property="og:image" content={ogImage}>
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:site_name" content={siteName}>
+    <meta property="og:locale" content="it_IT">
+
+    <!-- Twitter Cards -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content={canonicalURL}>
+    <meta name="twitter:title" content={title}>
+    <meta name="twitter:description" content={description}>
+    <meta name="twitter:image" content={ogImage}>
+    <meta name="twitter:creator" content="@antonio__pennino">
+
+    <!-- Additional SEO -->
+    <meta name="rating" content="general">
+    <meta name="distribution" content="global">
+    <meta name="revisit-after" content="7 days">
+    <meta name="language" content="Italian">
+    <meta name="coverage" content="Worldwide">
+    <meta name="target" content="all">
+
+    <slot name="head-structured-data" />
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/fixes.css">
+    <script src="/js/animations.js" defer></script>
+    <script src="/js/form-handler.js" defer></script>
+</head>
+<body>
+    <Header currentPath={Astro.url.pathname} />
+    <main>
+        <slot />
+    </main>
+    <Footer />
+    <style is:global>
+      /* Global styles that were in style.css or needed for layout */
+      :root {
+        --color-primary: #1a73e8; /* Blu Google-like */
+        --color-primary-dark: #1254a1;
+        --color-primary-light: #e8f0fe;
+        --color-secondary: #ff6f00; /* Arancione complementare */
+        --color-accent: #fbbc05; /* Giallo per accenti */
+        --color-text: #3c4043; /* Grigio scuro per testo */
+        --color-text-light: #5f6368;
+        --color-text-muted: #80868b;
+        --color-background: #ffffff;
+        --color-light: #f8f9fa;
+        --color-light-gray: #e9ecef;
+        --font-primary: 'Poppins', sans-serif;
+        --container-width: 1200px;
+        --border-radius: 8px;
+        --box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      }
+
+      body {
+        font-family: var(--font-primary);
+        color: var(--color-text);
+        background-color: var(--color-background);
+        margin: 0;
+        padding: 0;
+        line-height: 1.6;
+      }
+
+      .container {
+        max-width: var(--container-width);
+        margin: 0 auto;
+        padding: 0 1.5rem;
+      }
+      
+      h1, h2, h3, h4, h5, h6 {
+        color: var(--color-primary-dark);
+        font-weight: 700;
+      }
+
+      a {
+        color: var(--color-primary);
+        text-decoration: none;
+      }
+      a:hover {
+        text-decoration: underline;
+        color: var(--color-primary-dark);
+      }
+
+      .cta-button {
+        display: inline-block;
+        padding: 0.8rem 1.5rem;
+        border-radius: var(--border-radius);
+        font-weight: 600;
+        text-align: center;
+        transition: background-color 0.3s ease, transform 0.2s ease;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      }
+      .cta-button.primary {
+        background-color: var(--color-primary);
+        color: white;
+      }
+      .cta-button.primary:hover {
+        background-color: var(--color-primary-dark);
+        transform: translateY(-2px);
+        color: white; /* Ensure text color remains on hover */
+        text-decoration: none;
+      }
+      .cta-button.secondary {
+        background-color: transparent;
+        color: var(--color-primary);
+        border: 2px solid var(--color-primary);
+      }
+      .cta-button.secondary:hover {
+        background-color: var(--color-primary-light);
+        color: var(--color-primary-dark);
+        transform: translateY(-2px);
+        text-decoration: none;
+      }
+      
+      /* Header Styles (subset from style.css for BaseLayout) */
+      header {
+        background-color: rgba(255, 255, 255, 0.9);
+        backdrop-filter: blur(10px);
+        padding: 1rem 0;
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      }
+
+      header .logo a {
+        font-size: 1.8rem;
+        font-weight: 700;
+        color: var(--color-primary);
+        text-decoration: none;
+      }
+
+      header nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        max-width: var(--container-width);
+        margin: 0 auto;
+        padding: 0 1.5rem;
+      }
+
+      header .menu {
+        list-style: none;
+        display: flex;
+        gap: 1.5rem;
+        margin: 0;
+        padding: 0;
+      }
+
+      header .menu a {
+        color: var(--color-text);
+        font-weight: 500;
+        padding: 0.5rem 0;
+        position: relative;
+        text-decoration: none;
+      }
+      header .menu a::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 0;
+        height: 2px;
+        background-color: var(--color-primary);
+        transition: width 0.3s ease;
+      }
+      header .menu a:hover::after,
+      header .menu a.active::after {
+        width: 100%;
+      }
+      header .menu a.active {
+        color: var(--color-primary);
+        font-weight: 600;
+      }
+
+
+      .menu-toggle {
+        display: none; /* Hidden by default, shown in media query */
+        background: none;
+        border: none;
+        cursor: pointer;
+        padding: 0.5rem;
+      }
+      .menu-toggle span {
+        display: block;
+        width: 25px;
+        height: 3px;
+        background-color: var(--color-primary);
+        margin: 5px 0;
+        transition: all 0.3s ease;
+      }
+
+      /* Footer Styles (subset from style.css for BaseLayout) */
+      footer {
+        background-color: var(--color-primary-dark);
+        color: var(--color-light-gray);
+        padding: 3rem 0 1rem;
+        margin-top: 3rem; /* Add some space before footer */
+      }
+      .footer-content {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 2rem;
+        margin-bottom: 2rem;
+      }
+      .footer-section h4 {
+        color: var(--color-accent);
+        font-size: 1.2rem;
+        margin-bottom: 1rem;
+      }
+      .footer-section p, .footer-section ul {
+        font-size: 0.95rem;
+        margin-bottom: 0.5rem;
+      }
+      .footer-section ul {
+        list-style: none;
+        padding: 0;
+      }
+      .footer-section ul li a {
+        color: var(--color-light-gray);
+        transition: color 0.3s ease;
+      }
+      .footer-section ul li a:hover {
+        color: var(--color-accent);
+        text-decoration: none;
+      }
+      .social-links a {
+        color: var(--color-light-gray);
+        font-size: 1.5rem;
+        margin-right: 1rem;
+        transition: color 0.3s ease;
+      }
+      .social-links a:hover {
+        color: var(--color-accent);
+      }
+      .footer-bottom {
+        text-align: center;
+        padding-top: 1.5rem;
+        border-top: 1px solid var(--color-text-muted);
+        font-size: 0.9rem;
+      }
+      .footer-bottom p {
+        margin: 0.3rem 0;
+      }
+      .footer-bottom a {
+        color: var(--color-accent);
+      }
+      .footer-bottom a:hover {
+        text-decoration: underline;
+      }
+
+      /* Responsive menu */
+      @media (max-width: 768px) {
+        header nav {
+          flex-direction: column;
+          align-items: flex-start;
+        }
+        .menu-toggle {
+          display: block;
+          position: absolute;
+          top: 1.5rem;
+          right: 1.5rem;
+        }
+        header .menu {
+          display: none; /* Hidden by default on mobile */
+          flex-direction: column;
+          width: 100%;
+          background-color: white;
+          padding: 1rem 0;
+          box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        header .menu.active {
+          display: flex; /* Shown when active */
+        }
+        header .menu li {
+          text-align: center;
+          margin: 0.5rem 0;
+        }
+        header .menu a {
+          padding: 0.8rem 1rem;
+          display: block;
+          width: 100%;
+        }
+        header .menu a::after {
+          display: none; /* No underline animation on mobile */
+        }
+         header .menu a.active {
+          background-color: var(--color-primary-light);
+        }
+      }
+
+    </style>
+</body>
+</html>

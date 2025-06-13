@@ -1,0 +1,334 @@
+---
+// src/components/Services.astro
+---
+<section id="services" class="services" itemscope itemtype="https://schema.org/Service">
+    <div class="container">
+        <h2>🎬 Cosa posso creare per te</h2>
+        <p class="section-subtitle">Ogni progetto inizia con una conversazione e si trasforma in una storia che vale la pena raccontare</p>
+        
+        <div class="services-grid">
+            <div class="service-item featured" itemscope itemtype="https://schema.org/Service">
+                <div class="service-badge">✨ IL MIO FORTE</div>
+                <div class="service-icon">
+                    <i class="fas fa-video" aria-hidden="true"></i>
+                </div>
+                <h3 itemprop="name">🏢 Video Aziendali con Anima</h3>
+                <p itemprop="description">Trasformo la cultura e i valori della tua azienda in storie coinvolgenti. Non solo presentazioni, ma racconti che creano connessioni emotive con il tuo pubblico.</p>
+                <ul class="service-features">
+                    <li>✨ Video istituzionali che emozionano</li>
+                    <li>✨ Presentazioni prodotti memorabili</li>
+                    <li>✨ Testimonianze clienti genuine</li>
+                    <li>✨ Contenuti formativi coinvolgenti</li>
+                </ul>
+                <div class="service-price">Da €1.200</div>
+            </div>
+            
+            <div class="service-item" itemscope itemtype="https://schema.org/Service">
+                <div class="service-icon">
+                    <i class="fas fa-bullhorn" aria-hidden="true"></i>
+                </div>
+                <h3 itemprop="name">📢 Spot che Restano Impressi</h3>
+                <p itemprop="description">Creo pubblicità che le persone guardano per scelta, non per caso. Spot che raccontano storie, non che gridano offerte.</p>
+                <ul class="service-features">
+                    <li>✨ Creatività al servizio del brand</li>
+                    <li>✨ Contenuti social autentici</li>
+                    <li>✨ Campagne pubblicitarie efficaci</li>
+                    <li>✨ Strategie video mirate</li>
+                </ul>
+                <div class="service-price">Da €800</div>
+            </div>
+            
+            <div class="service-item" itemscope itemtype="https://schema.org/Service">
+                <div class="service-icon">
+                    <i class="fas fa-film" aria-hidden="true"></i>
+                </div>
+                <h3 itemprop="name">🎥 Documentari & Storytelling</h3>
+                <p itemprop="description">Ogni persona ha una storia da raccontare. Io la ascolto, la comprendo e la trasformo in un racconto visivo che tocca l'anima di chi guarda.</p>
+                <ul class="service-features">
+                    <li>✨ Documentari aziendali coinvolgenti</li>
+                    <li>✨ Video eventi emozionali</li>
+                    <li>✨ Interviste che scavano in profondità</li>
+                    <li>✨ Reportage video autentici</li>
+                </ul>
+                <div class="service-price">Da €1.500</div>
+            </div>
+            
+            <div class="service-item" itemscope itemtype="https://schema.org/Service">
+                <div class="service-icon">
+                    <i class="fas fa-cogs" aria-hidden="true"></i>
+                </div>
+                <h3 itemprop="name">✂️ Post-Produzione Artigianale</h3>
+                <p itemprop="description">È qui che la magia prende forma. Trasformo ore di riprese in storie fluide, con un editing che rispetta il ritmo naturale delle emozioni.</p>
+                <ul class="service-features">
+                    <li>✨ Montaggio narrativo coinvolgente</li>
+                    <li>✨ Color correction cinematografica</li>
+                    <li>✨ Motion graphics eleganti</li>
+                    <li>✨ Audio design immersivo</li>
+                </ul>
+                <div class="service-price">Da €400</div>
+            </div>
+        </div>
+        
+        <div class="services-guarantee">
+            <div class="guarantee-item">
+                <span class="guarantee-icon" aria-hidden="true">🎯</span>
+                <h4>Il mio impegno</h4>
+                <p>Lavoro con te finché non sei completamente soddisfatto del risultato</p>
+            </div>
+            <div class="guarantee-item">
+                <span class="guarantee-icon" aria-hidden="true">⚡</span>
+                <h4>Tempi rispettati</h4>
+                <p>Concordiamo insieme le scadenze e le rispetto sempre</p>
+            </div>
+            <div class="guarantee-item">
+                <span class="guarantee-icon" aria-hidden="true">💎</span>
+                <h4>Qualità artigianale</h4>
+                <p>Attrezzatura professionale e cura nei dettagli</p>
+            </div>
+        </div>
+        
+        <div class="cta-section">
+            <h3>🎬 Hai un progetto in mente?</h3>
+            <p>Raccontami la tua idea e vedremo insieme come darle vita</p>
+            <a href="#contact" class="cta-button primary pulse">🎙️ Parliamone</a>
+        </div>
+    </div>
+</section>
+
+<style>
+/* Styles for Services section, adapted from style.css */
+.services {
+    padding: var(--section-padding, 60px 0);
+    background-color: var(--background-light, #f9f9f9);
+}
+
+.services .container {
+    max-width: var(--container-width, 1100px);
+    margin: 0 auto;
+    padding: 0 var(--container-padding, 15px);
+}
+
+.services h2 {
+    text-align: center;
+    font-size: clamp(2rem, 4vw, 2.8rem);
+    margin-bottom: 0.5em;
+    color: var(--text-color-dark, #333);
+}
+
+.services .section-subtitle {
+    text-align: center;
+    font-size: clamp(1rem, 2.5vw, 1.2rem);
+    color: var(--text-color-medium, #555);
+    margin-bottom: 2.5em;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+    margin-bottom: 3em;
+}
+
+.service-item {
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.07);
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    position: relative; /* For badge positioning */
+    overflow: hidden; /* For badge styling */
+}
+
+.service-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+}
+
+.service-item.featured {
+    border: 2px solid var(--primary-color, #007bff);
+    box-shadow: 0 8px 25px rgba(0, 123, 255, 0.15);
+}
+
+.service-badge {
+    position: absolute;
+    top: 0;
+    right: -1px; /* Adjust to align with border */
+    background-color: var(--primary-color, #007bff);
+    color: #fff;
+    padding: 6px 12px;
+    font-size: 0.8rem;
+    font-weight: 700;
+    border-bottom-left-radius: 8px;
+    /* clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%); */
+}
+
+.service-icon {
+    font-size: 2.8rem; /* Icon size */
+    color: var(--primary-color, #007bff);
+    margin-bottom: 0.75em;
+}
+
+.service-item h3 {
+    font-size: clamp(1.3rem, 3vw, 1.6rem);
+    margin-bottom: 0.75em;
+    color: var(--text-color-dark, #333);
+    font-weight: 600;
+}
+
+.service-item p {
+    font-size: clamp(0.9rem, 2.5vw, 1rem);
+    line-height: 1.6;
+    color: var(--text-color-medium, #555);
+    margin-bottom: 1em;
+    flex-grow: 1;
+}
+
+.service-features {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 1.5em 0;
+    text-align: left;
+}
+
+.service-features li {
+    font-size: clamp(0.9rem, 2.5vw, 1rem);
+    color: var(--text-color-medium, #555);
+    margin-bottom: 0.5em;
+    padding-left: 1.5em; /* Space for icon */
+    position: relative;
+}
+
+.service-features li::before {
+    content: '✨'; /* Using emoji as bullet */
+    position: absolute;
+    left: 0;
+    color: var(--primary-color, #007bff);
+}
+
+.service-price {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--primary-color, #007bff);
+    margin-top: auto; /* Pushes price to the bottom */
+}
+
+.services-guarantee {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+    margin: 3em 0;
+    padding: 30px;
+    background-color: var(--background-accent, #eef7ff);
+    border-radius: 8px;
+}
+
+.guarantee-item {
+    text-align: center;
+}
+
+.guarantee-icon {
+    font-size: 2rem;
+    display: block;
+    margin-bottom: 0.5em;
+    color: var(--primary-color, #007bff);
+}
+
+.guarantee-item h4 {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: var(--text-color-dark, #333);
+    margin-bottom: 0.5em;
+}
+
+.guarantee-item p {
+    font-size: 0.95rem;
+    color: var(--text-color-medium, #555);
+    line-height: 1.5;
+}
+
+.cta-section {
+    text-align: center;
+    padding: 30px 20px;
+    /* background-color: var(--background-cta, #f0f8ff); */ /* Optional distinct background */
+    /* border-radius: 8px; */
+    margin-top: 2em;
+}
+
+.cta-section h3 {
+    font-size: clamp(1.6rem, 3.5vw, 2rem);
+    color: var(--text-color-dark, #333);
+    margin-bottom: 0.5em;
+}
+
+.cta-section p {
+    font-size: clamp(1rem, 2.5vw, 1.1rem);
+    color: var(--text-color-medium, #555);
+    margin-bottom: 1.5em;
+    max-width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.cta-button.primary.pulse {
+    animation: pulseAnimation 2s infinite;
+}
+
+@keyframes pulseAnimation {
+    0% {
+        transform: scale(1);
+        box-shadow: 0 0 0 0 rgba(0, 123, 255, 0.7);
+    }
+    70% {
+        transform: scale(1.05);
+        box-shadow: 0 0 0 10px rgba(0, 123, 255, 0);
+    }
+    100% {
+        transform: scale(1);
+        box-shadow: 0 0 0 0 rgba(0, 123, 255, 0);
+    }
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .services h2 {
+        font-size: 1.8rem;
+    }
+    .services .section-subtitle {
+        font-size: 1rem;
+    }
+    .service-item h3 {
+        font-size: 1.2rem;
+    }
+    .service-item p, .service-features li {
+        font-size: 0.9rem;
+    }
+    .cta-section h3 {
+        font-size: 1.5rem;
+    }
+    .cta-section p {
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .services-grid {
+        grid-template-columns: 1fr; /* Stack service items */
+    }
+    .services-guarantee {
+        grid-template-columns: 1fr; /* Stack guarantee items */
+        padding: 20px;
+    }
+    .guarantee-item {
+        margin-bottom: 20px;
+    }
+    .guarantee-item:last-child {
+        margin-bottom: 0;
+    }
+}
+</style>

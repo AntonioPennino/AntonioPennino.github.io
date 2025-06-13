@@ -1,0 +1,178 @@
+---
+// src/components/Header.astro
+const currentPath = Astro.url.pathname;
+
+// Determine if the current page is a "sub-page" (not the homepage)
+// to adjust section link behavior.
+const onSubPage = currentPath !== '/' && (currentPath.startsWith('/blog') || currentPath === '/faq' || currentPath === '/privacy');
+
+// Generates the correct href for links pointing to homepage sections.
+// - If on a subpage (e.g., /blog), returns /#sectionName (e.g., /#about)
+// - If on the homepage, returns #sectionName (e.g., #about)
+function getSectionLink(hash: string) { // example: hash = "#home" or "#about"
+  return onSubPage ? `/${hash}` : hash;
+}
+---
+<header itemscope itemtype="https://schema.org/WPHeader">
+    <div class="logo" itemprop="name"><a href={getSectionLink("#home")} aria-label="Torna alla Home">AP</a></div>
+    <nav aria-label="Navigazione principale" itemscope itemtype="https://schema.org/SiteNavigationElement">
+        <button class="menu-toggle" aria-label="Toggle menu" aria-expanded="false">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+        <ul class="menu">
+            <li><a href={getSectionLink("#home")} itemprop="url">Home</a></li>
+            <li><a href={getSectionLink("#about")} itemprop="url">Chi Sono</a></li>
+            <li><a href={getSectionLink("#portfolio")} itemprop="url">Portfolio</a></li>
+            <li><a href={getSectionLink("#services")} itemprop="url">Servizi</a></li>
+            <li><a href="/blog" itemprop="url">Blog</a></li> {/* Direct link */}
+            <li><a href="/faq" itemprop="url">FAQ</a></li>   {/* Direct link */}
+            <li><a href={getSectionLink("#contact")} itemprop="url">Contatti</a></li>
+        </ul>
+    </nav>
+</header>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const menuToggle = document.querySelector('.menu-toggle') as HTMLButtonElement | null;
+  const menu = document.querySelector('.menu') as HTMLUListElement | null;
+  const currentPathname = window.location.pathname;
+
+  // Mobile menu toggle
+  if (menuToggle && menu) {
+    menuToggle.addEventListener('click', () => {
+      const isExpanded = menuToggle.getAttribute('aria-expanded') === 'true' || false;
+      menuToggle.setAttribute('aria-expanded', String(!isExpanded));
+      menu.classList.toggle('active');
+    });
+  }
+
+  // Smooth scroll for anchor links
+  document.querySelectorAll('header .menu a').forEach(anchorNode => {
+    const anchor = anchorNode as HTMLAnchorElement;
+    anchor.addEventListener('click', function (this: HTMLAnchorElement, e: MouseEvent) {
+      const href = this.getAttribute('href');
+      if (!href) return;
+
+      // Handle links to homepage sections from subpages (e.g., /blog -> /#about)
+      if (href.startsWith('/#') && currentPathname !== '/') {
+        localStorage.setItem('scrollToSection', href.substring(1)); 
+        window.location.href = '/'; 
+        e.preventDefault();
+        return;
+      }
+      
+      // Handle same-page anchor links (e.g., #about or /#about when on homepage)
+      if (href.startsWith('#') || (href.startsWith('/#') && currentPathname === '/')) {
+        e.preventDefault();
+        const targetId = href.startsWith('#') ? href.substring(1) : href.substring(2);
+        const targetElement = document.getElementById(targetId);
+
+        if (targetElement) {
+          targetElement.scrollIntoView({ behavior: 'smooth' });
+          
+          // Close mobile menu if active
+          if (menu && menu.classList.contains('active')) {
+            menu.classList.remove('active');
+            if (menuToggle) {
+              menuToggle.setAttribute('aria-expanded', 'false');
+            }
+          }
+        }
+      }
+    });
+  });
+
+  // Function to scroll to a section if its hash was stored from a previous page
+  function scrollToSectionFromStorage() {
+    const sectionHash = localStorage.getItem('scrollToSection'); // Expected: #section
+    if (sectionHash && sectionHash.startsWith('#')) {
+      const targetElement = document.getElementById(sectionHash.substring(1));
+      if (targetElement) {
+        // Brief delay to ensure layout is stable before scrolling
+        setTimeout(() => {
+            targetElement.scrollIntoView({ behavior: 'smooth' });
+        }, 100);
+      }
+      localStorage.removeItem('scrollToSection');
+    }
+  }
+
+  // If on the homepage, check if we need to scroll to a section
+  if (currentPathname === '/') {
+    scrollToSectionFromStorage();
+
+    // Active link highlighting based on scroll (only on homepage)
+    const sections = Array.from(document.querySelectorAll('main section[id]')) as HTMLElement[];
+    const navLinks = Array.from(document.querySelectorAll('header .menu a')) as HTMLAnchorElement[];
+
+    if (sections.length > 0 && sections.every(s => s instanceof HTMLElement)) {
+      const scrollHandler = () => {
+        let currentSectionId = '';
+        const scrollPosition = window.scrollY;
+        const headerOffset = 150; // Adjust this offset as needed
+
+        sections.forEach(section => {
+          if (section.id && typeof section.offsetTop === 'number' && typeof section.offsetHeight === 'number') {
+            if (scrollPosition >= section.offsetTop - headerOffset && 
+                scrollPosition < section.offsetTop + section.offsetHeight - headerOffset) {
+              currentSectionId = section.id;
+            }
+          }
+        });
+        
+        const firstSection = sections[0];
+        if (!currentSectionId && firstSection && typeof firstSection.offsetTop === 'number' && scrollPosition < firstSection.offsetTop - headerOffset) {
+            currentSectionId = 'home'; // Default to 'home' if above all sections
+        }
+        
+        const lastSection = sections[sections.length - 1];
+        if (!currentSectionId && sections.length > 0 && lastSection && typeof lastSection.offsetTop === 'number' && typeof lastSection.offsetHeight === 'number' &&
+            scrollPosition >= lastSection.offsetTop + lastSection.offsetHeight - headerOffset) {
+             currentSectionId = lastSection.id; // If scrolled past the last section, keep it active
+        }
+
+        navLinks.forEach((link: HTMLAnchorElement) => {
+          link.classList.remove('active');
+          const href = link.getAttribute('href');
+          if (!href) return;
+
+          // On homepage, section links are like '#about'
+          const linkTargetId = href.startsWith('#') ? href.substring(1) : null;
+
+          if (linkTargetId && linkTargetId === currentSectionId) {
+            link.classList.add('active');
+          }
+        });
+
+        // Ensure "Home" link (href="#home") is active if currentSectionId is "home"
+        // or if no specific section is active (e.g. very top of page before "home" section)
+        if (currentSectionId === 'home') {
+            const homeMenuItem = navLinks.find(a => a.getAttribute('href') === '#home');
+            if (homeMenuItem && !homeMenuItem.classList.contains('active')) {
+                homeMenuItem.classList.add('active');
+            }
+        }
+      };
+
+      window.addEventListener('scroll', scrollHandler);
+      scrollHandler(); // Initial call
+    }
+  } else { // Non-homepage specific logic (e.g. /blog, /faq)
+    const navLinks = Array.from(document.querySelectorAll('header .menu a')) as HTMLAnchorElement[];
+    navLinks.forEach((link: HTMLAnchorElement) => {
+        const linkHref = link.getAttribute('href');
+        if (!linkHref) return;
+        
+        link.classList.remove('active');
+
+        if (linkHref === currentPathname) { // Exact match for /faq, /privacy
+            link.classList.add('active');
+        } else if (linkHref === '/blog' && currentPathname.startsWith('/blog')) { // For /blog and /blog/*
+            link.classList.add('active');
+        }
+    });
+  }
+});
+</script>

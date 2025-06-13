@@ -1,0 +1,41 @@
+/* Contenuto di fixes.css */
+html {
+    scroll-behavior: smooth;
+}
+
+/*
+  I fix specifici per z-index e layout sono stati integrati direttamente
+  negli stili dei componenti Astro (Header.astro, Hero.astro, ecc.) 
+  o gestiti tramite la struttura HTML/CSS di Astro.
+  Questo file viene mantenuto per eventuali fix globali futuri,
+  ma molti degli stili originali sono stati rifattorizzati.
+*/
+
+/* Esempio di variabile z-index se necessaria globalmente, 
+   ma preferire la gestione locale nei componenti */
+/* 
+:root {
+    --z-index-header: 9000;
+    --z-index-menu: 8900; 
+}
+*/
+
+/*
+  Le regole specifiche per .hero-cta, .highlight-item, etc., 
+  sono state spostate nei rispettivi componenti Astro (es. Hero.astro)
+  per una migliore modularità e manutenibilità.
+*/
+
+/*
+  Le regole specifiche per .contact, .service-item, .footer, etc.,
+  sono state spostate nei rispettivi componenti Astro (Contact.astro, Services.astro, Footer.astro)
+*/
+
+/* Fix globali responsive che potrebbero essere ancora utili */
+@media (max-width: 768px) {
+    /* Eventuali aggiustamenti globali per tablet */
+}
+
+@media (max-width: 480px) {
+    /* Eventuali aggiustamenti globali per mobile piccoli */
+}

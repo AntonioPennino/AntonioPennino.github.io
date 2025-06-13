@@ -1,0 +1,18 @@
+User-agent: *
+Allow: /
+
+# Sitemap
+# Sitemap: https://antoniopennino.github.io/sitemap.xml # Questo verrà gestito da @astrojs/sitemap
+
+# Block access to admin areas (if any)
+Disallow: /admin/ # Esempio, se avessi un'area admin
+# Disallow: /.git/ # Generalmente non accessibile via web
+# Disallow: /node_modules/ # Generalmente non accessibile via web
+
+# Allow important files (generalmente non necessario se Allow: / è presente)
+# Allow: /style/
+# Allow: /js/
+# Allow: /imgs/
+
+# Crawl delay (optional)
+# Crawl-delay: 1

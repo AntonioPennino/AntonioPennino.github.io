@@ -1,0 +1,332 @@
+---
+// src/components/Portfolio.astro
+// Placeholder for portfolio items data. In a real scenario, this might come from a CMS or Markdown files.
+const portfolioItems = [
+    {
+        title: "Intervista Corporate - FeedEat Team",
+        description: "Video intervista professionale che racconta la visione imprenditoriale del team FeedEat, startup innovativa nel food-tech. Regia, riprese e post-produzione completa.",
+        videoUrl: "https://www.youtube.com/watch?v=tDCp2pgTaGI",
+        thumbnailUrl: "https://img.youtube.com/vi/tDCp2pgTaGI/maxresdefault.jpg", // Consider local images for better performance/control
+        tags: ["Video Aziendale", "Intervista", "Corporate"],
+        uploadDate: "2024-01-15",
+        duration: "PT5M30S",
+        altText: "Intervista professionale al team di FeedEat - Video aziendale"
+    },
+    {
+        title: "Spot Pubblicitario - FeedEat",
+        description: "Video promozionale dinamico per FeedEat, la startup che rivoluziona l'esperienza food dei giovani. Motion graphics, editing ritmico e storytelling coinvolgente.",
+        videoUrl: "https://www.youtube.com/watch?v=ULPaAQH6XOg",
+        thumbnailUrl: "https://img.youtube.com/vi/ULPaAQH6XOg/maxresdefault.jpg",
+        tags: ["Spot Pubblicitario", "Motion Graphics", "Marketing"],
+        uploadDate: "2024-02-10",
+        duration: "PT1M45S",
+        altText: "Spot pubblicitario FeedEat - Video marketing per startup"
+    },
+    {
+        title: "Documentario - L'Alba del Futuro",
+        description: "Documentario educativo per l'Università degli Studi di Camerino sull'integrazione tra tecnologia moderna e studio dei reperti archeologici. Progetto di alta valenza didattica e scientifica.",
+        videoUrl: "https://youtu.be/xM_u9ypltlE",
+        thumbnailUrl: "https://img.youtube.com/vi/xM_u9ypltlE/maxresdefault.jpg",
+        tags: ["Documentario", "Educativo", "Istituzionale"],
+        uploadDate: "2024-03-05",
+        duration: "PT8M20S",
+        altText: "Documentario L'alba del futuro - Università di Camerino tecnologia archeologia"
+    }
+];
+---
+<section id="portfolio" class="portfolio" itemscope itemtype="https://schema.org/CreativeWork">
+    <div class="container">
+        <h2>🎬 I miei lavori più significativi</h2>
+        <p class="section-subtitle">Ogni progetto racconta una storia diversa, ma tutti condividono la stessa passione per il dettaglio</p>
+        
+        <div class="portfolio-stats">
+            <div class="portfolio-stat">
+                <span class="stat-number">50+</span>
+                <span class="stat-label">Progetti realizzati</span>
+            </div>
+            <div class="portfolio-stat">
+                <span class="stat-number">340%</span>
+                <span class="stat-label">ROI Medio</span>
+            </div>
+            <div class="portfolio-stat">
+                <span class="stat-number">50+</span>
+                <span class="stat-label">Progetti Premiati</span>
+            </div>
+        </div>
+        
+        <div class="portfolio-grid">
+            {portfolioItems.map(item => (
+                <article class="portfolio-item" itemscope itemtype="https://schema.org/VideoObject">
+                    <a href={item.videoUrl} target="_blank" rel="noopener noreferrer" itemprop="url">
+                        <img src={item.thumbnailUrl} alt={item.altText} itemprop="thumbnailUrl" loading="lazy" />
+                        <div class="portfolio-item-info">
+                            <h3 itemprop="name">{item.title}</h3>
+                            <p itemprop="description">{item.description}</p>
+                            <div class="project-tags">
+                                {item.tags.map(tag => (
+                                    <span class="tag">{tag}</span>
+                                ))}
+                            </div>
+                        </div>
+                    </a>
+                    <meta itemprop="uploadDate" content={item.uploadDate} />
+                    <meta itemprop="duration" content={item.duration} />
+                </article>
+            ))}
+        </div>
+        
+        <div class="portfolio-cta">
+            <h3>Vuoi vedere altri progetti?</h3>
+            <p>Scopri il mio portfolio completo sui social media</p>
+            <div class="social-portfolio">
+                <a href="https://vimeo.com/antoniopennino" target="_blank" rel="noopener noreferrer" class="social-link vimeo">
+                    <i class="fab fa-vimeo-v"></i>
+                    Vimeo Portfolio
+                </a>
+                <a href="https://www.instagram.com/antonio__pennino" target="_blank" rel="noopener noreferrer" class="social-link instagram">
+                    <i class="fab fa-instagram"></i>
+                    Instagram Reel
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<style>
+/* Styles for Portfolio section, adapted from style.css */
+.portfolio {
+    padding: var(--section-padding, 60px 0);
+    background-color: var(--background-white, #ffffff);
+}
+
+.portfolio .container {
+    max-width: var(--container-width-large, 1200px); /* Slightly larger for portfolio */
+    margin: 0 auto;
+    padding: 0 var(--container-padding, 15px);
+}
+
+.portfolio h2 {
+    text-align: center;
+    font-size: clamp(2rem, 4vw, 2.8rem);
+    margin-bottom: 0.5em;
+    color: var(--text-color-dark, #333);
+}
+
+.portfolio .section-subtitle {
+    text-align: center;
+    font-size: clamp(1rem, 2.5vw, 1.2rem);
+    color: var(--text-color-medium, #555);
+    margin-bottom: 2.5em;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.portfolio-stats {
+    display: flex;
+    justify-content: space-around;
+    gap: 20px;
+    margin-bottom: 3em;
+    padding: 20px 0;
+    border-top: 1px solid var(--border-color-light, #eee);
+    border-bottom: 1px solid var(--border-color-light, #eee);
+    flex-wrap: wrap;
+}
+
+.portfolio-stat {
+    text-align: center;
+    min-width: 150px;
+}
+
+.portfolio-stat .stat-number {
+    display: block;
+    font-size: clamp(2.2rem, 5vw, 3rem);
+    font-weight: 700;
+    color: var(--primary-color, #007bff);
+    line-height: 1.1;
+}
+
+.portfolio-stat .stat-label {
+    font-size: clamp(0.9rem, 2vw, 1rem);
+    color: var(--text-color-light, #777);
+}
+
+.portfolio-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 30px;
+    margin-bottom: 3em;
+}
+
+.portfolio-item {
+    background-color: var(--background-card, #f9f9f9);
+    border-radius: 8px;
+    overflow: hidden; /* Ensures image corners are rounded if image itself isn't */
+    box-shadow: 0 5px 15px rgba(0,0,0,0.07);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.portfolio-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+}
+
+.portfolio-item a {
+    display: block;
+    text-decoration: none;
+    color: inherit;
+}
+
+.portfolio-item img {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 16 / 9; /* Maintain aspect ratio for video thumbnails */
+    object-fit: cover;
+    display: block; /* Removes bottom space under image */
+    border-bottom: 1px solid var(--border-color-light, #eee);
+}
+
+.portfolio-item-info {
+    padding: 20px;
+}
+
+.portfolio-item-info h3 {
+    font-size: clamp(1.2rem, 3vw, 1.4rem);
+    margin-bottom: 0.5em;
+    color: var(--text-color-dark, #333);
+    font-weight: 600;
+}
+
+.portfolio-item-info p {
+    font-size: clamp(0.9rem, 2.5vw, 1rem);
+    line-height: 1.6;
+    color: var(--text-color-medium, #555);
+    margin-bottom: 1em;
+}
+
+.project-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.project-tags .tag {
+    background-color: var(--primary-color-light, #e0efff);
+    color: var(--primary-color, #007bff);
+    padding: 5px 10px;
+    border-radius: 4px;
+    font-size: 0.85rem;
+    font-weight: 500;
+}
+
+.portfolio-cta {
+    text-align: center;
+    margin-top: 2em;
+    padding: 30px 20px;
+    background-color: var(--background-light, #f9f9f9);
+    border-radius: 8px;
+}
+
+.portfolio-cta h3 {
+    font-size: clamp(1.5rem, 3vw, 1.8rem);
+    color: var(--text-color-dark, #333);
+    margin-bottom: 0.5em;
+}
+
+.portfolio-cta p {
+    font-size: clamp(1rem, 2.5vw, 1.1rem);
+    color: var(--text-color-medium, #555);
+    margin-bottom: 1.5em;
+}
+
+.social-portfolio {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.social-link {
+    display: inline-flex;
+    align-items: center;
+    padding: 10px 20px;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1rem;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.social-link i.fab {
+    margin-right: 8px;
+    font-size: 1.2rem;
+}
+
+.social-link.vimeo {
+    background-color: #1ab7ea; /* Vimeo blue */
+    color: #fff;
+}
+
+.social-link.vimeo:hover {
+    background-color: #1295bf;
+    transform: translateY(-2px);
+}
+
+.social-link.instagram {
+    background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+    color: #fff;
+}
+
+.social-link.instagram:hover {
+    opacity: 0.9;
+    transform: translateY(-2px);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .portfolio h2 {
+        font-size: 1.8rem;
+    }
+    .portfolio .section-subtitle {
+        font-size: 1rem;
+    }
+    .portfolio-stat .stat-number {
+        font-size: 2rem;
+    }
+    .portfolio-item-info h3 {
+        font-size: 1.1rem;
+    }
+    .portfolio-item-info p {
+        font-size: 0.85rem;
+    }
+    .portfolio-cta h3 {
+        font-size: 1.3rem;
+    }
+    .portfolio-cta p {
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .portfolio-grid {
+        grid-template-columns: 1fr; /* Stack portfolio items */
+    }
+    .portfolio-stats {
+        flex-direction: column; /* Stack stats */
+        align-items: center;
+        gap: 15px;
+    }
+    .social-portfolio {
+        flex-direction: column;
+        align-items: center;
+    }
+    .social-link {
+        width: 80%;
+        justify-content: center;
+        margin-bottom: 10px;
+    }
+    .social-link:last-child {
+        margin-bottom: 0;
+    }
+}
+</style>

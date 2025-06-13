@@ -1,0 +1,262 @@
+---
+// src/components/Hero.astro
+---
+<section id="home" class="hero" itemscope itemtype="https://schema.org/Person">
+    <div class="hero-content">
+        <h1 itemprop="name">🎬 Antonio Pennino</h1>
+        <h2 itemprop="jobTitle">Videomaker che racconta storie che rimangono</h2>
+        <p itemprop="description">Da oltre 3 anni trasformo idee in video che catturano l'essenza dei brand e toccano il cuore delle persone. Ogni progetto è un viaggio creativo unico, dalla prima bozza al taglio finale.</p>
+        
+        <div class="hero-highlights">
+            <div class="highlight-item">
+                <span class="highlight-icon" aria-hidden="true">🎯</span>
+                <span class="highlight-text">Storie autentiche</span>
+            </div>
+            <div class="highlight-item">
+                <span class="highlight-icon" aria-hidden="true">⚡</span>
+                <span class="highlight-text">Creatività su misura</span>
+            </div>
+            <div class="highlight-item">
+                <span class="highlight-icon" aria-hidden="true">🏅</span>
+                <span class="highlight-text">Qualità artigianale</span>
+            </div>
+        </div>
+        
+        <div class="hero-cta">
+            <a href="#portfolio" class="cta-button primary">🎬 Scopri i miei lavori</a>
+            <a href="#contact" class="cta-button secondary">🎙️ Parliamone insieme</a>
+        </div>
+    </div>
+    <div class="hero-image" role="img" aria-label="Antonio Pennino videomaker professionale al lavoro con attrezzatura cinematografica" style="background-image: url('/imgs/hero-background.jpg');"></div> {/* MANTENUTO /imgs/hero-background.jpg, assumendo che sia un'immagine di placeholder che hai aggiunto o che aggiungerai in public/imgs/ */}
+    <div class="hero-overlay"></div>
+</section>
+
+<style>
+/* Styles specific to Hero, adapted from style.css */
+.hero {
+    position: relative;
+    height: 100vh; /* Full viewport height */
+    min-height: 600px; /* Minimum height for smaller screens */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: #fff;
+    overflow: hidden; /* Ensures overlay and image don't cause scrollbars */
+}
+
+.hero-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    z-index: 1;
+    /* filter: brightness(0.6) contrast(1.1); */ /* Consider if needed, or use overlay */
+}
+
+.hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6); /* Dark overlay for text readability */
+    z-index: 2;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 3;
+    padding: 20px;
+    max-width: 800px; /* Max width for content */
+    margin: 0 auto;
+    animation: fadeInText 1.5s ease-out forwards;
+}
+
+.hero h1 {
+    font-size: clamp(2.5rem, 5vw, 4rem); /* Responsive font size */
+    margin-bottom: 0.5em;
+    font-weight: 700;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+}
+
+.hero h2 {
+    font-size: clamp(1.2rem, 3vw, 1.8rem);
+    margin-bottom: 1em;
+    font-weight: 400;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+}
+
+.hero p {
+    font-size: clamp(1rem, 2.5vw, 1.2rem);
+    margin-bottom: 2em;
+    line-height: 1.7;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+}
+
+.hero-highlights {
+    display: flex;
+    justify-content: center;
+    gap: 20px; /* Spacing between items */
+    margin-bottom: 2.5em;
+    flex-wrap: wrap; /* Allow wrapping on smaller screens */
+}
+
+.highlight-item {
+    display: flex;
+    flex-direction: column; /* Icon above text */
+    align-items: center;
+    background-color: rgba(255, 255, 255, 0.1); /* Subtle background */
+    padding: 15px 20px;
+    border-radius: 8px;
+    min-width: 150px; /* Minimum width for each highlight */
+    transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.highlight-item:hover {
+    transform: translateY(-5px);
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+.highlight-icon {
+    font-size: 1.8rem; /* Icon size */
+    margin-bottom: 0.5em;
+}
+
+.highlight-text {
+    font-size: 1rem;
+    font-weight: 600;
+}
+
+.hero-cta {
+    display: flex;
+    justify-content: center;
+    gap: 15px; /* Spacing between buttons */
+    flex-wrap: wrap; /* Allow buttons to wrap */
+}
+
+.cta-button {
+    padding: 12px 25px;
+    border-radius: 50px; /* Pill shape */
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1rem;
+    transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+    border: 2px solid transparent;
+    cursor: pointer;
+}
+
+.cta-button.primary {
+    background-color: var(--primary-color, #007bff);
+    color: #fff;
+}
+
+.cta-button.primary:hover {
+    background-color: var(--primary-hover-color, #0056b3);
+    transform: translateY(-3px);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+
+.cta-button.secondary {
+    background-color: transparent;
+    color: #fff;
+    border-color: #fff;
+}
+
+.cta-button.secondary:hover {
+    background-color: #fff;
+    color: var(--text-color, #333);
+    transform: translateY(-3px);
+    box-shadow: 0 4px 10px rgba(255,255,255,0.2);
+}
+
+/* Keyframe animation for text fade-in */
+@keyframes fadeInText {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .hero {
+        min-height: 500px; /* Adjust min-height for tablets */
+        text-align: center; /* Ensure text is centered */
+    }
+
+    .hero h1 {
+        font-size: 2.2rem;
+    }
+
+    .hero h2 {
+        font-size: 1.1rem;
+    }
+
+    .hero p {
+        font-size: 0.9rem;
+    }
+
+    .hero-highlights {
+        gap: 15px;
+    }
+
+    .highlight-item {
+        padding: 10px 15px;
+        min-width: 120px;
+    }
+
+    .highlight-icon {
+        font-size: 1.5rem;
+    }
+
+    .hero-cta {
+        flex-direction: column; /* Stack buttons vertically */
+        align-items: center; /* Center stacked buttons */
+    }
+
+    .cta-button {
+        width: 80%; /* Make buttons wider on mobile */
+        max-width: 300px;
+        margin-bottom: 10px; /* Add space between stacked buttons */
+    }
+    .cta-button:last-child {
+        margin-bottom: 0;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero {
+        min-height: 450px; /* Adjust min-height for mobile */
+    }
+    .hero h1 {
+        font-size: 2rem;
+    }
+    .hero h2 {
+        font-size: 1rem;
+    }
+    .hero p {
+        font-size: 0.85rem;
+        margin-bottom: 1.5em;
+    }
+    .hero-highlights {
+        flex-direction: column; /* Stack highlights vertically */
+        gap: 10px;
+    }
+    .highlight-item {
+        width: 70%;
+        max-width: 250px;
+    }
+}
+</style>

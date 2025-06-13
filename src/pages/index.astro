@@ -1,0 +1,21 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Hero from '../components/Hero.astro';
+import About from '../components/About.astro';
+import Testimonials from '../components/Testimonials.astro';
+import Services from '../components/Services.astro';
+import Portfolio from '../components/Portfolio.astro';
+import Contact from '../components/Contact.astro';
+
+const pageTitle = "🎬 Antonio Pennino | Videomaker che racconta storie che rimangono";
+const pageDescription = "Videomaker e filmmaker che trasforma idee in storie visive autentiche. Oltre 3 anni di esperienza, 50+ progetti realizzati con cura artigianale. Ogni video è un viaggio creativo unico.";
+const canonicalURL = "https://antoniopennino.github.io"; // Update this when the domain changes
+---
+<BaseLayout title={pageTitle} description={pageDescription} canonicalURL={canonicalURL}>
+    <Hero />
+    <About />
+    <Testimonials />
+    <Services />
+    <Portfolio />
+    <Contact />
+</BaseLayout>

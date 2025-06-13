@@ -1,0 +1,239 @@
+---
+// src/components/About.astro
+import { Image } from 'astro:assets'; // Import for optimized images
+// Assuming profile.jpg will be moved to src/assets/ or public/imgs/
+// For now, let's assume it will be in public/imgs/profile.jpg for simplicity with current migration stage.
+// If you move it to src/assets/ later, the import path would change.
+// import profileImage from '../assets/profile.jpg'; // Example if in src/assets
+---
+<section id="about" class="about" itemscope itemtype="https://schema.org/AboutPage">
+    <div class="container">
+        <h2><span aria-hidden="true">👨‍💻</span> La mia storia dietro la videocamera</h2>
+        <div class="about-content">
+            <div class="about-text">
+                <p><strong>Ciao, sono Antonio</strong> - un videomaker che ha trasformato la passione per lo storytelling visivo in una professione che amo profondamente.</p>
+                
+                <p>Ogni mattina mi sveglio con la stessa curiosità di quando da bambino smontavo le videocamere per capire come funzionavano. Oggi quella curiosità si è evoluta nella capacità di <strong>catturare l'essenza di un brand</strong> e trasformarla in immagini che parlano direttamente al cuore delle persone.</p>
+                
+                <p>Ho avuto la fortuna di collaborare con realtà innovative come <strong>FeedEat</strong> e istituzioni di prestigio come l'<strong>Università degli Studi di Camerino</strong>. Ogni progetto mi ha insegnato qualcosa di nuovo sul potere delle storie ben raccontate.</p>
+                
+                <div class="stats">
+                    <div class="stat-item">
+                        <span class="stat-number">50+</span>
+                        <span class="stat-label">Storie raccontate</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">3+</span>
+                        <span class="stat-label">Anni di esperienza</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">∞</span>
+                        <span class="stat-label">Passione per il cinema</span>
+                    </div>
+                </div>
+            </div>
+            <div class="about-image" role="img" aria-label="Ritratto di Antonio Pennino, videomaker professionista">
+                <!-- 
+                    If using astro:assets (recommended for optimization):
+                    Requires profile.jpg to be in src/assets/ or a subfolder.
+                    <Image src={profileImage} alt="Antonio Pennino, videomaker e storyteller" loading="lazy" widths={[300, 600]} sizes="(max-width: 768px) 100vw, 300px" /> 
+                -->
+                <img src="/imgs/profile.jpg" alt="Antonio Pennino, videomaker e storyteller" loading="lazy"> {/* AGGIORNATO IMG SRC */}
+            </div>
+        </div>
+        
+        <div class="skills-container">
+            <div class="skill-item" itemscope itemtype="https://schema.org/Skill">
+                <i class="fas fa-cut" aria-hidden="true"></i>
+                <h3 itemprop="name">Video Editing Professionale</h3>
+                <p itemprop="description">Montaggio preciso con Adobe Premiere Pro, Final Cut Pro e DaVinci Resolve. Creo ritmi narrativi che coinvolgono dal primo secondo.</p>
+            </div>
+            <div class="skill-item" itemscope itemtype="https://schema.org/Skill">
+                <i class="fas fa-magic" aria-hidden="true"></i>
+                <h3 itemprop="name">Motion Graphics & VFX</h3>
+                <p itemprop="description">Animazioni 2D/3D con After Effects e Cinema 4D. Effetti visivi che trasformano video ordinari in esperienze straordinarie.</p>
+            </div>
+            <div class="skill-item" itemscope itemtype="https://schema.org/Skill">
+                <i class="fas fa-palette" aria-hidden="true"></i>
+                <h3 itemprop="name">Color Grading Cinematografico</h3>
+                <p itemprop="description">Correzione e grading colore professionale che definisce l'mood e l'atmosfera di ogni progetto video.</p>
+            </div>
+            <div class="skill-item" itemscope itemtype="https://schema.org/Skill">
+                <i class="fas fa-volume-up" aria-hidden="true"></i>
+                <h3 itemprop="name">Audio Post-Production</h3>
+                <p itemprop="description">Sound design, mixing e mastering audio per creare paesaggi sonori immersivi e professionali.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<style>
+/* Styles for About section, adapted from style.css */
+.about {
+    padding: var(--section-padding, 60px 0);
+    background-color: var(--background-light, #f9f9f9);
+}
+
+.about .container {
+    max-width: var(--container-width, 1100px);
+    margin: 0 auto;
+    padding: 0 var(--container-padding, 15px);
+}
+
+.about h2 {
+    text-align: center;
+    font-size: clamp(2rem, 4vw, 2.8rem);
+    margin-bottom: 1em;
+    color: var(--text-color-dark, #333);
+}
+
+.about h2 span {
+    margin-right: 0.3em;
+}
+
+.about-content {
+    display: flex;
+    flex-wrap: wrap; /* Allow wrapping on smaller screens */
+    align-items: flex-start; /* Align items to the top */
+    gap: 40px; /* Space between text and image */
+    margin-bottom: 40px;
+}
+
+.about-text {
+    flex: 1; /* Takes up available space */
+    min-width: 300px; /* Minimum width before wrapping */
+    line-height: 1.7;
+}
+
+.about-text p {
+    margin-bottom: 1.5em;
+    font-size: clamp(1rem, 2.5vw, 1.1rem);
+    color: var(--text-color-medium, #555);
+}
+
+.about-text strong {
+    color: var(--primary-color, #007bff);
+    font-weight: 600;
+}
+
+.stats {
+    display: flex;
+    justify-content: space-around; /* Distribute items evenly */
+    gap: 20px;
+    margin-top: 30px;
+    padding: 20px 0;
+    border-top: 1px solid var(--border-color-light, #eee);
+    border-bottom: 1px solid var(--border-color-light, #eee);
+    flex-wrap: wrap;
+}
+
+.stat-item {
+    text-align: center;
+    min-width: 120px; /* Ensure items don't get too squished */
+}
+
+.stat-number {
+    display: block;
+    font-size: clamp(2rem, 5vw, 2.8rem);
+    font-weight: 700;
+    color: var(--primary-color, #007bff);
+    line-height: 1.1;
+}
+
+.stat-label {
+    font-size: clamp(0.9rem, 2vw, 1rem);
+    color: var(--text-color-light, #777);
+}
+
+.about-image {
+    flex-basis: 300px; /* Suggested width for the image container */
+    max-width: 100%; /* Ensure it doesn't overflow on small screens */
+    text-align: center; /* Center image if it's smaller than container */
+}
+
+.about-image img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    object-fit: cover; /* Ensures image covers the area well */
+}
+
+.skills-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Responsive grid */
+    gap: 30px;
+    margin-top: 40px;
+}
+
+.skill-item {
+    background-color: #fff;
+    padding: 25px;
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.07);
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.skill-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+}
+
+.skill-item i.fas {
+    font-size: 2.5rem; /* Icon size */
+    color: var(--primary-color, #007bff);
+    margin-bottom: 0.75em;
+}
+
+.skill-item h3 {
+    font-size: clamp(1.2rem, 3vw, 1.4rem);
+    margin-bottom: 0.5em;
+    color: var(--text-color-dark, #333);
+    font-weight: 600;
+}
+
+.skill-item p {
+    font-size: clamp(0.9rem, 2vw, 1rem);
+    line-height: 1.6;
+    color: var(--text-color-medium, #555);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .about-content {
+        flex-direction: column; /* Stack text and image vertically */
+        align-items: center; /* Center items when stacked */
+    }
+
+    .about-text {
+        text-align: center; /* Center text content */
+    }
+
+    .stats {
+        justify-content: center; /* Center stat items */
+    }
+
+    .about-image {
+        margin-top: 30px; /* Add space above image when stacked */
+        flex-basis: auto; /* Allow image to take natural width */
+        width: 80%; /* Control width of image container */
+        max-width: 350px;
+    }
+}
+
+@media (max-width: 480px) {
+    .about h2 {
+        font-size: 1.8rem;
+    }
+    .stat-number {
+        font-size: 2rem;
+    }
+    .skill-item h3 {
+        font-size: 1.1rem;
+    }
+    .skill-item p {
+        font-size: 0.85rem;
+    }
+}
+</style>
