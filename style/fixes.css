@@ -1,0 +1,85 @@
+/* Fix di sovrapposizione elementi */
+
+/* Questo file contiene correzioni CSS specifiche per risolvere i problemi di sovrapposizione nell'interfaccia utente */
+
+:root {
+    --z-index-header: 9000;
+    --z-index-menu: 8900;
+    --z-index-hero-content: 100;
+    --z-index-hero-highlights: 90;
+    --z-index-hero-image: 10;
+}
+
+/* Fix Header */
+header {
+    z-index: var(--z-index-header);
+}
+
+.menu {
+    z-index: var(--z-index-menu);
+}
+
+/* Fix Hero Section */
+.hero-content {
+    z-index: var(--z-index-hero-content);
+    position: relative;
+}
+
+.hero-highlights {
+    z-index: var(--z-index-hero-highlights);
+    position: relative;
+}
+
+.hero-cta {
+    position: relative;
+    z-index: var(--z-index-hero-highlights);
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-bottom: 40px;
+}
+
+.highlight-item {
+    padding: 15px 25px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+/* Fix per bottoni CTA */
+.hero .cta-button.primary,
+.hero .cta-button.secondary {
+    min-width: 200px;
+    text-align: center;
+}
+
+/* Responsive Fixes */
+@media (max-width: 768px) {
+    .hero {
+        padding-top: 80px;
+        padding-bottom: 40px;
+        height: auto;
+    }
+    
+    .hero-cta {
+        flex-direction: column;
+        width: 100%;
+        max-width: 300px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    
+    .hero-highlights {
+        flex-direction: column;
+        width: 100%;
+        max-width: 300px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    
+    .highlight-item {
+        width: 100%;
+        justify-content: center;
+    }
+}

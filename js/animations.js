@@ -2,6 +2,25 @@
 // Complete rewrite for maximum visual impact and SEO performance
 
 document.addEventListener('DOMContentLoaded', function() {
+    // Inizializza il toggle del menu mobile
+    const menuToggle = document.querySelector('.menu-toggle');
+    const menu = document.querySelector('.menu');
+    
+    if (menuToggle && menu) {
+        menuToggle.addEventListener('click', () => {
+            menu.classList.toggle('active');
+            menuToggle.classList.toggle('active');
+        });
+        
+        // Chiudi il menu quando si clicca su un link
+        document.querySelectorAll('.menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                menu.classList.remove('active');
+                menuToggle.classList.remove('active');
+            });
+        });
+    }
+    
     // Initialize all animations and interactions
     initLoadingScreen();
     initScrollAnimations();
