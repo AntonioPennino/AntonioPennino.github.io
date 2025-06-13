@@ -193,9 +193,9 @@ function initScrollAnimations() {
                 element.classList.add('visible');
                 
                 // Specific animations for different elements
-                if (element.classList.contains('service-card')) {
+                if (element.classList.contains('service-item')) { // Changed from service-card
                     animateServiceCard(element);
-                } else if (element.classList.contains('testimonial-card')) {
+                } else if (element.classList.contains('testimonial-item')) { // Changed from testimonial-card
                     animateTestimonialCard(element);
                 } else if (element.classList.contains('stat-number')) {
                     animateCounter(element);
@@ -208,7 +208,7 @@ function initScrollAnimations() {
 
     // Observe all animated elements
     const elements = document.querySelectorAll(
-        '.service-card, .testimonial-card, .skill-item, .stat-item, .about-text, h2, h3'
+        '.service-item, .testimonial-item, .skill-item, .stat-item, .about-text, h2, h3' // Changed service-card and testimonial-card
     );
     
     elements.forEach(el => {
@@ -289,7 +289,7 @@ function animateCounter(element) {
 
 // Advanced parallax effects
 function initParallaxEffects() {
-    const parallaxElements = document.querySelectorAll('.hero-image, .about-image img');
+    const parallaxElements = document.querySelectorAll('.hero-image'); // Removed , .about-image img
     
     if (parallaxElements.length === 0) return;
 
@@ -389,7 +389,7 @@ function initSmoothScrolling() {
 
 // Advanced navbar effects
 function initNavbarEffects() {
-    const navbar = document.querySelector('.nav');
+    const navbar = document.querySelector('header'); // Changed from .nav
     if (!navbar) return;
     
     let lastScrollY = window.scrollY;
@@ -437,7 +437,7 @@ function initNavbarEffects() {
 // Interactive elements with advanced effects
 function initInteractiveElements() {
     // Enhanced button interactions
-    const buttons = document.querySelectorAll('.cta-button, .service-cta');
+    const buttons = document.querySelectorAll('.cta-button'); // Removed , .service-cta
     
     buttons.forEach(button => {
         // Ripple effect
@@ -458,7 +458,7 @@ function initInteractiveElements() {
     });
     
     // Card tilt effects
-    const cards = document.querySelectorAll('.service-card, .testimonial-card');
+    const cards = document.querySelectorAll('.service-item, .testimonial-item'); // Changed service-card and testimonial-card
     
     cards.forEach(card => {
         card.addEventListener('mousemove', (e) => {
