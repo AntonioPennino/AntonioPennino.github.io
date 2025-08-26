@@ -4,14 +4,14 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Antonio Pennino | Video Editor Portfolio</title>
-  <meta name="description" content="Portfolio di Antonio Pennino, video editor specializzato in short film, promo commerciali, color e storytelling. Guarda i lavori e contattami." />
+  <meta name="description" content="Ciao, sono Antonio. Edito video per passione e lavoro. Dai un'occhiata ai miei progetti e scrivimi se ti interessa collaborare." />
   <meta name="theme-color" content="#0e1116" />
   <link rel="shortcut icon" href="/profile.ico" type="image/x-icon" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Instrument+Sans:wght@400;600;700&display=swap" rel="stylesheet" />
   <meta property="og:title" content="Antonio Pennino | Video Editor" />
-  <meta property="og:description" content="Storytelling visivo e montaggi che catturano l'attenzione." />
+  <meta property="og:description" content="Ciao, sono Antonio. Edito video per passione e lavoro." />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://antoniopennino.github.io/" />
   <meta property="og:image" content="/profile.ico" />
@@ -148,24 +148,24 @@
         <a href="#contatto">Contatto</a>
       </div>
   <div class="nav-cta">
-        <button class="btn outline" onclick="document.getElementById('contatto').scrollIntoView({behavior:'smooth'});">Parliamo</button>
+        <button class="btn outline" onclick="document.getElementById('contatto').scrollIntoView({behavior:'smooth'});">Scrivimi</button>
       </div>
     </nav>
   </header>
   <main>
     <section id="hero">
       <div class="hero-text" data-animate>
-        <h1>Video editing <br><span class="gradient-text">focalizzato sull'impatto</span></h1>
-        <p>Trasformo idee grezze in contenuti video fluidi, dinamici e pensati per trattenere l'attenzione. Storytelling, ritmo e cura del dettaglio: ogni frame sostiene il messaggio.</p>
+        <h1>Ciao, sono <br><span class="gradient-text">Antonio</span></h1>
+        <p>Mi piace editare video. Creo contenuti per il web, documentari e progetti personali. Se stai cercando qualcuno per il montaggio del tuo progetto, scrivimi pure.</p>
   <div class="hero-actions">
-          <button class="btn" onclick="document.getElementById('portfolio').scrollIntoView({behavior:'smooth'});">Guarda i lavori ▸</button>
-          <button class="btn outline" onclick="document.getElementById('contatto').scrollIntoView({behavior:'smooth'});">Richiedi un preventivo</button>
+          <button class="btn" onclick="document.getElementById('portfolio').scrollIntoView({behavior:'smooth'});">Guarda i lavori</button>
+          <button class="btn outline" onclick="document.getElementById('contatto').scrollIntoView({behavior:'smooth'});">Scrivimi</button>
         </div>
         <div class="hero-meta">
-          <span>Commercial</span>
-          <span>Social Short-Film</span>
-          <span>Storytelling</span>
-          <span>Audio Care</span>
+          <span>Documentari</span>
+          <span>Short Film</span>
+          <span>Contenuti Web</span>
+          <span>Interviste</span>
         </div>
       </div>
       <div class="avatar" data-animate>
@@ -178,13 +178,13 @@
     <section id="portfolio">
       <header class="section-head" data-animate>
         <div class="section-eyebrow">Portfolio</div>
-        <h2>Selezione lavori</h2>
-        <p class="lead">Una panoramica di progetti (work-in-progress & pubblicati). Su richiesta posso inviare showreel completo con materiali riservati.</p>
+        <h2>I miei lavori</h2>
+        <p class="lead">Alcuni progetti che ho editato negli ultimi anni. Ce ne sono altri, ma questi danno un'idea del mio stile.</p>
       </header>
       <div class="filters" role="tablist" aria-label="Filtri portfolio">
         <button class="filter-btn active" role="tab" aria-selected="true" tabindex="0" data-filter="all">Tutti</button>
-        <button class="filter-btn" role="tab" aria-selected="false" tabindex="-1" data-filter="ad">Commercial</button>
-        <button class="filter-btn" role="tab" aria-selected="false" tabindex="-1" data-filter="story">Story</button>
+        <button class="filter-btn" role="tab" aria-selected="false" tabindex="-1" data-filter="ad">Commerciali</button>
+        <button class="filter-btn" role="tab" aria-selected="false" tabindex="-1" data-filter="story">Narrativi</button>
       </div>
       <div class="portfolio-grid" id="portfolioGrid">
         <!-- Ogni .work può aprire lightbox con embed YouTube/Vimeo. Usa data-video per lazy load -->
@@ -212,8 +212,8 @@
     <section id="contatto">
       <header class="section-head" data-animate>
         <div class="section-eyebrow">Contatto</div>
-        <h2>Parliamo del tuo progetto</h2>
-        <p class="lead">Raccontami obiettivo, target e dove sarà pubblicato il contenuto. Ti rispondo con una proposta sintetica e tempistiche.</p>
+        <h2>Parliamo</h2>
+        <p class="lead">Se hai un progetto video e pensi che possiamo lavorare insieme, scrivimi! Ti rispondo sempre.</p>
       </header>
       <form action="https://formsubmit.co/" method="POST" data-animate onsubmit="this.querySelector('button[type=submit]').disabled=true;">
         <div class="form-row">
@@ -227,24 +227,24 @@
           </div>
         </div>
         <div class="field">
-          <label for="tipo">Tipo di contenuto</label>
-          <input id="tipo" name="tipo" type="text" placeholder="Es: Reel campagna, Promo prodotto, Intervista" />
+          <label for="tipo">Che tipo di progetto?</label>
+          <input id="tipo" name="tipo" type="text" placeholder="Es: documentario, intervista, video aziendale..." />
         </div>
         <div class="field">
-          <label for="messaggio">Messaggio</label>
-          <textarea id="messaggio" name="messaggio" required placeholder="Obiettivo, durata stimata, eventuali riferimenti..."></textarea>
+          <label for="messaggio">Raccontami</label>
+          <textarea id="messaggio" name="messaggio" required placeholder="Di cosa parla il progetto? Quando serve? Budget indicativo?"></textarea>
         </div>
         <input type="hidden" name="_captcha" value="false" />
         <input type="hidden" name="_template" value="table" />
-        <button class="btn" type="submit">Invia richiesta ✉</button>
-        <p class="notice">Oppure scrivimi direttamente: <a href="mailto:tuo@email.com">tuo@email.com</a></p>
+        <button class="btn" type="submit">Invia ✉</button>
+        <p class="notice">Oppure scrivimi direttamente: <a href="mailto:antonio.pennino.mail@gmail.com">antonio.pennino.mail@gmail.com</a></p>
       </form>
     </section>
   </main>
   <footer>
     <div class="inner" data-animate>
       <div class="footer-inline">
-        <p>Email: <a href="mailto:tuo@email.com">contatto diretto</a> · Instagram · LinkedIn</p>
+        <p>Email: <a href="mailto:antonio.pennino.mail@gmail.com">contatto diretto</a> · Instagram · LinkedIn</p>
       </div>
       <div class="credits">© <span id="year"></span> Antonio Pennino. Tutti i diritti riservati.</div>
     </div>
