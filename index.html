@@ -1,74 +1,347 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Lavori in corso | Antonio Pennino Videomaker</title>
-  <meta name="description" content="Il sito è in fase di migrazione e ottimizzazione. Torna presto per scoprire la nuova esperienza!">
-  <link rel="shortcut icon" href="/profile.ico" type="image/x-icon">
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Antonio Pennino | Video Editor Portfolio</title>
+  <meta name="description" content="Portfolio di Antonio Pennino, video editor specializzato in short film, promo commerciali, color e storytelling. Guarda i lavori e contattami." />
+  <meta name="theme-color" content="#0e1116" />
+  <link rel="shortcut icon" href="/profile.ico" type="image/x-icon" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Instrument+Sans:wght@400;600;700&display=swap" rel="stylesheet" />
+  <meta property="og:title" content="Antonio Pennino | Video Editor" />
+  <meta property="og:description" content="Storytelling visivo e montaggi che catturano l'attenzione." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://antoniopennino.github.io/" />
+  <meta property="og:image" content="/profile.ico" />
   <style>
-    html, body {
-      height: 100%;
-      margin: 0;
-      padding: 0;
-      background: linear-gradient(135deg, #0a0a0a 0%, #00d4ff 100%);
-      color: #fff;
-      font-family: 'Poppins', sans-serif;
-      min-height: 100vh;
+    :root {
+      --bg: #0e1116;
+      --bg-alt: #151b23;
+      --acc: #00d4ff;
+      --acc-soft: #00d4ff22;
+      --grad: linear-gradient(135deg,#00d4ff 0%,#4bffa5 60%,#ffe66d 100%);
+      --text: #e6ecf3;
+      --text-dim: #9aa5b1;
+      --radius: 18px;
+      --mono: 'Instrument Sans', 'Poppins', system-ui, sans-serif;
+      --easing: cubic-bezier(.5,.2,.15,1);
+      font-synthesis: none;
     }
-    body {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      min-height: 100vh;
-      text-align: center;
+    * { box-sizing: border-box; }
+    html,body { margin:0; padding:0; background: radial-gradient(circle at 30% 20%, #14202b 0%, #0e1116 55%) fixed; font-family: var(--mono); color: var(--text); -webkit-font-smoothing: antialiased; }
+    body { line-height: 1.5; }
+    a { color: var(--acc); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    img { max-width:100%; display:block; }
+    /* Layout */
+  header { position:sticky; top:0; -webkit-backdrop-filter: blur(14px); backdrop-filter: blur(14px); background: #0e1116cc; border-bottom: 1px solid #1d262f; z-index: 30; }
+    nav { max-width:1200px; margin:0 auto; padding:10px clamp(18px,4vw,56px); display:flex; align-items:center; justify-content:space-between; }
+    .logo { font-weight:700; letter-spacing:.5px; display:flex; align-items:center; gap:.55rem; font-size:1rem; }
+  .logo span { background:var(--grad); -webkit-background-clip:text; background-clip:text; color:transparent; }
+    .nav-links { display:flex; gap: clamp(14px,3.2vw,40px); font-size:.9rem; }
+    .nav-links a { position:relative; padding:6px 4px; }
+    .nav-links a::after { content:""; position:absolute; left:0; bottom:2px; height:2px; width:0; background:var(--grad); border-radius:2px; transition: width .4s var(--easing); }
+    .nav-links a:hover::after, .nav-links a:focus-visible::after { width:100%; }
+    .btn { --btn-bg: var(--acc); --btn-color:#041318; display:inline-flex; align-items:center; gap:.5rem; background:var(--btn-bg); color:var(--btn-color); font-weight:600; border:0; padding:12px 22px; border-radius: 1000px; cursor:pointer; font-size:.9rem; letter-spacing:.5px; position:relative; overflow:hidden; transition: background .35s var(--easing), transform .35s var(--easing), box-shadow .35s; box-shadow:0 4px 18px -4px #00d4ff55;
     }
-    .container {
-      background: rgba(10,10,10,0.85);
-      border-radius: 18px;
-      box-shadow: 0 8px 32px rgba(0,0,0,0.25);
-      padding: 48px 32px 36px 32px;
-      max-width: 400px;
-      margin: 0 16px;
+    .btn:hover { transform:translateY(-2px); box-shadow:0 6px 26px -6px #00d4ff88; }
+    .btn.outline { background:transparent; color:var(--text); border:1px solid #2a3945; box-shadow:none; }
+    .btn.outline:hover { background:#18232d; }
+    main { overflow:hidden; }
+    section { max-width:1200px; margin:0 auto; padding: clamp(70px, 14vh, 140px) clamp(18px, 4vw, 56px); position:relative; }
+    /* Hero */
+    #hero { display:grid; gap: clamp(40px,5vw,100px); grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); align-items:center; }
+  .hero-text h1 { font-size: clamp(2.4rem, 6vw, 4rem); line-height:1.05; margin:0 0 24px; letter-spacing:-2px; background: var(--grad); -webkit-background-clip:text; background-clip:text; color:transparent; }
+    .hero-text p { font-size: clamp(1rem,1.3vw,1.25rem); max-width:560px; color: var(--text-dim); margin:0 0 30px; }
+    .hero-meta { display:flex; gap:28px; flex-wrap:wrap; margin-top:20px; font-size:.8rem; text-transform:uppercase; letter-spacing:2px; color: var(--text-dim); }
+  .avatar { position:relative; width:min(360px,100%); aspect-ratio: 1/1; border-radius: var(--radius); overflow:hidden; background:linear-gradient(140deg,#1a2732,#0e1116); box-shadow:0 10px 40px -10px #000; isolation:isolate; }
+    .avatar::before { content:""; position:absolute; inset:0; background: radial-gradient(circle at 70% 20%, #00d4ff22, transparent 55%); pointer-events:none; }
+  .avatar img { width:100%; height:100%; object-fit:cover; image-rendering: -webkit-optimize-contrast; filter:grayscale(.1) contrast(1.05); transform: scale(1.04); transition:filter .6s, transform 1.2s; }
+  .logo-icon { width:30px; height:30px; border-radius:8px; box-shadow:0 0 0 1px #1d2b36; }
+    .avatar:hover img { filter:grayscale(0) saturate(1.15); transform: scale(1.08); }
+  /* Section titles */
+    .section-head { margin:0 0 55px; }
+    .section-eyebrow { font-size:.7rem; letter-spacing:3px; text-transform:uppercase; display:flex; align-items:center; gap:.6rem; font-weight:600; color: var(--text-dim); }
+    .section-eyebrow::before { content:""; width:38px; height:1px; background: var(--acc); display:inline-block; opacity:.55; }
+    h2 { font-size: clamp(1.9rem,4.2vw,3rem); margin:10px 0 0; letter-spacing:-1px; }
+    p.lead { font-size: clamp(1rem,1.2vw,1.2rem); max-width:720px; color: var(--text-dim); }
+  /* (Removed About & Services styles) */
+    /* Portfolio */
+    .filters { display:flex; flex-wrap:wrap; gap:10px; margin: 0 0 34px; }
+    .filter-btn { background:#18222b; color:var(--text-dim); border:1px solid #23313d; padding:8px 16px; border-radius: 1000px; font-size:.7rem; letter-spacing:1.5px; text-transform:uppercase; cursor:pointer; transition: background .35s, color .35s, border-color .35s; }
+    .filter-btn.active, .filter-btn:hover { background:#00d4ff; color:#041318; border-color:#00d4ff; font-weight:600; }
+    .portfolio-grid { display:grid; gap:34px; grid-template-columns: repeat(auto-fill,minmax(260px,1fr)); }
+    .work { position:relative; aspect-ratio: 16/9; border-radius: 18px; overflow:hidden; background:#12171d; cursor:pointer; border:1px solid #1f2a33; display:flex; align-items:center; justify-content:center; }
+    .work img, .work iframe, .work video { width:100%; height:100%; object-fit:cover; display:block; }
+    .work img { transition: transform .9s var(--easing), filter .6s; filter:brightness(.78) saturate(.9); }
+    .work:hover img { transform: scale(1.08); filter:brightness(.95) saturate(1.15); }
+    .work::after { content: attr(data-title); position:absolute; left:0; right:0; bottom:0; padding:10px 14px 12px; background:linear-gradient(to top,#0e1116dd,#0e111600); font-size:.75rem; letter-spacing:.5px; font-weight:500; }
+    .work-badge { position:absolute; top:10px; left:10px; background: #00d4ff; color:#06212b; font-size:.6rem; letter-spacing:1.2px; padding:5px 9px 5px; border-radius: 1000px; font-weight:600; box-shadow:0 4px 14px -4px #00d4ff99; }
+    /* Lightbox */
+  .lightbox { position:fixed; inset:0; display:grid; place-items:center; background:#02070acc; -webkit-backdrop-filter: blur(14px); backdrop-filter: blur(14px); z-index:400; opacity:0; pointer-events:none; transition: opacity .45s var(--easing); }
+    .lightbox.active { opacity:1; pointer-events:auto; }
+    .lightbox-inner { width:min(1080px,92%); aspect-ratio: 16/9; background:#000; position:relative; border-radius: 20px; overflow:hidden; box-shadow:0 30px 80px -20px #000; }
+    .lightbox iframe, .lightbox video { width:100%; height:100%; }
+  .lightbox button { position:absolute; top:6px; right:6px; background:#0e1116aa; color:#fff; border:1px solid #25323e; -webkit-backdrop-filter: blur(6px); backdrop-filter: blur(6px); font-size:.7rem; letter-spacing:1px; padding:8px 14px; border-radius:1000px; cursor:pointer; }
+  /* (Removed Testimonials styles) */
+    /* Contact */
+    form { display:grid; gap:18px; max-width:640px; }
+    .field { display:flex; flex-direction:column; gap:8px; }
+    label { font-size:.7rem; letter-spacing:2px; text-transform:uppercase; font-weight:600; color: var(--text-dim); }
+    input, textarea { background:#162028; border:1px solid #23313d; border-radius: 14px; padding:14px 16px; font:inherit; color:var(--text); resize:vertical; min-height:54px; }
+    input:focus, textarea:focus { outline:2px solid #00d4ff55; border-color:#00d4ff; }
+    textarea { min-height:140px; }
+    .form-row { display:grid; gap:18px; grid-template-columns: repeat(auto-fit,minmax(220px,1fr)); }
+    .notice { font-size:.7rem; color: var(--text-dim); }
+    /* Footer */
+    footer { background:#0a0d10; border-top:1px solid #18222b; margin-top:80px; }
+    footer .inner { max-width:1200px; margin:0 auto; padding:38px clamp(18px,4vw,56px) 70px; display:grid; gap:40px; grid-template-columns: repeat(auto-fit,minmax(240px,1fr)); }
+    .credits { grid-column:1 / -1; text-align:center; font-size:.65rem; letter-spacing:1px; color:#5e6a74; margin-top:10px; }
+    /* Motion */
+    [data-animate] { opacity:0; transform: translateY(26px); transition: opacity .8s var(--easing), transform .8s var(--easing); }
+    [data-animate].in { opacity:1; transform: translateY(0); }
+    /* Utilities */
+  /* (Removed chips styles) */
+  .gradient-text { background: var(--grad); -webkit-background-clip:text; background-clip:text; color:transparent; }
+  /* Utility classes replacing inline styles */
+  .nav-cta { display:flex; gap:10px; }
+  .hero-actions { display:flex; flex-wrap:wrap; gap:14px; }
+  .mt-section { margin-top:50px; }
+  .footer-title { margin:0 0 14px; font-size:1rem; }
+  .footer-desc { margin:0; color:var(--text-dim); font-size:.8rem; max-width:300px; }
+  .footer-list { margin:0; padding:0; list-style:none; display:grid; gap:6px; font-size:.75rem; color:var(--text-dim); }
+    .center { text-align:center; }
+    .divider { height:1px; background: linear-gradient(90deg,transparent,#1d2a35,transparent); margin: 40px 0 10px; }
+  .footer-inline { grid-column:1 / -1; text-align:center; }
+  .footer-inline p { margin:0; font-size:.8rem; color:var(--text-dim); }
+    /* Responsive tweaks */
+    @media (max-width:780px){
+      .hero-meta { gap:12px; }
+      nav { flex-wrap:wrap; }
     }
-    h1 {
-      font-size: 2.2rem;
-      margin-bottom: 18px;
-      letter-spacing: -1px;
-      background: linear-gradient(90deg, #00d4ff 0%, #ffd700 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-    }
-    p {
-      font-size: 1.1rem;
-      color: #e0e0e0;
-      margin-bottom: 24px;
-    }
-    .emoji {
-      font-size: 2.5rem;
-      margin-bottom: 12px;
-      display: block;
-    }
-    @media (max-width: 480px) {
-      .container {
-        padding: 32px 8px 24px 8px;
-      }
-      h1 {
-        font-size: 1.4rem;
-      }
+    @media (max-width:540px){
+      .portfolio-grid { gap:22px; }
     }
   </style>
+  <script type="application/ld+json">{
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Antonio Pennino",
+    "jobTitle": "Video Editor",
+    "url": "https://antoniopennino.github.io/",
+    "image": "https://antoniopennino.github.io/profile.jpg",
+    "sameAs": ["https://www.instagram.com/", "https://www.linkedin.com/"],
+    "knowsAbout": ["Video Editing","Color Grading","Storytelling","Motion Graphics"]
+  }</script>
 </head>
 <body>
-  <div class="container">
-    <span class="emoji" aria-hidden="true">🚧</span>
-    <h1>Lavori in corso</h1>
-    <p>Il sito di Antonio Pennino Videomaker è in fase di migrazione e ottimizzazione.<br>
-    Torna presto per scoprire la nuova esperienza!</p>
-    <p style="font-size:0.95rem;color:#b0b0b0;">Ultimo aggiornamento: 18 giugno 2025</p>
+  <header>
+    <nav>
+      <div class="logo" aria-label="Logo Antonio Pennino">
+        <img src="/profile.ico" alt="Logo" class="logo-icon" />
+        <span>Antonio&nbsp;Pennino</span>
+      </div>
+      <div class="nav-links" role="navigation" aria-label="Sezioni principali">
+        <a href="#portfolio">Portfolio</a>
+        <a href="#contatto">Contatto</a>
+      </div>
+  <div class="nav-cta">
+        <button class="btn outline" onclick="document.getElementById('contatto').scrollIntoView({behavior:'smooth'});">Parliamo</button>
+      </div>
+    </nav>
+  </header>
+  <main>
+    <section id="hero">
+      <div class="hero-text" data-animate>
+        <h1>Video editing <br><span class="gradient-text">focalizzato sull'impatto</span></h1>
+        <p>Trasformo idee grezze in contenuti video fluidi, dinamici e pensati per trattenere l'attenzione. Storytelling, ritmo e cura del dettaglio: ogni frame sostiene il messaggio.</p>
+  <div class="hero-actions">
+          <button class="btn" onclick="document.getElementById('portfolio').scrollIntoView({behavior:'smooth'});">Guarda i lavori ▸</button>
+          <button class="btn outline" onclick="document.getElementById('contatto').scrollIntoView({behavior:'smooth'});">Richiedi un preventivo</button>
+        </div>
+        <div class="hero-meta">
+          <span>Commercial</span>
+          <span>Social Short-Film</span>
+          <span>Storytelling</span>
+          <span>Audio Care</span>
+        </div>
+      </div>
+      <div class="avatar" data-animate>
+        <img src="/profile.jpg" alt="Ritratto di Antonio Pennino" loading="lazy" />
+      </div>
+    </section>
+
+  <!-- (Removed About & Services sections per focus request) -->
+
+    <section id="portfolio">
+      <header class="section-head" data-animate>
+        <div class="section-eyebrow">Portfolio</div>
+        <h2>Selezione lavori</h2>
+        <p class="lead">Una panoramica di progetti (work-in-progress & pubblicati). Su richiesta posso inviare showreel completo con materiali riservati.</p>
+      </header>
+      <div class="filters" role="tablist" aria-label="Filtri portfolio">
+        <button class="filter-btn active" role="tab" aria-selected="true" tabindex="0" data-filter="all">Tutti</button>
+        <button class="filter-btn" role="tab" aria-selected="false" tabindex="-1" data-filter="ad">Commercial</button>
+        <button class="filter-btn" role="tab" aria-selected="false" tabindex="-1" data-filter="story">Story</button>
+      </div>
+      <div class="portfolio-grid" id="portfolioGrid">
+        <!-- Ogni .work può aprire lightbox con embed YouTube/Vimeo. Usa data-video per lazy load -->
+        <div class="work" data-cat="story" data-title="Mini Doc" data-video="https://www.youtube.com/embed/xM_u9ypltlE" data-animate>
+          <span class="work-badge">DOCUMENTARIO</span>
+          <img src="https://placehold.co/600x338/101b27/FFFFFF?text=Mini+Doc" alt="Mini documentario" loading="lazy" />
+        </div>
+        <div class="work" data-cat="story" data-title="Il panorama a metà strada" data-video="https://youtu.be/1PSJ95VHsow?si=YiBr9wHP3Yz6F80R" data-animate>
+          <span class="work-badge">SHORT FILM</span>
+          <img src="https://placehold.co/600x338/081017/FFFFFF?text=Short+Film" alt="Anteprima montaggio short film" loading="lazy" />
+        </div>
+        <div class="work" data-cat="ad" data-title="Intervista start-up" data-video="https://youtu.be/tDCp2pgTaGI?si=p7KZjnvvYt4787bK" data-animate>
+          <span class="work-badge">INTERVISTA</span>
+          <img src="https://placehold.co/600x338/0f1b25/FFFFFF?text=Promo+Ad" alt="Promo video anteprima" loading="lazy" />
+        </div>
+        <div class="work" data-cat="ad" data-title="Product Teaser - Tech" data-video="https://youtu.be/ULPaAQH6XOg?si=Jgb9nCfNBPfKEfOh" data-animate>
+          <span class="work-badge">AD</span>
+          <img src="https://placehold.co/600x338/08131d/FFFFFF?text=Teaser" alt="Product teaser" loading="lazy" />
+        </div>
+      </div>
+    </section>
+
+  <!-- (Removed Testimonials section) -->
+
+    <section id="contatto">
+      <header class="section-head" data-animate>
+        <div class="section-eyebrow">Contatto</div>
+        <h2>Parliamo del tuo progetto</h2>
+        <p class="lead">Raccontami obiettivo, target e dove sarà pubblicato il contenuto. Ti rispondo con una proposta sintetica e tempistiche.</p>
+      </header>
+      <form action="https://formsubmit.co/" method="POST" data-animate onsubmit="this.querySelector('button[type=submit]').disabled=true;">
+        <div class="form-row">
+          <div class="field">
+            <label for="nome">Nome</label>
+            <input id="nome" name="nome" type="text" required placeholder="Il tuo nome" />
+          </div>
+          <div class="field">
+            <label for="email">Email</label>
+            <input id="email" name="email" type="email" required placeholder="nome@azienda.com" />
+          </div>
+        </div>
+        <div class="field">
+          <label for="tipo">Tipo di contenuto</label>
+          <input id="tipo" name="tipo" type="text" placeholder="Es: Reel campagna, Promo prodotto, Intervista" />
+        </div>
+        <div class="field">
+          <label for="messaggio">Messaggio</label>
+          <textarea id="messaggio" name="messaggio" required placeholder="Obiettivo, durata stimata, eventuali riferimenti..."></textarea>
+        </div>
+        <input type="hidden" name="_captcha" value="false" />
+        <input type="hidden" name="_template" value="table" />
+        <button class="btn" type="submit">Invia richiesta ✉</button>
+        <p class="notice">Oppure scrivimi direttamente: <a href="mailto:tuo@email.com">tuo@email.com</a></p>
+      </form>
+    </section>
+  </main>
+  <footer>
+    <div class="inner" data-animate>
+      <div class="footer-inline">
+        <p>Email: <a href="mailto:tuo@email.com">contatto diretto</a> · Instagram · LinkedIn</p>
+      </div>
+      <div class="credits">© <span id="year"></span> Antonio Pennino. Tutti i diritti riservati.</div>
+    </div>
+  </footer>
+
+  <div class="lightbox" id="lightbox" aria-hidden="true" role="dialog" aria-label="Riproduzione video">
+    <div class="lightbox-inner">
+      <button type="button" aria-label="Chiudi" onclick="closeLightbox()">Chiudi ✕</button>
+      <!-- iframe/video injected here -->
+    </div>
   </div>
+
+  <script>
+    // Intersection animations
+    const io = new IntersectionObserver(entries => {
+      entries.forEach(e => { if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); }});
+    },{ threshold: .15 });
+    document.querySelectorAll('[data-animate]').forEach(el=> io.observe(el));
+
+    // Portfolio filtering
+    const filterButtons = document.querySelectorAll('.filter-btn[role="tab"]');
+    const works = document.querySelectorAll('.work');
+    function activateFilter(btn){
+      filterButtons.forEach(b=>{ b.classList.remove('active'); b.setAttribute('aria-selected','false'); b.tabIndex=-1; });
+      btn.classList.add('active'); btn.setAttribute('aria-selected','true'); btn.tabIndex=0; btn.focus({preventScroll:true});
+      const f = btn.dataset.filter;
+      works.forEach(w => { const show = f === 'all' || w.dataset.cat === f; w.style.display = show ? 'flex' : 'none'; });
+    }
+    filterButtons.forEach(btn => btn.addEventListener('click', () => activateFilter(btn)));
+    // Keyboard nav (arrow keys)
+    document.querySelector('.filters').addEventListener('keydown', e => {
+      if(!['ArrowRight','ArrowLeft','Home','End'].includes(e.key)) return; e.preventDefault();
+      const current = document.activeElement;
+      const list = Array.from(filterButtons);
+      let idx = list.indexOf(current);
+      if(e.key==='ArrowRight') idx = (idx+1)%list.length; else if(e.key==='ArrowLeft') idx = (idx-1+list.length)%list.length; else if(e.key==='Home') idx = 0; else if(e.key==='End') idx = list.length-1;
+      activateFilter(list[idx]);
+    });
+
+    // Lightbox
+    const lb = document.getElementById('lightbox');
+    const lbInner = lb.querySelector('.lightbox-inner');
+    function normalizeYouTube(url){
+      try {
+        const u = new URL(url);
+        if(/youtu\.be$/.test(u.hostname)){ // youtu.be/<id>
+          const id = u.pathname.slice(1);
+          return `https://www.youtube-nocookie.com/embed/${id}`;
+        }
+        if(/youtube\.com$/.test(u.hostname)){
+          // shorts, watch, embed
+            if(u.pathname.startsWith('/watch')){
+              const id = u.searchParams.get('v');
+              if(id) return `https://www.youtube-nocookie.com/embed/${id}`;
+            }
+            if(u.pathname.startsWith('/shorts/')){
+              const id = u.pathname.split('/')[2];
+              if(id) return `https://www.youtube-nocookie.com/embed/${id}`;
+            }
+            if(u.pathname.startsWith('/embed/')){
+              return `https://www.youtube-nocookie.com${u.pathname}`;
+            }
+        }
+      } catch(e){ return url; }
+      return url;
+    }
+    function openLightbox(src,title){
+      const safeSrc = normalizeYouTube(src);
+      const embed = document.createElement('iframe');
+      embed.src = safeSrc + (safeSrc.includes('?')?'&':'?') + 'autoplay=1&rel=0';
+      embed.title = title || 'Video';
+      embed.allow = 'autoplay; fullscreen; picture-in-picture';
+      embed.setAttribute('allowfullscreen','');
+      embed.referrerPolicy = 'strict-origin-when-cross-origin';
+      embed.frameBorder = '0';
+      lbInner.appendChild(embed);
+      lb.classList.add('active');
+      lb.setAttribute('aria-hidden','false');
+      document.body.style.overflow='hidden';
+    }
+    function closeLightbox(){
+      lb.classList.remove('active');
+      lb.setAttribute('aria-hidden','true');
+      document.body.style.overflow='';
+      const iframe = lbInner.querySelector('iframe, video');
+      if(iframe) iframe.remove();
+    }
+    window.closeLightbox = closeLightbox;
+    works.forEach(w => w.addEventListener('click', () => openLightbox(w.dataset.video, w.dataset.title)));
+    lb.addEventListener('click', e => { if(e.target === lb) closeLightbox(); });
+    document.addEventListener('keyup', e => { if(e.key==='Escape') closeLightbox(); });
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Smooth anchor for browsers lacking smooth default
+    document.querySelectorAll('a[href^="#"]').forEach(a=>{
+      a.addEventListener('click', e=>{ const id=a.getAttribute('href').slice(1); const t=document.getElementById(id); if(t){ e.preventDefault(); t.scrollIntoView({behavior:'smooth'});} });
+    }); // (Still valid for existing anchors)
+  </script>
 </body>
 </html>
