@@ -390,3 +390,53 @@
         opacity: 1;
         transform: translateY(0);
     }
+
+/* --- AGGIUNTA CSS PER LE STATISTICHE (impact-section) --- */
+.impact-section {
+    padding: 60px 0;
+    border-bottom: 1px solid #222;
+    background: radial-gradient(circle at center, #111 0%, #050505 100%);
+}
+
+.impact-grid {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-around;
+    text-align: center;
+    flex-wrap: wrap;
+    gap: 30px;
+}
+
+.stat-item {
+    flex: 1;
+    min-width: 200px;
+}
+
+.stat-number {
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    font-weight: 700;
+    color: var(--text);
+    font-feature-settings: "tnum";
+    line-height: 1;
+    margin-bottom: 10px;
+}
+
+.stat-number::after {
+    content: '+';
+    color: var(--neon-cyan);
+    font-size: 2rem;
+    vertical-align: super;
+}
+
+.stat-label {
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: var(--text-dim);
+}
+
+@media(max-width: 600px) {
+    .impact-grid { flex-direction: column; }
+    .impact-section { padding: 40px 20px; }
+}

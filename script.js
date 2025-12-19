@@ -55,3 +55,43 @@ function closeLightbox() {
 document.addEventListener('keydown', (e) => {
     if (e.key === "Escape") closeLightbox();
 });
+
+// --- ANIMAZIONE CONTATORE NUMERI (impact-section) ---
+(() => {
+    const stats = document.querySelectorAll('.stat-number');
+    if (!stats || stats.length === 0) return;
+
+    const animateStats = (entries, observer) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const counter = entry.target;
+                const target = +counter.getAttribute('data-target');
+                const duration = 2000; // Durata animazione in ms
+                const increment = target / (duration / 16); // ~60fps
+
+                let current = 0;
+
+                const updateCounter = () => {
+                    current += increment;
+                    if (current < target) {
+                        counter.innerText = Math.ceil(current).toLocaleString('it-IT');
+                        requestAnimationFrame(updateCounter);
+                    } else {
+                        counter.innerText = target.toLocaleString('it-IT');
+                        if(target > 999999) {
+                            counter.innerText = (target / 1000000).toFixed(1) + 'M';
+                            counter.style.color = 'var(--neon-green)';
+                        } else if (target > 999) {
+                            counter.innerText = (target / 1000).toFixed(1) + 'K';
+                        }
+                    }
+                };
+                updateCounter();
+                observer.unobserve(counter);
+            }
+        });
+    };
+
+    const statObserver = new IntersectionObserver(animateStats, { threshold: 0.5 });
+    stats.forEach(stat => statObserver.observe(stat));
+})();
