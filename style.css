@@ -1,0 +1,392 @@
+    /* --- CONFIGURAZIONE VISIVA --- */
+    :root {
+        --bg: #050505;
+        --card-bg: #111111;
+        --text: #ffffff;
+        --text-dim: #888888;
+
+        /* I tuoi colori originali, usati come accent */
+        --neon-cyan: #00d4ff;
+        --neon-green: #4bffa5;
+        --gradient: linear-gradient(135deg, var(--neon-cyan), var(--neon-green));
+
+        --font: 'Instrument Sans', sans-serif;
+        --easing: cubic-bezier(0.16, 1, 0.3, 1);
+        /* Movimento fluido stile Apple/Agency */
+    }
+
+    * {
+        box-sizing: border-box;
+        cursor: none;
+        /* Nascondiamo il cursore di default per usarne uno custom */
+    }
+
+    body {
+        margin: 0;
+        background-color: var(--bg);
+        color: var(--text);
+        font-family: var(--font);
+        overflow-x: hidden;
+        -webkit-font-smoothing: antialiased;
+    }
+
+    /* --- CUSTOM CURSOR (Tocco da agenzia creativa) --- */
+    .cursor-dot, .cursor-outline {
+        position: fixed;
+        top: 0;
+        left: 0;
+        transform: translate(-50%, -50%);
+        border-radius: 50%;
+        z-index: 9999;
+        pointer-events: none;
+    }
+
+    .cursor-dot {
+        width: 8px;
+        height: 8px;
+        background: white;
+    }
+
+    .cursor-outline {
+        width: 40px;
+        height: 40px;
+        border: 1px solid rgba(255, 255, 255, 0.5);
+        transition: width 0.2s, height 0.2s, background-color 0.2s;
+    }
+
+    /* Effetto hover sui link */
+    body.hovering .cursor-outline {
+        width: 60px;
+        height: 60px;
+        background: rgba(255, 255, 255, 0.1);
+        border-color: var(--neon-cyan);
+    }
+
+    /* --- TYPOGRAPHY & LAYOUT --- */
+    h1, h2, h3 {
+        margin: 0;
+        font-weight: 600;
+        letter-spacing: -0.03em;
+    }
+
+    a {
+        text-decoration: none;
+        color: inherit;
+    }
+
+    .container {
+        max-width: 1400px;
+        margin: 0 auto;
+        padding: 0 5vw;
+    }
+
+    /* --- HEADER --- */
+    nav {
+        padding: 40px 0;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        mix-blend-mode: difference;
+        /* Fa risaltare il testo su qualsiasi sfondo */
+        z-index: 100;
+        position: relative;
+    }
+
+    .logo {
+        font-size: 1.1rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+    }
+
+    .contact-link {
+        font-size: 0.9rem;
+        text-transform: uppercase;
+        position: relative;
+    }
+
+    .contact-link::after {
+        content: '';
+        position: absolute;
+        bottom: -5px;
+        left: 0;
+        width: 0%;
+        height: 1px;
+        background: var(--neon-cyan);
+        transition: 0.4s var(--easing);
+    }
+
+    .contact-link:hover::after {
+        width: 100%;
+    }
+
+    /* --- HERO SECTION --- */
+    .hero {
+        height: 85vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        position: relative;
+    }
+
+    .hero h1 {
+        font-size: clamp(4rem, 11vw, 10rem);
+        line-height: 0.9;
+        margin-left: -0.3vw;
+        background: linear-gradient(to bottom, #fff, #888);
+        -webkit-background-clip: text;
+        color: transparent;
+        opacity: 0;
+        animation: fadeInUp 1s var(--easing) 0.2s forwards;
+    }
+
+    .hero-sub {
+        margin-top: 30px;
+        display: flex;
+        gap: 40px;
+        color: var(--text-dim);
+        font-size: clamp(1rem, 1.5vw, 1.2rem);
+        opacity: 0;
+        animation: fadeInUp 1s var(--easing) 0.5s forwards;
+    }
+
+    .scroll-indicator {
+        position: absolute;
+        bottom: 50px;
+        right: 5vw;
+        font-size: 0.8rem;
+        text-transform: uppercase;
+        letter-spacing: 0.2em;
+        color: var(--text-dim);
+        animation: pulse 2s infinite;
+    }
+
+    /* --- WORK GRID --- */
+    .works-section {
+        padding: 100px 0;
+    }
+
+    .section-label {
+        font-size: 0.8rem;
+        text-transform: uppercase;
+        letter-spacing: 0.2em;
+        color: var(--neon-cyan);
+        margin-bottom: 40px;
+        display: block;
+    }
+
+    .grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 4vw;
+    }
+
+    @media(max-width: 768px) {
+        .grid {
+            grid-template-columns: 1fr;
+        }
+    }
+
+    .card {
+        position: relative;
+        group: card;
+    }
+
+    /* Spostiamo la seconda colonna giù per creare asimmetria (molto design) */
+    @media(min-width: 769px) {
+        .card:nth-child(even) {
+            transform: translateY(100px);
+        }
+    }
+
+    .card-media {
+        width: 100%;
+        aspect-ratio: 16/9;
+        background: var(--card-bg);
+        overflow: hidden;
+        border-radius: 4px;
+        position: relative;
+    }
+
+    .card-media img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.7s var(--easing), filter 0.7s var(--easing);
+        filter: grayscale(100%) contrast(1.1);
+    }
+
+    .card:hover .card-media img {
+        transform: scale(1.05);
+        filter: grayscale(0%) contrast(1);
+    }
+
+    .card-info {
+        padding-top: 20px;
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+    }
+
+    .card-title {
+        font-size: 1.5rem;
+        margin-bottom: 5px;
+    }
+
+    .card-tags {
+        font-size: 0.9rem;
+        color: var(--text-dim);
+    }
+
+    .view-btn {
+        width: 40px;
+        height: 40px;
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: 0.3s;
+    }
+
+    .card:hover .view-btn {
+        background: var(--neon-cyan);
+        border-color: var(--neon-cyan);
+        color: #000;
+    }
+
+    /* --- SERVICES / SKILLS (The "Agency" pitch) --- */
+    .skills-section {
+        padding: 150px 0;
+        border-top: 1px solid #222;
+        margin-top: 100px;
+    }
+
+    .big-statement {
+        font-size: clamp(2rem, 4vw, 3.5rem);
+        line-height: 1.1;
+        max-width: 900px;
+        margin-bottom: 60px;
+    }
+
+    .big-statement span {
+        color: var(--text-dim);
+    }
+
+    .skills-list {
+        display: flex;
+        gap: 20px;
+        flex-wrap: wrap;
+    }
+
+    .skill-tag {
+        padding: 10px 20px;
+        border: 1px solid #333;
+        border-radius: 100px;
+        font-size: 0.9rem;
+        transition: 0.3s;
+    }
+
+    .skill-tag:hover {
+        border-color: var(--neon-green);
+        background: rgba(75, 255, 165, 0.1);
+    }
+
+    /* --- FOOTER / CONTACT --- */
+    footer {
+        padding: 100px 0 50px;
+        border-top: 1px solid #222;
+    }
+
+    .footer-cta h2 {
+        font-size: clamp(3rem, 8vw, 6rem);
+        text-transform: uppercase;
+        line-height: 0.9;
+        margin-bottom: 40px;
+        transition: color 0.3s;
+    }
+
+    .footer-cta h2:hover {
+        -webkit-text-stroke: 1px #fff;
+        color: transparent;
+        cursor: none;
+        /* Mantieni custom cursor */
+    }
+
+    .email-link {
+        font-size: 1.2rem;
+        color: var(--neon-cyan);
+        border-bottom: 1px solid var(--neon-cyan);
+        padding-bottom: 5px;
+    }
+
+    /* --- LIGHTBOX --- */
+    .lightbox {
+        position: fixed;
+        inset: 0;
+        z-index: 10000;
+        background: #000;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.4s var(--easing);
+    }
+
+    .lightbox.active {
+        opacity: 1;
+        pointer-events: all;
+    }
+
+    .lightbox-wrapper {
+        width: 90%;
+        max-width: 1400px;
+        aspect-ratio: 16/9;
+        position: relative;
+    }
+
+    .close-btn {
+        position: absolute;
+        top: -40px;
+        right: 0;
+        color: white;
+        font-size: 1rem;
+        cursor: pointer;
+        letter-spacing: 2px;
+    }
+
+    /* --- ANIMATIONS --- */
+    @keyframes fadeInUp {
+        from {
+            opacity: 0;
+            transform: translateY(40px);
+        }
+
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    @keyframes pulse {
+        0%, 100% {
+            opacity: 0.5;
+        }
+
+        50% {
+            opacity: 1;
+        }
+    }
+
+    /* Utility per reveal allo scroll */
+    .reveal {
+        opacity: 0;
+        transform: translateY(30px);
+        transition: 1s var(--easing);
+    }
+
+    .reveal.active {
+        opacity: 1;
+        transform: translateY(0);
+    }
