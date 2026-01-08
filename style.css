@@ -161,6 +161,138 @@
         animation: pulse 2s infinite;
     }
 
+    /* --- REELS SECTION --- */
+    .reels-section {
+        padding-top: 50px;
+        padding-bottom: 50px;
+    }
+
+    .section-title-mod {
+        font-size: clamp(2rem, 5vw, 4rem);
+        margin-bottom: 40px;
+        line-height: 1;
+        background: linear-gradient(to right, #fff, #888);
+        -webkit-background-clip: text;
+        color: transparent;
+    }
+
+    .reels-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 20px;
+    }
+
+    @media(max-width: 1024px) {
+        .reels-grid {
+            grid-template-columns: repeat(2, 1fr);
+        }
+    }
+
+    /* Mobile: Scroll orizzontale per i reel per un feel più 'app' */
+    @media(max-width: 600px) {
+        .reels-grid {
+            display: flex;
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+            padding-bottom: 20px;
+            gap: 15px;
+        }
+        
+        .reel-card {
+            min-width: 250px;
+            scroll-snap-align: center;
+        }
+    }
+
+    .reel-card {
+        display: block;
+        position: relative;
+        aspect-ratio: 9/16;
+        border-radius: 12px;
+        overflow: hidden;
+        background: var(--card-bg);
+        transition: transform 0.4s var(--easing);
+        border: 1px solid rgba(255,255,255,0.05);
+    }
+
+    .reel-card:hover {
+        transform: translateY(-10px);
+        border-color: var(--neon-cyan);
+        box-shadow: 0 10px 40px -10px rgba(0, 212, 255, 0.2);
+    }
+
+    .reel-media {
+        width: 100%;
+        height: 100%;
+        position: relative;
+    }
+
+    .reel-media img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.7s var(--easing);
+        filter: grayscale(80%);
+    }
+
+    .reel-card:hover .reel-media img {
+        transform: scale(1.1);
+        filter: grayscale(0%);
+    }
+
+    .reel-overlay {
+        position: absolute;
+        top: 15px;
+        right: 15px;
+        z-index: 10;
+        background: rgba(0,0,0,0.6);
+        backdrop-filter: blur(5px);
+        padding: 5px 10px;
+        border-radius: 20px;
+        display: flex;
+        align-items: center;
+        gap: 5px;
+    }
+
+    .reel-icon {
+        font-size: 0.7rem;
+        font-weight: 700;
+        color: #fff;
+    }
+
+    .reel-info {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        padding: 20px;
+        background: linear-gradient(to top, rgba(0,0,0,0.9), transparent);
+        transform: translateY(100%);
+        transition: transform 0.4s var(--easing);
+    }
+
+    /* Mostriamo info sempre su mobile, on hover su desktop */
+    @media(max-width: 768px) {
+        .reel-info { transform: translateY(0); }
+    }
+
+    .reel-card:hover .reel-info {
+        transform: translateY(0);
+    }
+
+    .reel-info h4 {
+        font-size: 1.1rem;
+        margin-bottom: 2px;
+        color: #fff;
+    }
+
+    .reel-info span {
+        font-size: 0.8rem;
+        color: var(--neon-green);
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+    }
+
     /* --- WORK GRID --- */
     .works-section {
         padding: 100px 0;
