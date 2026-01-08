@@ -135,6 +135,7 @@
         margin-left: -0.3vw;
         background: linear-gradient(to bottom, #fff, #888);
         -webkit-background-clip: text;
+        background-clip: text;
         color: transparent;
         opacity: 0;
         animation: fadeInUp 1s var(--easing) 0.2s forwards;
@@ -162,18 +163,62 @@
     }
 
     /* --- REELS SECTION --- */
-    .reels-section {
-        padding-top: 50px;
-        padding-bottom: 50px;
+    /* --- PROJECT SECTION (CLOUDYO) --- */
+    .project-section {
+        padding: 50px 0 100px;
     }
 
-    .section-title-mod {
-        font-size: clamp(2rem, 5vw, 4rem);
-        margin-bottom: 40px;
-        line-height: 1;
-        background: linear-gradient(to right, #fff, #888);
-        -webkit-background-clip: text;
-        color: transparent;
+    .project-header {
+        margin-bottom: 60px;
+    }
+
+    .project-title {
+        font-size: clamp(3rem, 8vw, 6rem);
+        line-height: 0.9;
+        font-weight: 700;
+        letter-spacing: -0.02em;
+        margin-bottom: 10px;
+        color: #fff;
+    }
+
+    .project-subtitle {
+        font-size: clamp(1rem, 2vw, 1.5rem);
+        color: var(--neon-cyan);
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+        margin: 0;
+    }
+
+    .project-content {
+        display: grid;
+        grid-template-columns: 1fr 2fr;
+        gap: 60px;
+        align-items: start;
+    }
+
+    .project-text {
+        font-size: 1.1rem;
+        line-height: 1.6;
+        color: #ccc;
+    }
+
+    .project-text p {
+        margin-bottom: 20px;
+    }
+
+    .highlight-text {
+        font-size: 1.4rem;
+        color: #fff;
+        font-weight: 500;
+        border-left: 2px solid var(--neon-green);
+        padding-left: 20px;
+    }
+
+    @media(max-width: 1024px) {
+        .project-content {
+            grid-template-columns: 1fr;
+            gap: 40px;
+        }
     }
 
     .reels-grid {
@@ -321,7 +366,6 @@
 
     .card {
         position: relative;
-        group: card;
     }
 
     /* Spostiamo la seconda colonna giù per creare asimmetria (molto design) */
