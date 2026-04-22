@@ -942,6 +942,10 @@
     ============================================ */
     @media(max-width: 768px) {
 
+        /* Disabilita cursore custom su touch */
+        * { cursor: auto !important; }
+        .cursor-dot, .cursor-outline { display: none !important; }
+
         /* Navbar */
         nav {
             padding: 16px 0;
@@ -957,8 +961,6 @@
         }
         .hero h1 {
             font-size: clamp(1.4rem, 7.5vw, 2.8rem);
-            word-break: break-word;
-            overflow-wrap: break-word;
         }
         .hero-sub {
             margin-top: 16px;
