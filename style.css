@@ -923,3 +923,160 @@
         opacity: 1;
         transform: translateY(0);
     }
+
+    /* ============================================
+       MOBILE RESPONSIVE — fino a 768px
+    ============================================ */
+    @media(max-width: 768px) {
+
+        /* Navbar */
+        nav {
+            padding: 16px 0;
+        }
+        .logo {
+            font-size: 0.9rem;
+        }
+
+        /* Hero */
+        .hero {
+            height: 80vh;
+            min-height: 480px;
+        }
+        .hero h1 {
+            font-size: clamp(3rem, 16vw, 5rem);
+        }
+        .hero-sub {
+            margin-top: 16px;
+            gap: 16px;
+            font-size: 0.9rem;
+            flex-wrap: wrap;
+        }
+        .scroll-indicator {
+            writing-mode: horizontal-tb;
+            bottom: 24px;
+            right: 0;
+            font-size: 0.65rem;
+        }
+
+        /* Services */
+        .services-section {
+            padding: 60px 0;
+        }
+        .services-header h2 {
+            font-size: clamp(1.6rem, 7vw, 2.5rem);
+        }
+        .service-card {
+            padding: 28px 22px;
+        }
+        .service-icon {
+            font-size: 1.6rem;
+            margin-bottom: 14px;
+        }
+
+        /* Projects */
+        .project-section {
+            padding: 60px 0 70px;
+        }
+        .project-title {
+            font-size: clamp(2.4rem, 12vw, 4rem);
+        }
+        .project-subtitle {
+            font-size: 0.9rem;
+        }
+        .project-text {
+            position: static; /* rimuovi sticky su mobile */
+            font-size: 1rem;
+        }
+        .highlight-text {
+            font-size: 1.15rem;
+        }
+        .project-header {
+            margin-bottom: 32px;
+        }
+        .project-single-media {
+            min-height: 260px;
+        }
+
+        /* Works */
+        .works-section {
+            padding: 60px 0;
+        }
+        .card-title {
+            font-size: 1.2rem;
+        }
+
+        /* Stats */
+        .impact-section {
+            padding: 50px 20px;
+        }
+        .stat-item {
+            min-width: 130px;
+        }
+
+        /* Approccio */
+        .skills-section {
+            padding: 70px 0;
+            margin-top: 0;
+        }
+        .big-statement {
+            font-size: clamp(1.5rem, 6vw, 2.2rem);
+            margin-bottom: 32px;
+        }
+        .skills-list {
+            gap: 10px;
+        }
+        .skill-tag {
+            padding: 8px 16px;
+            font-size: 0.8rem;
+        }
+
+        /* Footer */
+        footer {
+            padding: 70px 0 40px;
+        }
+        .footer-cta h2 {
+            font-size: clamp(2.2rem, 10vw, 4rem);
+        }
+        .footer-contact-row {
+            flex-direction: column;
+            gap: 14px;
+        }
+        .email-link, .wa-link {
+            font-size: 0.95rem;
+        }
+        .footer-bottom {
+            flex-direction: column;
+            gap: 10px;
+        }
+        .footer-social {
+            align-items: flex-start;
+        }
+    }
+
+    /* ============================================
+       SMALL MOBILE — fino a 400px
+    ============================================ */
+    @media(max-width: 400px) {
+
+        .container {
+            padding: 0 4vw;
+        }
+        .hero h1 {
+            font-size: clamp(2.6rem, 18vw, 3.8rem);
+        }
+        .whatsapp-btn {
+            padding: 8px 12px;
+        }
+        .project-title {
+            font-size: clamp(2rem, 14vw, 3rem);
+        }
+        .services-grid {
+            grid-template-columns: 1fr;
+        }
+        .service-card {
+            padding: 22px 18px;
+        }
+        .nav-left {
+            gap: 20px;
+        }
+    }
