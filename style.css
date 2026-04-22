@@ -322,14 +322,15 @@
     .service-icon {
         display: block;
         margin-bottom: 20px;
-        width: 36px;
-        height: 36px;
-        color: var(--neon-yellow);
+        line-height: 0;
     }
 
     .service-icon svg {
         width: 36px;
         height: 36px;
+        display: block;
+        color: var(--neon-yellow);
+        flex-shrink: 0;
     }
 
     .service-card h3 {
@@ -955,8 +956,9 @@
             min-height: 480px;
         }
         .hero h1 {
-            font-size: clamp(1.8rem, 10vw, 3rem);
+            font-size: clamp(1.4rem, 7.5vw, 2.8rem);
             word-break: break-word;
+            overflow-wrap: break-word;
         }
         .hero-sub {
             margin-top: 16px;
