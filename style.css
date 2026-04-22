@@ -1,3 +1,7 @@
+    html {
+        overflow-x: hidden;
+    }
+
     /* --- CONFIGURAZIONE VISIVA --- */
     :root {
         --bg: #080808;
@@ -316,9 +320,16 @@
     }
 
     .service-icon {
-        font-size: 2rem;
-        margin-bottom: 20px;
         display: block;
+        margin-bottom: 20px;
+        width: 36px;
+        height: 36px;
+        color: var(--neon-yellow);
+    }
+
+    .service-icon svg {
+        width: 36px;
+        height: 36px;
     }
 
     .service-card h3 {
@@ -486,6 +497,7 @@
             padding-bottom: 20px;
             gap: 15px;
             -webkit-overflow-scrolling: touch;
+            overscroll-behavior-x: contain;
         }
 
         .reel-card {
@@ -943,7 +955,8 @@
             min-height: 480px;
         }
         .hero h1 {
-            font-size: clamp(3rem, 16vw, 5rem);
+            font-size: clamp(1.8rem, 10vw, 3rem);
+            word-break: break-word;
         }
         .hero-sub {
             margin-top: 16px;
