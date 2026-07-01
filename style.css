@@ -7,7 +7,7 @@
         --bg: #080808;
         --card-bg: #111111;
         --text: #ffffff;
-        --text-dim: #777777;
+        --text-dim: #a0a0a0; /* Migliorato contrasto A11y da #777777 per WCAG AA */
 
         /* PALETTE GIALLO / GOLD */
         --neon-yellow: #FFD60A;
@@ -20,6 +20,10 @@
 
     * {
         box-sizing: border-box;
+    }
+
+    body.custom-cursor-active,
+    body.custom-cursor-active * {
         cursor: none;
     }
 
@@ -814,7 +818,7 @@
         justify-content: space-between;
         gap: 16px;
         font-size: 0.8rem;
-        color: #444;
+        color: #888; /* Migliorato contrasto A11y da #444 */
     }
 
     .footer-bottom .legal {
@@ -824,12 +828,12 @@
     }
 
     .footer-bottom a {
-        color: #666;
+        color: #aaa; /* Migliorato contrasto A11y da #666 */
         transition: color 0.3s;
     }
 
     .footer-bottom a:hover {
-        color: #aaa;
+        color: #fff;
     }
 
     .footer-social {
@@ -926,6 +930,11 @@
         text-transform: uppercase;
         opacity: 0.6;
         transition: opacity 0.2s;
+        /* Resets per tag button */
+        background: none;
+        border: none;
+        padding: 0;
+        font-family: inherit;
     }
 
     .close-btn:hover { opacity: 1; }

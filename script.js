@@ -2,26 +2,39 @@
 const cursorDot = document.querySelector('.cursor-dot');
 const cursorOutline = document.querySelector('.cursor-outline');
 
-window.addEventListener('mousemove', (e) => {
-    const posX = e.clientX;
-    const posY = e.clientY;
+if (cursorDot && cursorOutline && window.matchMedia("(pointer: fine)").matches) {
+    document.body.classList.add('custom-cursor-active');
 
-    // Dot segue istantaneamente
-    cursorDot.style.left = `${posX}px`;
-    cursorDot.style.top = `${posY}px`;
+    let mouseX = 0;
+    let mouseY = 0;
+    let outlineX = 0;
+    let outlineY = 0;
 
-    // Outline segue con leggero ritardo (animazione CSS gestisce il resto)
-    cursorOutline.animate({
-        left: `${posX}px`,
-        top: `${posY}px`
-    }, { duration: 500, fill: "forwards" });
-});
+    window.addEventListener('mousemove', (e) => {
+        mouseX = e.clientX;
+        mouseY = e.clientY;
 
-// Effetto Hover su elementi interattivi
-document.querySelectorAll('a, .hover-target, .view-btn').forEach(el => {
-    el.addEventListener('mouseenter', () => document.body.classList.add('hovering'));
-    el.addEventListener('mouseleave', () => document.body.classList.remove('hovering'));
-});
+        // Il dot segue il cursore istantaneamente
+        cursorDot.style.transform = `translate3d(${mouseX}px, ${mouseY}px, 0) translate(-50%, -50%)`;
+    });
+
+    const updateCursorOutline = () => {
+        // Interpolazione lineare (LERP) per l'outline (ritardo fluido)
+        const ease = 0.15;
+        outlineX += (mouseX - outlineX) * ease;
+        outlineY += (mouseY - outlineY) * ease;
+
+        cursorOutline.style.transform = `translate3d(${outlineX}px, ${outlineY}px, 0) translate(-50%, -50%)`;
+        requestAnimationFrame(updateCursorOutline);
+    };
+    requestAnimationFrame(updateCursorOutline);
+
+    // Effetto Hover su elementi interattivi (inclusi i bottoni aria-role)
+    document.querySelectorAll('a, .hover-target, .view-btn, [role="button"]').forEach(el => {
+        el.addEventListener('mouseenter', () => document.body.classList.add('hovering'));
+        el.addEventListener('mouseleave', () => document.body.classList.remove('hovering'));
+    });
+}
 
 // --- SCROLL REVEAL ANIMATION ---
 const observer = new IntersectionObserver((entries) => {
@@ -34,26 +47,44 @@ const observer = new IntersectionObserver((entries) => {
 
 document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
-// --- LIGHTBOX LOGIC ---
-const lightbox = document.getElementById('lightbox');
-const container = document.getElementById('video-container');
+// Chiudi con ESC
+let activeTriggerElement = null;
 
 function openLightbox(id) {
+    activeTriggerElement = document.activeElement; // Salva l'elemento focalizzato prima dell'apertura
     lightbox.classList.add('active');
     const url = `https://www.youtube.com/embed/${id}?autoplay=1&rel=0&showinfo=0&modestbranding=1`;
     container.innerHTML = `<iframe src="${url}" width="100%" height="100%" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>`;
     document.body.style.overflow = 'hidden';
+    
+    // Sposta il focus sul pulsante di chiusura per consentire una facile navigazione
+    setTimeout(() => {
+        const closeBtn = document.querySelector('.close-btn');
+        if (closeBtn) closeBtn.focus();
+    }, 100);
 }
 
 function closeLightbox() {
     lightbox.classList.remove('active');
     container.innerHTML = '';
     document.body.style.overflow = '';
+    if (activeTriggerElement) {
+        activeTriggerElement.focus(); // Ritorna il focus alla card precedente
+    }
 }
 
-// Chiudi con ESC
 document.addEventListener('keydown', (e) => {
     if (e.key === "Escape") closeLightbox();
+});
+
+// Supporto tastiera per le card video (invio / spazio)
+document.querySelectorAll('.card').forEach(card => {
+    card.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            card.click();
+        }
+    });
 });
 
 // --- ANIMAZIONE CONTATORE NUMERI (impact-section) ---
