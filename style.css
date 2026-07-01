@@ -990,7 +990,7 @@
             min-height: 480px;
         }
         .hero h1 {
-            font-size: clamp(1.4rem, 7.5vw, 2.8rem);
+            font-size: clamp(2rem, 9vw, 4.5rem);
         }
         .hero-sub {
             margin-top: 16px;
@@ -1025,7 +1025,7 @@
             padding: 60px 0 70px;
         }
         .project-title {
-            font-size: clamp(2.4rem, 12vw, 4rem);
+            font-size: clamp(2rem, 9vw, 3.5rem);
         }
         .project-subtitle {
             font-size: 0.9rem;
@@ -1108,14 +1108,8 @@
         .container {
             padding: 0 4vw;
         }
-        .hero h1 {
-            font-size: clamp(2.6rem, 18vw, 3.8rem);
-        }
         .whatsapp-btn {
             padding: 8px 12px;
-        }
-        .project-title {
-            font-size: clamp(2rem, 14vw, 3rem);
         }
         .services-grid {
             grid-template-columns: 1fr;
