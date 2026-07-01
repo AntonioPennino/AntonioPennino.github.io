@@ -54,7 +54,7 @@ function openLightbox(id) {
     activeTriggerElement = document.activeElement; // Salva l'elemento focalizzato prima dell'apertura
     lightbox.classList.add('active');
     const url = `https://www.youtube.com/embed/${id}?autoplay=1&rel=0&showinfo=0&modestbranding=1`;
-    container.innerHTML = `<iframe src="${url}" width="100%" height="100%" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>`;
+    container.innerHTML = `<iframe src="${url}" title="Riproduttore video YouTube" width="100%" height="100%" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>`;
     document.body.style.overflow = 'hidden';
     
     // Sposta il focus sul pulsante di chiusura per consentire una facile navigazione
