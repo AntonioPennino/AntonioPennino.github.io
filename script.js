@@ -126,3 +126,30 @@ document.querySelectorAll('.card').forEach(card => {
     const statObserver = new IntersectionObserver(animateStats, { threshold: 0.5 });
     stats.forEach(stat => statObserver.observe(stat));
 })();
+
+// --- MOBILE MENU LOGIC ---
+(() => {
+    const menuToggle = document.querySelector('.menu-toggle');
+    const navLinks = document.querySelectorAll('.nav-links a');
+
+    if (menuToggle) {
+        menuToggle.addEventListener('click', () => {
+            const isActive = document.body.classList.toggle('mobile-menu-active');
+            menuToggle.setAttribute('aria-expanded', isActive);
+            if (isActive) {
+                document.body.style.overflow = 'hidden'; // Blocco dello scroll dello sfondo
+            } else {
+                document.body.style.overflow = '';
+            }
+        });
+
+        // Chiudi il menu quando si clicca su una voce di menu (scorrimento)
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                document.body.classList.remove('mobile-menu-active');
+                menuToggle.setAttribute('aria-expanded', 'false');
+                document.body.style.overflow = '';
+            });
+        });
+    }
+})();
