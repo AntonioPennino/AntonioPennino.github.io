@@ -11,7 +11,7 @@ Antonio Pennino è un video editor freelance (P.IVA 01896160627) con base a Napo
 ## Progetti Principali
 - **Cloudyo (Wear Your Dreams):** Gestione contenuti video per brand di abbigliamento, focalizzato su stile e lifestyle.
 - **Avv. Oreste Maria Petrillo:** Cura del personal branding legale sui social (Instagram) con contenuti formativi e caroselli chiari.
-- **SmartSubs:** Sviluppo di un plugin di automazione sottotitoli per DaVinci Resolve (https://smartsubs.netlify.app/).
+- **SmartSubs:** Sviluppo di un plugin di automazione sottotitoli per DaVinci Resolve (https://smartsubs-06l.pages.dev/).
 
 ## Contatti
 - Email: antonio.pennino.mail@gmail.com
