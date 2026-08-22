@@ -4,10 +4,10 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Antonio Pennino | Video Editor & Visual Storyteller</title>
+  <title>Antonio Pennino | Comunicazione Visiva & Slow Media</title>
   <meta name="description"
-    content="Antonio Pennino — Video Editor freelance con P.IVA. Reel per social, documentari, cortometraggi e video pubblicitari per aziende e professionisti. Napoli e tutta Italia." />
-  <meta name="theme-color" content="#080808" />
+    content="Antonio Pennino — Stratega della Comunicazione Visiva e dello Slow Media. Design e narrazione visiva per realtà artigianali, aziende agricole d'eccellenza e brand etici. Napoli e tutta Italia." />
+  <meta name="theme-color" content="#EAE4DA" />
   <link rel="shortcut icon" href="profile.png" type="image/png" />
 
   <!-- Language Redirect Logic -->
@@ -24,22 +24,23 @@
   <!-- Open Graph / Facebook -->
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://AntonioPennino.github.io/" />
-  <meta property="og:title" content="Antonio Pennino | Video Editor & Visual Storyteller" />
+  <meta property="og:title" content="Antonio Pennino | Comunicazione Visiva & Slow Media" />
   <meta property="og:description"
-    content="Antonio Pennino — Video Editor freelance con P.IVA. Reel per social, documentari, cortometraggi e video pubblicitari per aziende e professionisti." />
+    content="Stratega della Comunicazione Visiva e dello Slow Media. Storie che restano per realtà artigianali, aziende agricole d'eccellenza e brand etici." />
   <meta property="og:image" content="https://AntonioPennino.github.io/profile.jpg" />
 
   <!-- Twitter -->
   <meta property="twitter:card" content="summary_large_image" />
   <meta property="twitter:url" content="https://AntonioPennino.github.io/" />
-  <meta property="twitter:title" content="Antonio Pennino | Video Editor & Visual Storyteller" />
+  <meta property="twitter:title" content="Antonio Pennino | Comunicazione Visiva & Slow Media" />
   <meta property="twitter:description"
-    content="Antonio Pennino — Video Editor freelance con P.IVA. Reel per social, documentari, cortometraggi e video pubblicitari per aziende e professionisti." />
+    content="Stratega della Comunicazione Visiva e dello Slow Media. Storie che restano per realtà artigianali, aziende agricole d'eccellenza e brand etici." />
   <meta property="twitter:image" content="https://AntonioPennino.github.io/profile.jpg" />
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400;0,600;0,700;1,400&display=swap"
+  <link
+    href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..600;1,9..144,300..500&family=Inter:wght@400;500;600;700&display=swap"
     rel="stylesheet">
   <link rel="stylesheet" href="style.css" />
 
@@ -52,8 +53,9 @@
         "@type": "Person",
         "name": "Antonio Pennino",
         "url": "https://antoniopennino.it/",
-        "jobTitle": "Video Editor & Visual Storyteller",
-        "description": "Video Editor freelance con P.IVA. Reel per social, documentari, cortometraggi e video pubblicitari per aziende e professionisti.",
+        "jobTitle": "Stratega della Comunicazione Visiva e Slow Media",
+        "description": "Stratega della Comunicazione Visiva e dello Slow Media. Design e narrazione visiva per realtà artigianali, aziende agricole d'eccellenza e brand etici.",
+        "knowsAbout": ["Slow Media", "Comunicazione Visiva", "Documentario", "Regia", "Storytelling", "Comunicazione Etica"],
         "address": { "@type": "PostalAddress", "addressLocality": "Napoli", "addressCountry": "IT" },
         "sameAs": [
           "https://www.instagram.com/antoniopenninoo/",
@@ -64,7 +66,7 @@
         "@type": "SoftwareApplication",
         "name": "SmartSubs",
         "url": "https://smartsubspro.com/",
-        "description": "Plugin per DaVinci Resolve che automatizza la sottotitolazione con intelligenza artificiale, nato per risolvere le sfide reali dei creator moderni.",
+        "description": "Plugin per DaVinci Resolve che automatizza la sottotitolazione, per restituire tempo al lavoro creativo. Codice pulito, pensato per risolvere problemi reali.",
         "applicationCategory": "VideoApplication",
         "operatingSystem": "Windows, macOS",
         "author": { "@type": "Person", "name": "Antonio Pennino", "url": "https://antoniopennino.it/" }
@@ -76,21 +78,21 @@
 
 <body>
 
-  <div class="cursor-dot"></div>
-  <div class="cursor-outline"></div>
-
   <div class="container">
     <nav>
       <div class="nav-left">
-        <div class="logo">Antonio Pennino</div>
+        <div class="logo">
+          <span class="logo-name">Antonio Pennino</span>
+          <span class="logo-role">Comunicazione Visiva · Slow Media</span>
+        </div>
         <ul class="nav-links">
-          <li><a href="#progetti" class="hover-target">Progetti</a></li>
-          <li><a href="#lab" class="hover-target">Lab</a></li>
+          <li><a href="#chi-sono" class="hover-target">Chi Sono</a></li>
           <li><a href="#servizi" class="hover-target">Servizi</a></li>
-          <li><a href="#lavori" class="hover-target">Lavori</a></li>
+          <li><a href="#storie" class="hover-target">Storie</a></li>
+          <li><a href="#lab" class="hover-target">Lab</a></li>
           <li><a href="#contatto" class="hover-target">Contatto</a></li>
-          <li><a href="./en/" class="hover-target" onclick="localStorage.setItem('selected_language', 'en')"
-              style="color: var(--neon-yellow); font-weight: 700;">EN</a></li>
+          <li><a href="./en/" class="hover-target nav-lang"
+              onclick="localStorage.setItem('selected_language', 'en')">EN</a></li>
         </ul>
       </div>
       <div class="nav-right">
@@ -110,119 +112,148 @@
       </div>
     </nav>
 
+    <!-- HERO / MANIFESTO -->
     <header class="hero">
-      <h1>VISUAL<br>STORYTELLER.</h1>
-      <div class="hero-sub">
-        <p>Narrazione</p>
-        <p>Emozione</p>
-        <p>Ritmo</p>
+      <span class="hero-eyebrow">Stratega della Comunicazione Visiva · Slow Media</span>
+      <h1>Non rincorro l'attenzione.<br>Costruisco <em>connessioni.</em></h1>
+      <p class="hero-lead">Design e narrazione visiva per chi ha il coraggio di rallentare.</p>
+      <p class="hero-desc">Lavoro con realtà artigianali, aziende agricole d'eccellenza e brand etici — lontano dalle
+        logiche frenetiche e manipolatorie degli algoritmi social, per costruire storie che restano.</p>
+      <div class="hero-meta">
+        <span>Tempo</span>
+        <span>Cura</span>
+        <span>Autenticità</span>
       </div>
       <div class="scroll-indicator">Scorri</div>
     </header>
+
+    <!-- CHI SONO -->
+    <section id="chi-sono" class="about-section reveal">
+      <div class="about-grid">
+        <div class="about-portrait">
+          <img src="profile.jpg" width="800" height="1000" loading="lazy"
+            alt="Antonio Pennino, stratega della comunicazione visiva">
+        </div>
+        <div class="about-text">
+          <span class="section-label">Chi sono</span>
+          <h2>Un approccio ibrido:<br>tra codice e regia.</h2>
+          <p>Vengo da un percorso ibrido. Ho studiato <strong>Informatica per la Comunicazione Digitale</strong> e, in
+            parallelo, ho coltivato la regia e la narrazione visiva. Due mondi che sembrano distanti e che, per me,
+            parlano la stessa lingua: costruire con metodo qualcosa che emozioni.</p>
+          <p class="about-pull">A un certo punto ho fatto una scelta etica: ho abbandonato l'editing “fast-food”.</p>
+          <p>Basta tagli frenetici pensati solo per trattenere lo sguardo un secondo in più. Ho scelto lo
+            <strong>Slow Media</strong>: racconti costruiti con tempo e cura, che rispettano chi guarda e chi li
+            commissiona. Non credo nella comunicazione che urla, ma in quella che resta.</p>
+          <div class="about-tags">
+            <span>Informatica per la Comunicazione Digitale</span>
+            <span>Regia visiva</span>
+            <span>Sviluppo software</span>
+          </div>
+        </div>
+      </div>
+    </section>
 
     <!-- SERVIZI -->
     <section id="servizi" class="services-section reveal">
       <div class="services-header">
         <span class="section-label">Cosa faccio</span>
-        <h2>Video che vendono,<br>storie che restano.</h2>
+        <h2>Comunicazione che sceglie la profondità.</h2>
       </div>
 
       <div class="services-grid">
 
         <div class="service-card">
           <span class="service-icon">
-            <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"
-              stroke-linecap="round" stroke-linejoin="round">
-              <rect x="6" y="2" width="12" height="20" rx="2.5" />
-              <path d="M10 10l4 2-4 2z" fill="currentColor" stroke="none" />
-              <circle cx="12" cy="17.5" r="0.8" fill="currentColor" stroke="none" />
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+              <polygon points="23 7 16 12 23 17" />
+              <rect x="1" y="5" width="15" height="14" rx="2" />
             </svg>
           </span>
-          <h3>Social Content</h3>
-          <p>Reel e video verticali pensati per catturare l'attenzione nei primi tre secondi. Per brand, professionisti
-            e aziende che vogliono crescere su Instagram e TikTok.</p>
-          <span class="service-badge">Reel · TikTok · Shorts</span>
+          <h3>Racconto d'Impresa Artigiana</h3>
+          <p>Passo tempo dove le cose accadono davvero — la bottega, il campo, le mani al lavoro. Da lì nasce un racconto
+            visivo fedele, capace di far percepire il valore autentico di ciò che fai.</p>
+          <span class="service-badge">Documentario breve · Ritratto d'impresa</span>
         </div>
 
         <div class="service-card">
           <span class="service-icon">
-            <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"
-              stroke-linecap="round" stroke-linejoin="round">
-              <polygon points="23,7 16,12 23,17" />
-              <rect x="1" y="7" width="15" height="10" rx="2" />
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="10" />
+              <path d="M12 2a15 15 0 0 1 0 20 15 15 0 0 1 0-20" />
+              <path d="M2 12h20" />
             </svg>
           </span>
-          <h3>Documentari & Short Film</h3>
+          <h3>Documentario & Slow Media</h3>
           <p>Racconti visivi che vanno in profondità. Dalla ricerca sul campo al montaggio finale, costruisco narrazioni
-            che emozionano e restano.</p>
+            pensate per durare — non per scadere con l'algoritmo.</p>
           <span class="service-badge">Narrativa · Documentario</span>
         </div>
 
         <div class="service-card">
           <span class="service-icon">
-            <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"
-              stroke-linecap="round" stroke-linejoin="round">
-              <circle cx="12" cy="12" r="10" />
-              <circle cx="12" cy="12" r="5" />
-              <circle cx="12" cy="12" r="1.5" fill="currentColor" stroke="none" />
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="3.2" />
+              <path d="M12 2v3M12 19v3M2 12h3M19 12h3M5 5l2.2 2.2M16.8 16.8L19 19M19 5l-2.2 2.2M7.2 16.8L5 19" />
             </svg>
           </span>
-          <h3>Video Pubblicitari</h3>
-          <p>Spot e video commerciali con ritmo, impatto visivo e messaggio chiaro. Dal concept alla consegna, orientati
-            alla conversione.</p>
-          <span class="service-badge">Commercial · Spot · ADV</span>
+          <h3>Identità Visiva & Regia</h3>
+          <p>Definisco il linguaggio con cui un brand si mostra al mondo: tono, ritmo, immagine. Una regia coerente che
+            costruisce riconoscibilità nel tempo, non un picco effimero.</p>
+          <span class="service-badge">Direzione creativa · Brand</span>
         </div>
 
         <div class="service-card">
           <span class="service-icon">
-            <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"
-              stroke-linecap="round" stroke-linejoin="round">
-              <rect x="2" y="7" width="20" height="14" rx="2" />
-              <path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2" />
-              <path d="M2 12h20" />
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z" />
             </svg>
           </span>
-          <h3>Corporate & Branding</h3>
-          <p>Interview, testimonial e brand video per posizionare la tua azienda come punto di riferimento nel settore.
-            Autorevolezza visiva che costruisce fiducia.</p>
-          <span class="service-badge">Corporate · Interview · Brand</span>
+          <h3>Consulenza di Comunicazione Etica</h3>
+          <p>Aiuto realtà e professionisti a comunicare con onestà, senza inseguire metriche vanitose. Una strategia che
+            mette al centro le persone, non gli algoritmi.</p>
+          <span class="service-badge">Strategia · Slow Media</span>
         </div>
 
       </div>
     </section>
 
-    <!-- PROGETTI -->
-    <section id="progetti">
+    <!-- STORIE / CASI STUDIO -->
+    <section id="storie">
 
       <section id="cloudyo" class="project-section reveal">
         <div class="project-header">
-          <span class="project-number">Progetto 01</span>
+          <span class="project-number">Caso Studio 01</span>
           <h2 class="project-title"><a href="https://www.cloudyo.me/" target="_blank" rel="noopener noreferrer"
-              class="hover-target">CLOUDYO.</a></h2>
+              class="hover-target">Cloudyo</a></h2>
           <p class="project-subtitle">Wear Your Dreams</p>
         </div>
 
         <div class="project-content">
           <div class="project-text">
-            <p class="highlight-text">
-              Dare forma ai sogni delle persone.
-            </p>
-            <p>
-              Cloudyo non è solo un brand, è un manifesto. La filosofia si fonda su due pilastri:
-              <strong>Grinta</strong>, per chi non ha paura di inseguire ciò che desidera, e
-              <strong>Leggerezza</strong>, per vivere le proprie ambizioni senza il peso del giudizio altrui.
-            </p>
-            <p>
-              In un'era dominata dall'automazione, abbiamo costruito il concetto di <strong>Prompt to Human</strong>.
-              Non algoritmi, ma persone reali che ascoltano, comprendono e trasformano la tua visione in un capo unico.
-            </p>
+            <p class="highlight-text">Dare forma ai sogni, senza inseguire i trend.</p>
+            <div class="case-blocks">
+              <div class="case-block">
+                <h4><span>01</span> Contesto</h4>
+                <p>Un brand d'abbigliamento che rifiutava la logica del fast-fashion e del contenuto usa-e-getta, in
+                  cerca di una voce che non gridasse.</p>
+              </div>
+              <div class="case-block">
+                <h4><span>02</span> Approccio Etico</h4>
+                <p>Abbiamo costruito “Prompt to Human”: non algoritmi, ma persone reali che ascoltano e trasformano una
+                  visione in un capo unico. Un linguaggio visivo lento, coerente, riconoscibile — tra grinta e
+                  leggerezza.</p>
+              </div>
+              <div class="case-block">
+                <h4><span>03</span> Esito</h4>
+                <p>Un'identità che le persone ricordano, non solo che scrollano. Coerenza prima della viralità.</p>
+              </div>
+            </div>
             <a href="https://www.cloudyo.me/" target="_blank" rel="noopener noreferrer"
               class="project-link hover-target">Visita il sito ufficiale ↗</a>
           </div>
 
           <div class="reels-grid">
 
-            <!-- TikTok 1 -->
             <a href="https://www.tiktok.com/@cloudyo_official/video/7573725753976622358?is_from_webapp=1&sender_device=pc&web_id=7593083947539121667"
               target="_blank" rel="noopener noreferrer" class="reel-card hover-target"
               aria-label="Guarda il video su TikTok: Cloudyo - Vision">
@@ -236,7 +267,6 @@
               </div>
             </a>
 
-            <!-- TikTok 2 -->
             <a href="https://www.tiktok.com/@cloudyo_official/video/7566227197434858774?is_from_webapp=1&sender_device=pc&web_id=7593083947539121667"
               target="_blank" rel="noopener noreferrer" class="reel-card hover-target"
               aria-label="Guarda il video su TikTok: Cloudyo - Style">
@@ -250,7 +280,6 @@
               </div>
             </a>
 
-            <!-- TikTok 3 -->
             <a href="https://www.tiktok.com/@cloudyo_official/video/7574765694856793366?is_from_webapp=1&sender_device=pc&web_id=7593083947539121667"
               target="_blank" rel="noopener noreferrer" class="reel-card hover-target"
               aria-label="Guarda il video su TikTok: Cloudyo - Dreams">
@@ -264,7 +293,6 @@
               </div>
             </a>
 
-            <!-- TikTok 4 -->
             <a href="https://www.tiktok.com/@cloudyo_official/video/7568497063198002454?is_from_webapp=1&sender_device=pc&web_id=7593083947539121667"
               target="_blank" rel="noopener noreferrer" class="reel-card hover-target"
               aria-label="Guarda il video su TikTok: Cloudyo - Impact">
@@ -284,25 +312,30 @@
 
       <section id="legal" class="project-section reveal">
         <div class="project-header">
-          <span class="project-number">Progetto 02</span>
-          <h2 class="project-title">PERSONAL BRANDING.</h2>
+          <span class="project-number">Caso Studio 02</span>
+          <h2 class="project-title">Personal Branding</h2>
           <p class="project-subtitle">Avv. Oreste Maria Petrillo</p>
         </div>
 
         <div class="project-content">
           <div class="project-text">
-            <p class="highlight-text">
-              Il diritto, spiegato semplice.
-            </p>
-            <p>
-              Trasformare la complessità del codice civile in contenuti chiari, utili e coinvolgenti.
-              Con l'Avv. Petrillo costruiamo un'autorevolezza digitale che non crea distacco, ma genera fiducia.
-            </p>
-            <p>
-              Dai <strong>Reel</strong> educativi ai <strong>Caroselli</strong> informativi, ogni contenuto risponde ai
-              dubbi reali delle persone, posizionando il professionista come punto di riferimento accessibile e
-              competente.
-            </p>
+            <p class="highlight-text">Il diritto, spiegato con rispetto.</p>
+            <div class="case-blocks">
+              <div class="case-block">
+                <h4><span>01</span> Contesto</h4>
+                <p>Un professionista del diritto che voleva farsi capire dalle persone reali, senza il distacco del
+                  linguaggio tecnico.</p>
+              </div>
+              <div class="case-block">
+                <h4><span>02</span> Approccio Etico</h4>
+                <p>Contenuti che rispondono a dubbi veri — Reel e caroselli chiari — senza clickbait né promesse
+                  gonfiate. Autorevolezza che nasce dalla chiarezza, non dal clamore.</p>
+              </div>
+              <div class="case-block">
+                <h4><span>03</span> Esito</h4>
+                <p>Un'autorevolezza digitale accessibile, che genera fiducia invece di distanza.</p>
+              </div>
+            </div>
           </div>
 
           <div class="project-single-media">
@@ -321,31 +354,28 @@
 
     </section>
 
-    </section>
-
     <!-- IL LABORATORIO / TECH -->
-    <section id="lab" class="project-section reveal" style="border-top: 1px solid #1a1a1a;">
+    <section id="lab" class="project-section reveal">
       <div class="project-header">
         <span class="section-label">The Lab</span>
-        <h2 class="project-title">INNOVAZIONE.</h2>
-        <p class="project-subtitle">Tecnologia & Creative Tools</p>
+        <h2 class="project-title">Il Laboratorio</h2>
+        <p class="project-subtitle">Codice al servizio della cura</p>
       </div>
 
       <div class="project-content">
         <div class="project-text">
-          <p class="highlight-text">
-            Oltre la narrazione: la tecnologia al servizio della creatività.
+          <p class="highlight-text">La tecnologia come strumento artigianale, non come scorciatoia.</p>
+          <p style="color: var(--ink-soft); line-height: 1.7; margin: 0 0 20px;">
+            Il mio background in informatica non serve a produrre di più e più in fretta. Serve a costruire strumenti su
+            misura che tolgono il rumore e lasciano spazio a ciò che conta: il racconto.
           </p>
-          <p>
-            La mia passione per lo sviluppo software e l'intelligenza artificiale mi spinge a creare strumenti che
-            ottimizzano il workflow creativo. In un mercato competitivo come quello del video editing in
-            <strong>Italia</strong>, l'innovazione tecnica è ciò che permette di scalare la qualità senza sacrificare il
-            tempo.
+          <p style="color: var(--ink-soft); line-height: 1.7; margin: 0;">
+            <strong>SmartSubs</strong> è il mio progetto di punta: un plugin per DaVinci Resolve che automatizza la parte
+            più meccanica della sottotitolazione, per restituire tempo al lavoro creativo. Codice pulito, pensato per
+            risolvere problemi reali.
           </p>
-          <p>
-            <strong>SmartSubs</strong> è il mio progetto di punta: un plugin per DaVinci Resolve che automatizza la
-            sottotitolazione, nato e sviluppato per risolvere le sfide reali dei creator moderni.
-          </p>
+          <a href="https://smartsubspro.com/" target="_blank" rel="noopener noreferrer"
+            class="project-link hover-target">Scopri SmartSubs ↗</a>
         </div>
 
         <div class="project-single-media">
@@ -362,9 +392,12 @@
       </div>
     </section>
 
-    <!-- LAVORI SELEZIONATI -->
+    <!-- FRAMMENTI / LAVORI SELEZIONATI -->
     <section id="lavori" class="works-section">
-      <span class="section-label reveal">Lavori Selezionati</span>
+      <div class="works-header reveal">
+        <span class="section-label">Frammenti</span>
+        <h2>Lavori selezionati.</h2>
+      </div>
 
       <div class="grid">
 
@@ -377,7 +410,7 @@
           <div class="card-info">
             <div>
               <h3 class="card-title">Mini Doc</h3>
-              <span class="card-tags">Storytelling / Documentario</span>
+              <span class="card-tags">Documentario / Racconto</span>
             </div>
             <div class="view-btn">▶</div>
           </div>
@@ -399,30 +432,30 @@
         </article>
 
         <article class="card reveal hover-target" tabindex="0" role="button"
-          aria-label="Riproduci video: Start-up Interview" onclick="openLightbox('tDCp2pgTaGI')">
+          aria-label="Riproduci video: Ritratto d'impresa" onclick="openLightbox('tDCp2pgTaGI')">
           <div class="card-media">
             <img src="https://img.youtube.com/vi/tDCp2pgTaGI/maxresdefault.jpg" width="1280" height="720" loading="lazy"
-              alt="Interview">
+              alt="Ritratto d'impresa">
           </div>
           <div class="card-info">
             <div>
-              <h3 class="card-title">Start-up Interview</h3>
-              <span class="card-tags">Corporate / Editing</span>
+              <h3 class="card-title">Ritratto d'impresa</h3>
+              <span class="card-tags">Intervista / Storia</span>
             </div>
             <div class="view-btn">▶</div>
           </div>
         </article>
 
         <article class="card reveal hover-target" tabindex="0" role="button"
-          aria-label="Riproduci video: Product Teaser" onclick="openLightbox('ULPaAQH6XOg')">
+          aria-label="Riproduci video: Racconto di prodotto" onclick="openLightbox('ULPaAQH6XOg')">
           <div class="card-media">
             <img src="https://img.youtube.com/vi/ULPaAQH6XOg/maxresdefault.jpg" width="1280" height="720" loading="lazy"
-              alt="Teaser">
+              alt="Racconto di prodotto">
           </div>
           <div class="card-info">
             <div>
-              <h3 class="card-title">Product Teaser</h3>
-              <span class="card-tags">Commerciale / Ritmo</span>
+              <h3 class="card-title">Racconto di prodotto</h3>
+              <span class="card-tags">Prodotto / Materia</span>
             </div>
             <div class="view-btn">▶</div>
           </div>
@@ -431,25 +464,29 @@
       </div>
     </section>
 
-    <!-- STATISTICHE -->
-    <section class="impact-section reveal">
-      <div class="impact-grid">
-
-        <div class="stat-item">
-          <div class="stat-number" data-target="150000">0</div>
-          <div class="stat-label">Visualizzazioni Totali</div>
+    <!-- METODO -->
+    <section class="method-section reveal">
+      <div class="method-header">
+        <span class="section-label">Il Metodo</span>
+        <h2>Tre tempi, un solo ritmo: lento.</h2>
+      </div>
+      <div class="method-grid">
+        <div class="method-step">
+          <span class="num">01</span>
+          <h3>Ascolto</h3>
+          <p>Prima di girare, capisco. Tempo lento e profondo con chi ho di fronte, per cogliere ciò che rende unica la
+            sua storia.</p>
         </div>
-
-        <div class="stat-item">
-          <div class="stat-number" data-target="50">0</div>
-          <div class="stat-label">Video Prodotti</div>
+        <div class="method-step">
+          <span class="num">02</span>
+          <h3>Ricerca</h3>
+          <p>Vado sul campo. Il racconto nasce dai luoghi e dalle persone reali, non da un copione preconfezionato.</p>
         </div>
-
-        <div class="stat-item">
-          <div class="stat-number" data-target="96">0</div>
-          <div class="stat-label">% Crescita Engagement</div>
+        <div class="method-step">
+          <span class="num">03</span>
+          <h3>Racconto</h3>
+          <p>Monto storie che restano. Ogni scelta serve il significato, non la metrica del momento.</p>
         </div>
-
       </div>
     </section>
 
@@ -457,24 +494,28 @@
     <section class="skills-section reveal">
       <span class="section-label">L'approccio</span>
       <h2 class="big-statement">
-        Ogni taglio deve avere un respiro. <span>Non monto semplicemente video, costruisco percorsi emotivi. Il mio
-          obiettivo è catturare lo spettatore dal primo frame e non lasciarlo andare fino all'ultimo.</span>
+        Ogni taglio deve avere un respiro. <span>Non monto semplicemente video: costruisco percorsi che rispettano il
+          tempo di chi guarda. L'obiettivo non è trattenere lo sguardo con la forza, ma meritare l'attenzione con la
+          cura.</span>
       </h2>
       <div class="skills-list">
-        <span class="skill-tag">Creative Direction</span>
-        <span class="skill-tag">Storytelling</span>
-        <span class="skill-tag">Sound Design</span>
+        <span class="skill-tag">Strategia Narrativa</span>
+        <span class="skill-tag">Regia</span>
+        <span class="skill-tag">Slow Media</span>
+        <span class="skill-tag">Comunicazione Etica</span>
         <span class="skill-tag">Color Grading</span>
-        <span class="skill-tag">DaVinci Resolve</span>
+        <span class="skill-tag">Sviluppo</span>
       </div>
     </section>
+  </div>
 
-    <!-- FOOTER / CONTATTO -->
-    <footer id="contatto">
+  <!-- FOOTER / CONTATTO -->
+  <footer id="contatto">
+    <div class="footer-inner">
       <div class="footer-cta reveal">
-        <span class="section-label">Inizia il viaggio</span>
+        <span class="section-label">Iniziamo</span>
         <a href="mailto:antonio.pennino.mail@gmail.com" class="hover-target">
-          <h2>Raccontiamo<br>la tua storia<br>insieme.</h2>
+          <h2>Raccontiamo<br>la tua storia<br>con calma.</h2>
         </a>
         <div class="footer-contact-row">
           <a href="mailto:antonio.pennino.mail@gmail.com"
@@ -494,7 +535,7 @@
         <div class="legal">
           <span>© 2026 Antonio Pennino</span>
           <span>P.IVA 01896160627</span>
-          <span>Servizi di Video Editing & Visual Storytelling</span>
+          <span>Comunicazione Visiva & Slow Media</span>
         </div>
         <div class="footer-social">
           <a href="https://www.instagram.com/antoniopenninoo/" target="_blank" rel="noopener noreferrer">Instagram</a>
@@ -502,18 +543,17 @@
             rel="noopener noreferrer">LinkedIn</a>
         </div>
       </div>
-    </footer>
-  </div>
+    </div>
+  </footer>
 
   <div id="lightbox" class="lightbox">
     <div class="lightbox-wrapper">
-      <button class="close-btn" aria-label="Chiudi lightbox" onclick="closeLightbox()">CHIUDI ✕</button>
+      <button class="close-btn" aria-label="Chiudi lightbox" onclick="closeLightbox()">Chiudi ✕</button>
       <div id="video-container" style="width:100%; height:100%"></div>
     </div>
   </div>
 
   <script src="script.js"></script>
-
 
 </body>
 

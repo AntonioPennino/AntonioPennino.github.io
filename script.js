@@ -1,155 +1,96 @@
-// --- CUSTOM CURSOR LOGIC ---
-const cursorDot = document.querySelector('.cursor-dot');
-const cursorOutline = document.querySelector('.cursor-outline');
+/* ============================================================
+   ANTONIO PENNINO — Slow Media
+   Vanilla JS leggero. Nessuna libreria esterna.
+   ============================================================ */
 
-if (cursorDot && cursorOutline && window.matchMedia("(pointer: fine)").matches) {
-    document.body.classList.add('custom-cursor-active');
-
-    let mouseX = 0;
-    let mouseY = 0;
-    let outlineX = 0;
-    let outlineY = 0;
-
-    window.addEventListener('mousemove', (e) => {
-        mouseX = e.clientX;
-        mouseY = e.clientY;
-
-        // Il dot segue il cursore istantaneamente
-        cursorDot.style.transform = `translate3d(${mouseX}px, ${mouseY}px, 0) translate(-50%, -50%)`;
-    });
-
-    const updateCursorOutline = () => {
-        // Interpolazione lineare (LERP) per l'outline (ritardo fluido)
-        const ease = 0.15;
-        outlineX += (mouseX - outlineX) * ease;
-        outlineY += (mouseY - outlineY) * ease;
-
-        cursorOutline.style.transform = `translate3d(${outlineX}px, ${outlineY}px, 0) translate(-50%, -50%)`;
-        requestAnimationFrame(updateCursorOutline);
-    };
-    requestAnimationFrame(updateCursorOutline);
-
-    // Effetto Hover su elementi interattivi (inclusi i bottoni aria-role)
-    document.querySelectorAll('a, .hover-target, .view-btn, [role="button"]').forEach(el => {
-        el.addEventListener('mouseenter', () => document.body.classList.add('hovering'));
-        el.addEventListener('mouseleave', () => document.body.classList.remove('hovering'));
-    });
-}
-
-// --- SCROLL REVEAL ANIMATION ---
-const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            entry.target.classList.add('active');
-        }
-    });
-}, { threshold: 0.1 });
-
-document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
-
-// Chiudi con ESC
-let activeTriggerElement = null;
-
-function openLightbox(id) {
-    activeTriggerElement = document.activeElement; // Salva l'elemento focalizzato prima dell'apertura
-    lightbox.classList.add('active');
-    const url = `https://www.youtube.com/embed/${id}?autoplay=1&rel=0&showinfo=0&modestbranding=1`;
-    container.innerHTML = `<iframe src="${url}" title="Riproduttore video YouTube" width="100%" height="100%" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>`;
-    document.body.style.overflow = 'hidden';
-    
-    // Sposta il focus sul pulsante di chiusura per consentire una facile navigazione
-    setTimeout(() => {
-        const closeBtn = document.querySelector('.close-btn');
-        if (closeBtn) closeBtn.focus();
-    }, 100);
-}
-
-function closeLightbox() {
-    lightbox.classList.remove('active');
-    container.innerHTML = '';
-    document.body.style.overflow = '';
-    if (activeTriggerElement) {
-        activeTriggerElement.focus(); // Ritorna il focus alla card precedente
-    }
-}
-
-document.addEventListener('keydown', (e) => {
-    if (e.key === "Escape") closeLightbox();
-});
-
-// Supporto tastiera per le card video (invio / spazio)
-document.querySelectorAll('.card').forEach(card => {
-    card.addEventListener('keydown', (e) => {
-        if (e.key === 'Enter' || e.key === ' ') {
-            e.preventDefault();
-            card.click();
-        }
-    });
-});
-
-// --- ANIMAZIONE CONTATORE NUMERI (impact-section) ---
+// --- SCROLL REVEAL: fade-in lento e riflessivo ---
 (() => {
-    const stats = document.querySelectorAll('.stat-number');
-    if (!stats || stats.length === 0) return;
+    /** @type {NodeListOf<HTMLElement>} */
+    const revealables = document.querySelectorAll('.reveal');
+    if (!revealables.length) return;
 
-    const animateStats = (entries, observer) => {
-        entries.forEach(entry => {
+    const observer = new IntersectionObserver((entries, obs) => {
+        entries.forEach((entry) => {
             if (entry.isIntersecting) {
-                const counter = entry.target;
-                const target = +counter.getAttribute('data-target');
-                const duration = 2000; // Durata animazione in ms
-                const increment = target / (duration / 16); // ~60fps
-
-                let current = 0;
-
-                const updateCounter = () => {
-                    current += increment;
-                    if (current < target) {
-                        counter.innerText = Math.ceil(current).toLocaleString('it-IT');
-                        requestAnimationFrame(updateCounter);
-                    } else {
-                        counter.innerText = target.toLocaleString('it-IT');
-                        if(target > 999999) {
-                            counter.innerText = (target / 1000000).toFixed(1) + 'M';
-                            counter.style.color = 'var(--neon-green)';
-                        } else if (target > 999) {
-                            counter.innerText = (target / 1000).toFixed(1) + 'K';
-                        }
-                    }
-                };
-                updateCounter();
-                observer.unobserve(counter);
+                entry.target.classList.add('active');
+                obs.unobserve(entry.target); // rivela una sola volta
             }
         });
-    };
+    }, { threshold: 0.12, rootMargin: '0px 0px -8% 0px' });
 
-    const statObserver = new IntersectionObserver(animateStats, { threshold: 0.5 });
-    stats.forEach(stat => statObserver.observe(stat));
+    revealables.forEach((el) => observer.observe(el));
 })();
 
-// --- MOBILE MENU LOGIC ---
+// --- LIGHTBOX VIDEO (YouTube) ---
 (() => {
-    const menuToggle = document.querySelector('.menu-toggle');
-    const navLinks = document.querySelectorAll('.nav-links a');
+    const lightbox = document.getElementById('lightbox');
+    const videoContainer = document.getElementById('video-container');
+    const closeBtn = document.querySelector('.close-btn');
+    if (!lightbox || !videoContainer) return;
 
-    if (menuToggle) {
-        menuToggle.addEventListener('click', () => {
-            const isActive = document.body.classList.toggle('mobile-menu-active');
-            menuToggle.setAttribute('aria-expanded', isActive);
-            if (isActive) {
-                document.body.style.overflow = 'hidden'; // Blocco dello scroll dello sfondo
-            } else {
-                document.body.style.overflow = '';
+    /** @type {HTMLElement|null} — elemento a cui restituire il focus alla chiusura */
+    let lastFocused = null;
+
+    /** @param {string} id — ID del video YouTube */
+    function openLightbox(id) {
+        lastFocused = document.activeElement instanceof HTMLElement ? document.activeElement : null;
+        const url = `https://www.youtube.com/embed/${id}?autoplay=1&rel=0&showinfo=0&modestbranding=1`;
+        videoContainer.innerHTML =
+            `<iframe src="${url}" title="Riproduttore video YouTube" width="100%" height="100%" ` +
+            `frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>`;
+        lightbox.classList.add('active');
+        document.body.style.overflow = 'hidden';
+        if (closeBtn) requestAnimationFrame(() => closeBtn.focus());
+    }
+
+    function closeLightbox() {
+        lightbox.classList.remove('active');
+        videoContainer.innerHTML = '';
+        document.body.style.overflow = '';
+        if (lastFocused) lastFocused.focus();
+    }
+
+    // Esposizione minima per gli handler inline nell'HTML
+    window.openLightbox = openLightbox;
+    window.closeLightbox = closeLightbox;
+
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') closeLightbox();
+    });
+
+    // Chiusura cliccando sullo sfondo scuro
+    lightbox.addEventListener('click', (e) => {
+        if (e.target === lightbox) closeLightbox();
+    });
+
+    // Supporto tastiera (Invio / Spazio) per le card video
+    document.querySelectorAll('.card').forEach((card) => {
+        card.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                card.click();
             }
         });
+    });
+})();
 
-        // Chiudi il menu quando si clicca su una voce di menu (scorrimento)
-        navLinks.forEach(link => {
-            link.addEventListener('click', () => {
-                document.body.classList.remove('mobile-menu-active');
-                menuToggle.setAttribute('aria-expanded', 'false');
-                document.body.style.overflow = '';
-            });
+// --- MENU MOBILE ---
+(() => {
+    const menuToggle = document.querySelector('.menu-toggle');
+    if (!menuToggle) return;
+    const navLinks = document.querySelectorAll('.nav-links a');
+
+    menuToggle.addEventListener('click', () => {
+        const isActive = document.body.classList.toggle('mobile-menu-active');
+        menuToggle.setAttribute('aria-expanded', String(isActive));
+        document.body.style.overflow = isActive ? 'hidden' : '';
+    });
+
+    navLinks.forEach((link) => {
+        link.addEventListener('click', () => {
+            document.body.classList.remove('mobile-menu-active');
+            menuToggle.setAttribute('aria-expanded', 'false');
+            document.body.style.overflow = '';
         });
-    }
+    });
 })();

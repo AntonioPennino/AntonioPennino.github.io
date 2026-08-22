@@ -1,17 +1,22 @@
-# Antonio Pennino - Video Editor & Visual Storyteller
+# Antonio Pennino - Comunicazione Visiva & Slow Media
 
-Antonio Pennino è un video editor freelance (P.IVA 01896160627) con base a Napoli, operativo in tutta Italia. Si occupa di montaggio video, storytelling visivo, sound design e color grading per aziende, brand e professionisti.
+Antonio Pennino è uno stratega della comunicazione visiva e dello Slow Media (P.IVA 01896160627), con base a Napoli e operativo in tutta Italia. Ha un background ibrido — Informatica per la Comunicazione Digitale unita alla regia visiva — e lavora con realtà artigianali, aziende agricole d'eccellenza e brand etici. Si distanzia dalle logiche frenetiche e manipolatorie degli algoritmi social per costruire "storie che restano": racconti realizzati con tempo, cura e onestà.
 
 ## Servizi
-- **Social Content:** Reel, TikTok e Shorts progettati per catturare l'attenzione nei primi 3 secondi.
-- **Documentari & Short Film:** Racconti visivi profondi, dalla ricerca sul campo al montaggio finale.
-- **Video Pubblicitari:** Spot e video commerciali orientati alla conversione.
-- **Corporate & Branding:** Interviste, testimonial e video aziendali per costruire fiducia e autorevolezza.
+- **Racconto d'Impresa Artigiana:** Documentari brevi e ritratti d'impresa girati sul campo, per far percepire il valore autentico del lavoro artigianale.
+- **Documentario & Slow Media:** Narrazioni visive profonde, dalla ricerca sul campo al montaggio finale, pensate per durare nel tempo.
+- **Identità Visiva & Regia:** Definizione del linguaggio visivo di un brand — tono, ritmo, immagine — per una riconoscibilità coerente e duratura.
+- **Consulenza di Comunicazione Etica:** Strategia di comunicazione onesta, centrata sulle persone e non sulle metriche vanitose.
 
-## Progetti Principali
-- **Cloudyo (Wear Your Dreams):** Gestione contenuti video per brand di abbigliamento, focalizzato su stile e lifestyle.
-- **Avv. Oreste Maria Petrillo:** Cura del personal branding legale sui social (Instagram) con contenuti formativi e caroselli chiari.
-- **SmartSubs:** Sviluppo di un plugin di automazione sottotitoli per DaVinci Resolve (https://smartsubspro.com/).
+## Il Metodo
+1. **Ascolto:** tempo lento e profondo con chi si ha di fronte, per cogliere l'unicità della storia.
+2. **Ricerca:** lavoro sul campo, tra luoghi e persone reali, senza copioni preconfezionati.
+3. **Racconto:** montaggio al servizio del significato, non della metrica del momento.
+
+## Casi Studio
+- **Cloudyo (Wear Your Dreams):** Identità visiva per un brand d'abbigliamento etico, costruita sul concetto "Prompt to Human" — persone reali al posto degli algoritmi. Coerenza prima della viralità.
+- **Avv. Oreste Maria Petrillo:** Personal branding legale con contenuti chiari e onesti (Reel e caroselli), per un'autorevolezza accessibile che genera fiducia.
+- **SmartSubs:** Plugin di automazione della sottotitolazione per DaVinci Resolve (https://smartsubspro.com/). La tecnologia come strumento artigianale, per restituire tempo al lavoro creativo.
 
 ## Contatti
 - Email: antonio.pennino.mail@gmail.com
