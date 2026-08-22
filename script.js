@@ -1,5 +1,5 @@
 /* ============================================================
-   ANTONIO PENNINO — Slow Media
+   ANTONIO PENNINO · Slow Media
    Vanilla JS leggero. Nessuna libreria esterna.
    ============================================================ */
 
@@ -21,56 +21,88 @@
     revealables.forEach((el) => observer.observe(el));
 })();
 
-// --- LIGHTBOX VIDEO (YouTube) ---
+// --- MODALE LAVORI: info + eventuali video in popup ---
 (() => {
-    const lightbox = document.getElementById('lightbox');
-    const videoContainer = document.getElementById('video-container');
-    const closeBtn = document.querySelector('.close-btn');
-    if (!lightbox || !videoContainer) return;
+    const modal = document.getElementById('work-modal');
+    const mediaSlot = document.getElementById('work-modal-media');
+    const contentSlot = document.getElementById('work-modal-content');
+    if (!modal || !mediaSlot || !contentSlot) return;
 
-    /** @type {HTMLElement|null} — elemento a cui restituire il focus alla chiusura */
+    const closeBtn = modal.querySelector('.work-modal-close');
+    /** @type {HTMLElement|null} elemento a cui restituire il focus alla chiusura */
     let lastFocused = null;
 
-    /** @param {string} id — ID del video YouTube */
-    function openLightbox(id) {
+    /** @param {string} id chiave del lavoro (es. "minidoc") */
+    function openWork(id) {
+        const detail = document.getElementById('detail-' + id);
+        if (!detail) return;
+
         lastFocused = document.activeElement instanceof HTMLElement ? document.activeElement : null;
-        const url = `https://www.youtube.com/embed/${id}?autoplay=1&rel=0&showinfo=0&modestbranding=1`;
-        videoContainer.innerHTML =
-            `<iframe src="${url}" title="Riproduttore video YouTube" width="100%" height="100%" ` +
-            `frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>`;
-        lightbox.classList.add('active');
+
+        const videoId = detail.getAttribute('data-video');
+        if (videoId) {
+            const url = `https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0&modestbranding=1`;
+            mediaSlot.innerHTML =
+                `<div class="modal-video"><iframe src="${url}" title="Riproduttore video YouTube" ` +
+                `allow="autoplay; encrypted-media" allowfullscreen></iframe></div>`;
+            mediaSlot.hidden = false;
+        } else {
+            mediaSlot.innerHTML = '';
+            mediaSlot.hidden = true;
+        }
+
+        contentSlot.innerHTML = detail.innerHTML;
+        modal.setAttribute('aria-label', detail.getAttribute('data-title') || 'Dettaglio lavoro');
+        modal.classList.add('active');
+        modal.removeAttribute('aria-hidden');
         document.body.style.overflow = 'hidden';
-        if (closeBtn) requestAnimationFrame(() => closeBtn.focus());
+        requestAnimationFrame(() => { if (closeBtn) closeBtn.focus(); });
     }
 
-    function closeLightbox() {
-        lightbox.classList.remove('active');
-        videoContainer.innerHTML = '';
+    function closeWork() {
+        modal.classList.remove('active');
+        modal.setAttribute('aria-hidden', 'true');
+        mediaSlot.innerHTML = ''; // ferma la riproduzione video
+        contentSlot.innerHTML = '';
         document.body.style.overflow = '';
         if (lastFocused) lastFocused.focus();
     }
 
-    // Esposizione minima per gli handler inline nell'HTML
-    window.openLightbox = openLightbox;
-    window.closeLightbox = closeLightbox;
-
-    document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape') closeLightbox();
-    });
-
-    // Chiusura cliccando sullo sfondo scuro
-    lightbox.addEventListener('click', (e) => {
-        if (e.target === lightbox) closeLightbox();
-    });
-
-    // Supporto tastiera (Invio / Spazio) per le card video
-    document.querySelectorAll('.card').forEach((card) => {
+    // Apertura da ogni card lavoro
+    document.querySelectorAll('.work-card').forEach((card) => {
+        const id = card.getAttribute('data-work');
+        if (!id) return;
+        card.addEventListener('click', () => openWork(id));
         card.addEventListener('keydown', (e) => {
             if (e.key === 'Enter' || e.key === ' ') {
                 e.preventDefault();
-                card.click();
+                openWork(id);
             }
         });
+    });
+
+    // Chiusura: pulsante, overlay e tasto ESC
+    modal.querySelectorAll('[data-close]').forEach((el) => el.addEventListener('click', closeWork));
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && modal.classList.contains('active')) closeWork();
+    });
+
+    // Focus trap: mantiene il TAB dentro la modale quando è aperta
+    modal.addEventListener('keydown', (e) => {
+        if (e.key !== 'Tab' || !modal.classList.contains('active')) return;
+        const focusables = modal.querySelectorAll(
+            'a[href], button, iframe, [tabindex]:not([tabindex="-1"])'
+        );
+        if (!focusables.length) return;
+        const first = focusables[0];
+        const last = focusables[focusables.length - 1];
+        if (e.shiftKey && document.activeElement === first) {
+            e.preventDefault();
+            last.focus();
+        } else if (!e.shiftKey && document.activeElement === last) {
+            e.preventDefault();
+            first.focus();
+        }
     });
 })();
 
