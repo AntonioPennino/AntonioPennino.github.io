@@ -1070,6 +1070,28 @@ nav {
     border: 0;
 }
 
+.modal-youtube-link {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 6px;
+    padding: 12px clamp(24px, 4vw, 48px);
+    font-family: var(--sans);
+    font-size: 0.78rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--accent-deep);
+    border-bottom: 1px solid var(--line);
+    background: var(--bg-warm);
+    transition: color 0.4s var(--easing), background 0.4s var(--easing);
+}
+
+.modal-youtube-link:hover {
+    color: var(--accent);
+    background: var(--surface);
+}
+
 .work-modal-content {
     padding: 40px clamp(24px, 4vw, 48px) 48px;
 }

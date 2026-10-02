@@ -42,9 +42,13 @@
         const videoId = detail.getAttribute('data-video');
         if (videoId) {
             const url = `https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0&modestbranding=1`;
+            const isEN = (document.documentElement.lang || '').toLowerCase().startsWith('en');
+            const watchLabel = isEN ? 'Watch on YouTube ↗' : 'Guarda su YouTube ↗';
             mediaSlot.innerHTML =
                 `<div class="modal-video"><iframe src="${url}" title="Riproduttore video YouTube" ` +
-                `allow="autoplay; encrypted-media" allowfullscreen></iframe></div>`;
+                `allow="autoplay; encrypted-media" allowfullscreen></iframe></div>` +
+                `<a class="modal-youtube-link" href="https://www.youtube.com/watch?v=${videoId}" ` +
+                `target="_blank" rel="noopener noreferrer">${watchLabel}</a>`;
             mediaSlot.hidden = false;
         } else {
             mediaSlot.innerHTML = '';
