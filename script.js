@@ -27,17 +27,14 @@
 })();
 
 // --- CAROSELLO DI CLIP NELL'HERO ---
+// Scorre da solo in loop infinito e le clip partono in automatico (mute).
 (() => {
     const marquee = document.querySelector('.marquee');
     if (!marquee) return;
     const track = marquee.querySelector('.marquee-track');
     const set = marquee.querySelector('.marquee-set');
+    const toggle = document.querySelector('.marquee-toggle');
     if (!track || !set) return;
-
-    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    const saveData = Boolean(navigator.connection && navigator.connection.saveData);
-    // Con movimento ridotto o risparmio dati restano i poster, scorribili a mano
-    if (reduceMotion || saveData) return;
 
     // Secondo set identico per il loop infinito, nascosto a lettori di schermo e tastiera
     const clone = set.cloneNode(true);
@@ -46,33 +43,56 @@
     track.append(clone);
     marquee.classList.add('is-running');
 
-    /** @type {NodeListOf<HTMLVideoElement>} */
-    const videos = track.querySelectorAll('video');
-    if (!('IntersectionObserver' in window)) {
-        videos.forEach((v) => v.play().catch(() => {}));
-        return;
+    /** @type {HTMLVideoElement[]} */
+    const videos = Array.from(track.querySelectorAll('video'));
+    /** @type {Set<HTMLVideoElement>} clip attualmente a schermo */
+    const visible = new Set();
+    let paused = false;
+
+    const play = (v) => {
+        v.muted = true; // necessario perché il browser consenta l'avvio automatico
+        v.play().catch(() => {});
+    };
+
+    if ('IntersectionObserver' in window) {
+        // Riproduce solo le clip visibili: le altre restano ferme e non consumano risorse
+        const io = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+                const video = /** @type {HTMLVideoElement} */ (entry.target);
+                if (entry.isIntersecting) {
+                    visible.add(video);
+                    if (!paused) play(video);
+                } else {
+                    visible.delete(video);
+                    video.pause();
+                }
+            });
+        }, { rootMargin: '0px 200px' });
+        videos.forEach((v) => io.observe(v));
+    } else {
+        videos.forEach((v) => { visible.add(v); play(v); });
     }
 
-    // Riproduce solo le clip effettivamente visibili
-    const io = new IntersectionObserver((entries) => {
-        entries.forEach((entry) => {
-            const video = /** @type {HTMLVideoElement} */ (entry.target);
-            if (entry.isIntersecting) {
-                video.play().catch(() => {});
-            } else {
-                video.pause();
-            }
-        });
-    }, { rootMargin: '0px 200px' });
-
-    videos.forEach((v) => io.observe(v));
+    // Pulsante pausa: obbligatorio per i contenuti che si muovono da soli (WCAG 2.2.2)
+    if (!toggle) return;
+    const labels = {
+        pause: toggle.getAttribute('data-label-pause') || 'Pause',
+        play: toggle.getAttribute('data-label-play') || 'Play',
+    };
+    toggle.hidden = false;
+    toggle.addEventListener('click', () => {
+        paused = !paused;
+        marquee.classList.toggle('is-paused', paused);
+        toggle.setAttribute('aria-pressed', String(paused));
+        toggle.querySelector('.marquee-toggle-label').textContent = paused ? labels.play : labels.pause;
+        visible.forEach((v) => (paused ? v.pause() : play(v)));
+    });
 })();
 
 // --- ANTEPRIMA VIDEO SULLE CARD AL PASSAGGIO DEL MOUSE ---
 (() => {
     const canHover = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
-    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    if (!canHover || reduceMotion) return;
+    if (!canHover) return;
 
     document.querySelectorAll('.work-card').forEach((card) => {
         /** @type {HTMLVideoElement|null} */
@@ -82,6 +102,7 @@
 
         card.addEventListener('mouseenter', () => {
             clearTimeout(stopTimer);
+            video.muted = true;
             video.play().then(() => card.classList.add('is-previewing')).catch(() => {});
         });
 

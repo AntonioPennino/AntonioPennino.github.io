@@ -87,7 +87,7 @@ img {
 }
 
 .container {
-    max-width: 1240px;
+    max-width: 1600px;
     margin: 0 auto;
     padding: 0 6vw;
     position: relative;
@@ -387,12 +387,70 @@ nav {
 .marquee.is-running .marquee-track {
     padding: 0;
     /* due set identici: scorrere di un set + un gap riporta al punto di partenza */
-    animation: marquee 80s linear infinite;
+    animation: marquee 70s linear infinite;
 }
 
 .marquee.is-running:hover .marquee-track,
-.marquee.is-running:focus-within .marquee-track {
+.marquee.is-running:focus-within .marquee-track,
+.marquee.is-paused .marquee-track {
     animation-play-state: paused;
+}
+
+.marquee-controls {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 14px;
+}
+
+.marquee-toggle {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 2px;
+    background: none;
+    border: 0;
+    font: inherit;
+    font-size: 0.7rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    color: var(--ink-mute);
+    cursor: pointer;
+    transition: color 0.4s var(--ease-out);
+}
+
+.marquee-toggle:hover {
+    color: var(--ink);
+}
+
+.marquee-toggle-icon {
+    display: inline-flex;
+    gap: 3px;
+}
+
+.marquee-toggle-icon::before,
+.marquee-toggle-icon::after {
+    content: "";
+    width: 3px;
+    height: 10px;
+    background: currentColor;
+}
+
+.marquee-toggle[aria-pressed="true"] .marquee-toggle-icon {
+    gap: 0;
+}
+
+.marquee-toggle[aria-pressed="true"] .marquee-toggle-icon::before {
+    width: 0;
+    height: 0;
+    background: none;
+    border-left: 9px solid currentColor;
+    border-top: 5px solid transparent;
+    border-bottom: 5px solid transparent;
+}
+
+.marquee-toggle[aria-pressed="true"] .marquee-toggle-icon::after {
+    display: none;
 }
 
 @keyframes marquee {
@@ -1179,7 +1237,7 @@ footer {
 }
 
 .footer-inner {
-    max-width: 1240px;
+    max-width: 1600px;
     margin: 0 auto;
     padding: clamp(64px, 9vw, 110px) 6vw 56px;
 }
@@ -1297,17 +1355,28 @@ footer {
     transform: translateY(0);
 }
 
+/* Movimento ridotto: si tolgono spostamenti e ingrandimenti, restano le dissolvenze.
+   Il carosello dell'hero resta attivo per scelta (ha il suo pulsante pausa). */
 @media (prefers-reduced-motion: reduce) {
     html { scroll-behavior: auto; }
 
-    *, *::before, *::after {
-        animation-duration: 0.001ms !important;
-        animation-iteration-count: 1 !important;
-        transition-duration: 0.001ms !important;
+    .hero-eyebrow,
+    .hero h1,
+    .hero-lead {
+        animation-name: fadeIn;
     }
 
     .js .reveal {
-        opacity: 1;
+        transform: none;
+    }
+
+    .work-card:hover,
+    .work-card:hover .work-thumb img,
+    .work-card:hover .work-preview,
+    .clip:hover .clip-video,
+    .clip:focus-visible .clip-video,
+    .lab-media:hover img,
+    .work-modal-panel {
         transform: none;
     }
 }
