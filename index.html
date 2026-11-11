@@ -8,7 +8,7 @@
   <title>Antonio Pennino | Video Editor & Visual Storyteller</title>
   <meta name="description"
     content="Antonio Pennino, video editor e visual storyteller a Benevento. Montaggio video per creator, brand e professionisti: YouTube, reel, documentari e cortometraggi." />
-  <meta name="theme-color" content="#EAE4DA" />
+  <meta name="theme-color" content="#12110E" />
   <link rel="shortcut icon" href="profile.png" type="image/png" />
   <link rel="canonical" href="https://antoniopennino.it/" />
   <link rel="alternate" hreflang="it" href="https://antoniopennino.it/" />
@@ -127,33 +127,48 @@
       <span class="hero-eyebrow">Video Editor &amp; Visual Storyteller</span>
       <h1>Come raccontare una storia si decide al <em>montaggio.</em></h1>
       <p class="hero-lead">Sono Antonio Pennino, video editor a Benevento. Monto video per creator, brand e
-        professionisti: YouTube, reel, documentari e cortometraggi.</p>
+        professionisti e, quando serve, li giro e li dirigo: YouTube, reel, documentari e cortometraggi.</p>
 
-      <div class="hero-strip">
-        <button type="button" class="hero-frame" data-work="alba">
-          <img src="assets/frames/alba-del-futuro.webp"
-            srcset="assets/frames/alba-del-futuro-640.webp 640w, assets/frames/alba-del-futuro.webp 1280w"
-            sizes="(max-width: 700px) 46vw, 420px" width="1280" height="720" alt="">
-          <span class="hero-frame-cap"><small>Mini documentario</small>L'alba del futuro</span>
-        </button>
-        <button type="button" class="hero-frame" data-work="nikola">
-          <img src="assets/frames/nikola-funivia.webp"
-            srcset="assets/frames/nikola-funivia-640.webp 640w, assets/frames/nikola-funivia.webp 1280w"
-            sizes="(max-width: 700px) 46vw, 280px" width="1280" height="720" alt="">
-          <span class="hero-frame-cap"><small>YouTube</small>Nikola Greku</span>
-        </button>
-        <button type="button" class="hero-frame" data-work="panorama">
-          <img src="assets/frames/panorama-a-meta-strada.webp"
-            srcset="assets/frames/panorama-a-meta-strada-640.webp 640w, assets/frames/panorama-a-meta-strada.webp 1280w"
-            sizes="(max-width: 700px) 46vw, 340px" width="1280" height="590" alt="">
-          <span class="hero-frame-cap"><small>Cortometraggio</small>Il panorama a metà strada</span>
-        </button>
-        <button type="button" class="hero-frame" data-work="feedeat">
-          <img src="assets/frames/feedeat-intervista.webp"
-            srcset="assets/frames/feedeat-intervista-640.webp 640w, assets/frames/feedeat-intervista.webp 1280w"
-            sizes="(max-width: 700px) 46vw, 250px" width="1280" height="720" alt="">
-          <span class="hero-frame-cap"><small>Video aziendali</small>FeedEat</span>
-        </button>
+      <div class="marquee" role="region" aria-label="Estratti dai lavori">
+        <div class="marquee-track">
+          <div class="marquee-set">
+            <button type="button" class="clip" data-work="alba">
+              <video class="clip-video" src="assets/clips/alba.mp4" poster="assets/clips/alba.webp"
+                muted loop playsinline preload="none" aria-hidden="true"></video>
+              <span class="clip-cap"><small>Mini documentario</small>L'alba del futuro</span>
+            </button>
+            <button type="button" class="clip" data-work="nikola">
+              <video class="clip-video" src="assets/clips/nikola-funivia.mp4" poster="assets/clips/nikola-funivia.webp"
+                muted loop playsinline preload="none" aria-hidden="true"></video>
+              <span class="clip-cap"><small>YouTube · TEDx</small>Nikola Greku</span>
+            </button>
+            <button type="button" class="clip" data-work="panorama">
+              <video class="clip-video" src="assets/clips/panorama.mp4" poster="assets/clips/panorama.webp"
+                muted loop playsinline preload="none" aria-hidden="true"></video>
+              <span class="clip-cap"><small>Cortometraggio</small>Il panorama a metà strada</span>
+            </button>
+            <button type="button" class="clip" data-work="feedeat">
+              <video class="clip-video" src="assets/clips/feedeat-presentazione.mp4" poster="assets/clips/feedeat-presentazione.webp"
+                muted loop playsinline preload="none" aria-hidden="true"></video>
+              <span class="clip-cap"><small>Video aziendale</small>FeedEat</span>
+            </button>
+            <button type="button" class="clip" data-work="nikola">
+              <video class="clip-video" src="assets/clips/nikola-meta.mp4" poster="assets/clips/nikola-meta.webp"
+                muted loop playsinline preload="none" aria-hidden="true"></video>
+              <span class="clip-cap"><small>YouTube</small>Nikola Greku</span>
+            </button>
+            <button type="button" class="clip" data-work="feedeat">
+              <video class="clip-video" src="assets/clips/feedeat-intervista.mp4" poster="assets/clips/feedeat-intervista.webp"
+                muted loop playsinline preload="none" aria-hidden="true"></video>
+              <span class="clip-cap"><small>Intervista</small>FeedEat</span>
+            </button>
+            <button type="button" class="clip" data-work="nikola">
+              <video class="clip-video" src="assets/clips/nikola-amici.mp4" poster="assets/clips/nikola-amici.webp"
+                muted loop playsinline preload="none" aria-hidden="true"></video>
+              <span class="clip-cap"><small>YouTube</small>Nikola Greku</span>
+            </button>
+          </div>
+        </div>
       </div>
     </header>
 
@@ -168,14 +183,16 @@
 
         <div class="works-group">
           <h3 class="works-group-title">Film e documentari</h3>
-          <div class="works-grid">
+          <div class="works-grid reveal">
 
-            <article class="work-card reveal">
+            <article class="work-card">
               <div class="work-thumb">
                 <img src="assets/frames/alba-del-futuro.webp"
                   srcset="assets/frames/alba-del-futuro-640.webp 640w, assets/frames/alba-del-futuro.webp 1280w"
                   sizes="(max-width: 700px) 88vw, 560px" width="1280" height="720" loading="lazy"
                   alt="Due bambini provano un visore di realtà virtuale">
+                <video class="work-preview" src="assets/clips/alba.mp4" muted loop playsinline preload="none"
+                  aria-hidden="true"></video>
               </div>
               <div class="work-caption">
                 <div>
@@ -186,12 +203,14 @@
               </div>
             </article>
 
-            <article class="work-card reveal">
+            <article class="work-card">
               <div class="work-thumb">
                 <img src="assets/frames/panorama-a-meta-strada.webp"
                   srcset="assets/frames/panorama-a-meta-strada-640.webp 640w, assets/frames/panorama-a-meta-strada.webp 1280w"
                   sizes="(max-width: 700px) 88vw, 560px" width="1280" height="590" loading="lazy"
                   alt="Due ragazzi si guardano al tramonto, sullo sfondo le colline">
+                <video class="work-preview" src="assets/clips/panorama.mp4" muted loop playsinline preload="none"
+                  aria-hidden="true"></video>
               </div>
               <div class="work-caption">
                 <div>
@@ -208,14 +227,16 @@
 
         <div class="works-group">
           <h3 class="works-group-title">Per creator, brand e professionisti</h3>
-          <div class="works-grid">
+          <div class="works-grid reveal">
 
-            <article class="work-card reveal">
+            <article class="work-card">
               <div class="work-thumb">
                 <img src="assets/frames/nikola-funivia.webp"
                   srcset="assets/frames/nikola-funivia-640.webp 640w, assets/frames/nikola-funivia.webp 1280w"
                   sizes="(max-width: 700px) 88vw, 560px" width="1280" height="720" loading="lazy"
                   alt="Nikola Greku in giacca e cravatta davanti a un rifugio di montagna">
+                <video class="work-preview" src="assets/clips/nikola-funivia.mp4" muted loop playsinline preload="none"
+                  aria-hidden="true"></video>
               </div>
               <div class="work-caption">
                 <div>
@@ -226,7 +247,7 @@
               </div>
             </article>
 
-            <article class="work-card reveal">
+            <article class="work-card">
               <div class="work-thumb">
                 <img src="Instagram Thumbnail - 4.webp" width="1080" height="1920" loading="lazy"
                   alt="Un contenuto video del brand Cloudyo">
@@ -240,7 +261,7 @@
               </div>
             </article>
 
-            <article class="work-card reveal">
+            <article class="work-card">
               <div class="work-thumb">
                 <img src="OresteMariaPetrillo.webp" width="1024" height="808" loading="lazy"
                   alt="Il profilo Instagram dell'Avv. Oreste Maria Petrillo">
@@ -255,12 +276,14 @@
               </div>
             </article>
 
-            <article class="work-card reveal">
+            <article class="work-card">
               <div class="work-thumb">
                 <img src="assets/frames/feedeat-intervista.webp"
                   srcset="assets/frames/feedeat-intervista-640.webp 640w, assets/frames/feedeat-intervista.webp 1280w"
                   sizes="(max-width: 700px) 88vw, 560px" width="1280" height="720" loading="lazy"
                   alt="Un membro del team accanto a uno schermo con il logo FeedEat">
+                <video class="work-preview" src="assets/clips/feedeat-presentazione.mp4" muted loop playsinline preload="none"
+                  aria-hidden="true"></video>
               </div>
               <div class="work-caption">
                 <div>
@@ -289,7 +312,7 @@
               </div>
               <div>
                 <dt>Il mio ruolo</dt>
-                <dd>Montaggio.</dd>
+                <dd>Riprese, regia e montaggio.</dd>
               </div>
             </dl>
           </article>
@@ -305,7 +328,7 @@
               </div>
               <div>
                 <dt>Il mio ruolo</dt>
-                <dd>Montaggio.</dd>
+                <dd>Riprese, regia e montaggio.</dd>
               </div>
             </dl>
           </article>
@@ -451,7 +474,7 @@
               </div>
               <div>
                 <dt>Il mio ruolo</dt>
-                <dd>Montaggio del video di presentazione e dell'intervista al team.</dd>
+                <dd>Riprese, regia e montaggio del video di presentazione e dell'intervista al team.</dd>
               </div>
             </dl>
           </article>
@@ -468,7 +491,8 @@
           <div class="about-text">
             <span class="section-label">Chi sono</span>
             <h2 class="section-title">Video editor, con un piede nel codice.</h2>
-            <p>Monto video da freelance dal 2020, per creator, brand e professionisti. Dal 2022 al 2024 sono stato Chief
+            <p>Monto video da freelance dal 2020, per creator, brand e professionisti; per documentari, cortometraggi e
+              video aziendali curo anche riprese e regia. Dal 2022 al 2024 sono stato Chief
               Marketing Officer di FeedEat, dove ho coordinato il team creativo.</p>
             <p class="about-pull">Ognuno ha il suo modo di esprimersi. Il mio è attraverso i video.</p>
             <p>Sono laureato in <strong>Informatica per la Comunicazione Digitale</strong> all'Università di Camerino:
@@ -501,11 +525,11 @@
           </div>
           <div>
             <dt>Documentari e cortometraggi</dt>
-            <dd>Dal girato al montaggio finale.</dd>
+            <dd>Dalle riprese al montaggio finale.</dd>
           </div>
           <div>
             <dt>Video aziendali</dt>
-            <dd>Interviste e presentazioni per aziende e professionisti.</dd>
+            <dd>Interviste e presentazioni per aziende e professionisti, dalle riprese al montaggio.</dd>
           </div>
         </dl>
 

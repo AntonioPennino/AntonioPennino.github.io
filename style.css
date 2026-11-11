@@ -1,6 +1,6 @@
 /* ============================================================
    ANTONIO PENNINO · Video Editor & Visual Storyteller
-   Direzione visiva "Carta": editoriale, calma, i fotogrammi in primo piano.
+   Tema scuro caldo, da sala di montaggio: i video in primo piano.
    ============================================================ */
 
 html {
@@ -10,33 +10,35 @@ html {
 
 /* --- SISTEMA DI DESIGN --- */
 :root {
-    /* Terreno · carta calda */
-    --bg: #EAE4DA;
-    --bg-warm: #E4DDD1;
-    --surface: #E0D8CB;
+    /* Fondo · nero caldo, non neutro */
+    --bg: #12110E;
+    --bg-warm: #191714;
+    --surface: #1D1A16;
 
-    /* Inchiostri caldi */
-    --ink: #211E19;
-    --ink-soft: #565049;
-    --ink-mute: #6E655A;
+    /* Testo · bianco carta, grigi caldi */
+    --ink: #EDE6DA;
+    --ink-soft: #B6AD9F;
+    --ink-mute: #8F8779;
 
-    /* Accento terracotta + strutturale oliva */
-    --accent: #A1553A;
-    --accent-deep: #8A4630;
-    --moss: #3F4234;
+    /* Accento terracotta, schiarito per il fondo scuro; oliva per le etichette */
+    --accent: #D08D63;
+    --accent-deep: #E2A47E;
+    --moss: #AEB39C;
 
-    /* Linee e superfici scure (footer, sovrimpressioni sui fotogrammi) */
-    --line: rgba(33, 30, 25, 0.14);
-    --line-strong: rgba(33, 30, 25, 0.24);
-    --dark-bg: #1E1B15;
-    --dark-ink: #ECE4D7;
+    --line: rgba(237, 230, 218, 0.11);
+    --line-strong: rgba(237, 230, 218, 0.2);
+
+    /* Footer: un gradino più scuro del resto della pagina */
+    --dark-bg: #0A0908;
+    --dark-ink: #EDE6DA;
     --dark-soft: #A79C8B;
-    --dark-accent: #C88A54;
-    --dark-line: rgba(236, 228, 215, 0.14);
+    --dark-accent: #D08D63;
+    --dark-line: rgba(237, 230, 218, 0.12);
 
     --serif: 'Fraunces', Georgia, 'Times New Roman', serif;
     --sans: 'Inter', system-ui, -apple-system, sans-serif;
     --easing: cubic-bezier(0.22, 1, 0.36, 1);
+    --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 * {
@@ -62,8 +64,7 @@ body::before {
     inset: 0;
     z-index: 0;
     pointer-events: none;
-    opacity: 0.05;
-    mix-blend-mode: multiply;
+    opacity: 0.045;
     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
 }
 
@@ -276,7 +277,7 @@ nav {
     .nav-links {
         position: fixed;
         inset: 0;
-        background: rgba(234, 228, 218, 0.98);
+        background: var(--bg);
         z-index: 1000;
         flex-direction: column;
         justify-content: center;
@@ -310,7 +311,7 @@ nav {
 
 /* --- HERO --- */
 .hero {
-    padding: clamp(44px, 7vw, 84px) 0 clamp(48px, 7vw, 88px);
+    padding: clamp(36px, 5vw, 64px) 0 clamp(48px, 7vw, 88px);
 }
 
 .hero-eyebrow {
@@ -352,21 +353,60 @@ nav {
     line-height: 1.6;
 }
 
-/* Striscia di fotogrammi: clip di lunghezza diversa, come su una timeline */
-.hero-strip {
-    display: grid;
-    grid-template-columns: 1.5fr 1fr 1.2fr 0.9fr;
-    gap: 10px;
-    margin-top: clamp(36px, 5vw, 56px);
+/* Carosello infinito di clip dei lavori */
+.marquee {
+    width: 100vw;
+    margin-left: calc(50% - 50vw);
+    margin-top: clamp(32px, 4vw, 48px);
+    overflow-x: auto;
+    scrollbar-width: none;
+    animation: fadeIn 1.4s var(--ease-out) 0.3s both;
 }
 
-.hero-frame {
+.marquee::-webkit-scrollbar {
+    display: none;
+}
+
+.marquee.is-running {
+    overflow: hidden;
+    -webkit-mask-image: linear-gradient(to right, transparent 0, #000 5%, #000 95%, transparent 100%);
+    mask-image: linear-gradient(to right, transparent 0, #000 5%, #000 95%, transparent 100%);
+}
+
+.marquee-track,
+.marquee-set {
+    display: flex;
+    gap: 12px;
+}
+
+.marquee-track {
+    width: max-content;
+    padding: 0 6vw;
+}
+
+.marquee.is-running .marquee-track {
+    padding: 0;
+    /* due set identici: scorrere di un set + un gap riporta al punto di partenza */
+    animation: marquee 80s linear infinite;
+}
+
+.marquee.is-running:hover .marquee-track,
+.marquee.is-running:focus-within .marquee-track {
+    animation-play-state: paused;
+}
+
+@keyframes marquee {
+    to { transform: translateX(calc(-50% - 6px)); }
+}
+
+.clip {
     position: relative;
-    display: block;
-    height: clamp(150px, 19vw, 250px);
+    flex: 0 0 auto;
+    height: clamp(160px, 19vw, 240px);
+    aspect-ratio: 16 / 9;
     padding: 0;
     border: 0;
-    border-radius: 3px;
+    border-radius: 4px;
     overflow: hidden;
     background: var(--surface);
     cursor: pointer;
@@ -374,64 +414,52 @@ nav {
     text-align: left;
 }
 
-.hero-frame img {
+.clip-video {
     width: 100%;
     height: 100%;
     object-fit: cover;
     display: block;
-    transition: transform 1.4s var(--easing);
+    filter: brightness(0.86);
+    transition: transform 1.6s var(--ease-out), filter 0.9s var(--ease-out);
 }
 
-.hero-frame:hover img {
+.clip:hover .clip-video,
+.clip:focus-visible .clip-video {
     transform: scale(1.04);
+    filter: brightness(1);
 }
 
-.hero-frame-cap {
+.clip-cap {
     position: absolute;
     left: 0;
     right: 0;
     bottom: 0;
-    padding: 48px 12px 10px;
-    background: linear-gradient(to top, rgba(30, 27, 21, 0.92) 0%, rgba(30, 27, 21, 0.6) 45%, transparent 100%);
+    padding: 48px 14px 12px;
+    background: linear-gradient(to top, rgba(10, 9, 8, 0.92) 0%, rgba(10, 9, 8, 0.55) 45%, transparent 100%);
     color: #fff;
-    font-size: 0.8rem;
+    font-size: 0.82rem;
     font-weight: 500;
     line-height: 1.3;
 }
 
-.hero-frame-cap small {
+.clip-cap small {
     display: block;
     font-size: 0.62rem;
     font-weight: 600;
     text-transform: uppercase;
     letter-spacing: 0.14em;
-    color: rgba(236, 228, 215, 0.82);
+    color: rgba(237, 230, 218, 0.78);
     margin-bottom: 3px;
 }
 
 .hero-eyebrow,
 .hero h1,
-.hero-lead,
-.hero-frame {
-    animation: fadeInUp 1s var(--easing) both;
+.hero-lead {
+    animation: fadeInUp 1s var(--ease-out) both;
 }
 
 .hero h1 { animation-delay: 0.1s; }
 .hero-lead { animation-delay: 0.2s; }
-.hero-frame:nth-child(1) { animation-delay: 0.3s; }
-.hero-frame:nth-child(2) { animation-delay: 0.38s; }
-.hero-frame:nth-child(3) { animation-delay: 0.46s; }
-.hero-frame:nth-child(4) { animation-delay: 0.54s; }
-
-@media (max-width: 700px) {
-    .hero-strip {
-        grid-template-columns: 1fr 1fr;
-    }
-
-    .hero-frame {
-        height: 34vw;
-    }
-}
 
 /* --- LAVORI --- */
 .works-section {
@@ -475,30 +503,50 @@ nav {
     border: 1px solid var(--line);
     border-radius: 4px;
     overflow: hidden;
-    transition: transform 0.7s var(--easing), border-color 0.5s var(--easing);
+    transition:
+        transform 0.9s var(--ease-out),
+        box-shadow 0.9s var(--ease-out),
+        border-color 0.9s var(--ease-out);
 }
 
 .work-card:hover {
-    transform: translateY(-4px);
-    border-color: var(--accent);
+    transform: translateY(-6px);
+    border-color: rgba(208, 141, 99, 0.45);
+    box-shadow: 0 28px 50px -30px rgba(0, 0, 0, 0.9);
 }
 
 .work-thumb {
+    position: relative;
     aspect-ratio: 16 / 9;
     overflow: hidden;
     background: var(--bg-warm);
 }
 
-.work-thumb img {
+.work-thumb img,
+.work-preview {
     width: 100%;
     height: 100%;
     object-fit: cover;
     display: block;
-    transition: transform 1.4s var(--easing);
+    filter: brightness(0.9);
+    transition: transform 1.6s var(--ease-out), filter 0.9s var(--ease-out), opacity 0.7s var(--ease-out);
 }
 
-.work-card:hover .work-thumb img {
-    transform: scale(1.03);
+/* Anteprima video al passaggio del mouse, in dissolvenza sopra il fotogramma */
+.work-preview {
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+}
+
+.work-card.is-previewing .work-preview {
+    opacity: 1;
+}
+
+.work-card:hover .work-thumb img,
+.work-card:hover .work-preview {
+    transform: scale(1.035);
+    filter: brightness(1);
 }
 
 .work-caption {
@@ -554,7 +602,7 @@ nav {
     justify-content: center;
     color: var(--ink);
     font-size: 0.9rem;
-    transition: background 0.5s var(--easing), border-color 0.5s var(--easing), color 0.5s var(--easing);
+    transition: background 0.9s var(--ease-out), border-color 0.9s var(--ease-out), color 0.9s var(--ease-out);
 }
 
 .work-card:hover .work-open {
@@ -601,7 +649,7 @@ html:not(.js) .detail-playlist {
 .work-modal-overlay {
     position: absolute;
     inset: 0;
-    background: rgba(20, 18, 13, 0.6);
+    background: rgba(0, 0, 0, 0.72);
     backdrop-filter: blur(4px);
 }
 
@@ -1125,6 +1173,7 @@ html:not(.js) .detail-playlist {
 footer {
     background: var(--dark-bg);
     color: var(--dark-ink);
+    border-top: 1px solid var(--line);
     position: relative;
     z-index: 1;
 }
@@ -1229,6 +1278,11 @@ footer {
 @keyframes fadeInUp {
     from { opacity: 0; transform: translateY(22px); }
     to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
 }
 
 /* Le sezioni si nascondono in attesa dello scroll solo se JavaScript è attivo */

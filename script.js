@@ -26,6 +26,73 @@
     revealables.forEach((el) => observer.observe(el));
 })();
 
+// --- CAROSELLO DI CLIP NELL'HERO ---
+(() => {
+    const marquee = document.querySelector('.marquee');
+    if (!marquee) return;
+    const track = marquee.querySelector('.marquee-track');
+    const set = marquee.querySelector('.marquee-set');
+    if (!track || !set) return;
+
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const saveData = Boolean(navigator.connection && navigator.connection.saveData);
+    // Con movimento ridotto o risparmio dati restano i poster, scorribili a mano
+    if (reduceMotion || saveData) return;
+
+    // Secondo set identico per il loop infinito, nascosto a lettori di schermo e tastiera
+    const clone = set.cloneNode(true);
+    clone.setAttribute('aria-hidden', 'true');
+    clone.querySelectorAll('button').forEach((el) => el.setAttribute('tabindex', '-1'));
+    track.append(clone);
+    marquee.classList.add('is-running');
+
+    /** @type {NodeListOf<HTMLVideoElement>} */
+    const videos = track.querySelectorAll('video');
+    if (!('IntersectionObserver' in window)) {
+        videos.forEach((v) => v.play().catch(() => {}));
+        return;
+    }
+
+    // Riproduce solo le clip effettivamente visibili
+    const io = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+            const video = /** @type {HTMLVideoElement} */ (entry.target);
+            if (entry.isIntersecting) {
+                video.play().catch(() => {});
+            } else {
+                video.pause();
+            }
+        });
+    }, { rootMargin: '0px 200px' });
+
+    videos.forEach((v) => io.observe(v));
+})();
+
+// --- ANTEPRIMA VIDEO SULLE CARD AL PASSAGGIO DEL MOUSE ---
+(() => {
+    const canHover = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (!canHover || reduceMotion) return;
+
+    document.querySelectorAll('.work-card').forEach((card) => {
+        /** @type {HTMLVideoElement|null} */
+        const video = card.querySelector('.work-preview');
+        if (!video) return;
+        let stopTimer = 0;
+
+        card.addEventListener('mouseenter', () => {
+            clearTimeout(stopTimer);
+            video.play().then(() => card.classList.add('is-previewing')).catch(() => {});
+        });
+
+        card.addEventListener('mouseleave', () => {
+            card.classList.remove('is-previewing');
+            // pausa dopo la dissolvenza
+            stopTimer = window.setTimeout(() => video.pause(), 700);
+        });
+    });
+})();
+
 // --- MODALE LAVORI: info + player (anche con più video) ---
 (() => {
     const modal = document.getElementById('work-modal');
@@ -105,9 +172,10 @@
         if (lastFocused) lastFocused.focus();
     }
 
-    // Apertura: card dei lavori e fotogrammi dell'hero
-    document.querySelectorAll('[data-work]').forEach((trigger) => {
-        trigger.addEventListener('click', () => openWork(trigger.getAttribute('data-work')));
+    // Apertura: card dei lavori e clip dell'hero (anche quelle duplicate dal carosello)
+    document.addEventListener('click', (e) => {
+        const trigger = e.target instanceof Element ? e.target.closest('[data-work]') : null;
+        if (trigger) openWork(trigger.getAttribute('data-work'));
     });
 
     // Cambio video dentro la modale
