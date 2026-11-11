@@ -1,22 +1,25 @@
-# Antonio Pennino - Comunicazione Visiva & Slow Media
+# Antonio Pennino - Video Editor & Visual Storyteller
 
-Antonio Pennino è uno stratega della comunicazione visiva e dello Slow Media (P.IVA 01896160627), con base a Napoli e operativo in tutta Italia. Ha un background ibrido, che unisce Informatica per la Comunicazione Digitale e regia visiva, e lavora con realtà artigianali, aziende agricole d'eccellenza e brand etici. Si distanzia dalle logiche frenetiche e manipolatorie degli algoritmi social per costruire "storie che restano": racconti realizzati con tempo, cura e onestà.
+Antonio Pennino è un video editor freelance (P.IVA 01896160627) con base a Benevento, attivo dal 2020. Monta video per creator, brand e professionisti: YouTube, reel, documentari e cortometraggi. È laureato in Informatica per la Comunicazione Digitale all'Università di Camerino e, accanto al montaggio, sviluppa software. Dal 2022 al 2024 è stato Chief Marketing Officer di FeedEat.
 
-## Servizi
-- **Racconto d'Impresa Artigiana:** Documentari brevi e ritratti d'impresa girati sul campo, per far percepire il valore autentico del lavoro artigianale.
-- **Documentario & Slow Media:** Narrazioni visive profonde, dalla ricerca sul campo al montaggio finale, pensate per durare nel tempo.
-- **Identità Visiva & Regia:** Definizione del linguaggio visivo di un brand (tono, ritmo, immagine) per una riconoscibilità coerente e duratura.
-- **Consulenza di Comunicazione Etica:** Strategia di comunicazione onesta, centrata sulle persone e non sulle metriche vanitose.
+## Cosa fa
+- **YouTube e creator:** montaggio di video lunghi per canali YouTube.
+- **Reel e social:** video verticali per Instagram e TikTok.
+- **Documentari e cortometraggi:** dal girato al montaggio finale.
+- **Video aziendali:** interviste e presentazioni per aziende e professionisti.
 
-## Il Metodo
-1. **Ascolto:** tempo lento e profondo con chi si ha di fronte, per cogliere l'unicità della storia.
-2. **Ricerca:** lavoro sul campo, tra luoghi e persone reali, senza copioni preconfezionati.
-3. **Racconto:** montaggio al servizio del significato, non della metrica del momento.
+Strumenti: DaVinci Resolve, Premiere Pro, After Effects. Sound design e color grading.
 
-## Casi Studio
-- **Cloudyo (Wear Your Dreams):** Identità visiva per un brand d'abbigliamento etico, costruita sul concetto "Prompt to Human", con persone reali al posto degli algoritmi. Coerenza prima della viralità.
-- **Avv. Oreste Maria Petrillo:** Personal branding legale con contenuti chiari e onesti (Reel e caroselli), per un'autorevolezza accessibile che genera fiducia.
-- **SmartSubs:** Plugin di automazione della sottotitolazione per DaVinci Resolve (https://smartsubspro.com/). La tecnologia come strumento artigianale, per restituire tempo al lavoro creativo.
+## Lavori
+- **L'alba del futuro - la tecnologia risveglia il passato:** mini documentario pubblicato da M106 Production. Ruolo: montaggio. https://youtu.be/xM_u9ypltlE
+- **Il panorama a metà strada:** cortometraggio pubblicato da M106 Production. Ruolo: montaggio. https://youtu.be/1PSJ95VHsow
+- **Nikola Greku:** montaggio di video YouTube e reel Instagram per il creator Nikola Greku. https://www.youtube.com/@NikolaGreku
+- **Cloudyo (Wear Your Dreams):** montaggio dei video TikTok per il brand di abbigliamento. https://www.cloudyo.me/
+- **Avv. Oreste Maria Petrillo:** montaggio dei reel Instagram di divulgazione legale.
+- **FeedEat:** montaggio del video di presentazione e dell'intervista al team.
+
+## Lab
+- **SmartSubs:** plugin per DaVinci Resolve che automatizza la sottotitolazione, ideato e sviluppato da Antonio Pennino. https://smartsubspro.com/
 
 ## Contatti
 - Email: info@antoniopennino.it
