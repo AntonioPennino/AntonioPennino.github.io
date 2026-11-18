@@ -1720,6 +1720,122 @@ footer {
     margin-top: 36px;
 }
 
+/* --- COME FUNZIONA (dentro Pacchetti) --- */
+.subsection-title {
+    margin-top: 72px;
+    font-size: clamp(1.6rem, 3vw, 2.3rem);
+    line-height: 1.1;
+}
+
+.steps {
+    list-style: none;
+    margin: 32px 0 0;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 28px;
+}
+
+@media (max-width: 800px) {
+    .steps { grid-template-columns: 1fr; gap: 24px; }
+}
+
+.steps li {
+    padding-top: 22px;
+    border-top: 1px solid var(--line-strong);
+}
+
+.step-num {
+    display: block;
+    margin-bottom: 14px;
+    font-family: var(--serif);
+    font-size: 1.9rem;
+    line-height: 1;
+    color: var(--accent);
+    font-variant-numeric: tabular-nums;
+}
+
+.steps h4 {
+    margin-bottom: 8px;
+    font-size: 1.3rem;
+    font-weight: 500;
+}
+
+.steps p {
+    margin: 0;
+    color: var(--ink-soft);
+    font-size: 0.98rem;
+    line-height: 1.65;
+}
+
+/* --- DOMANDE FREQUENTI --- */
+.faq-section {
+    padding: clamp(64px, 8vw, 104px) 0;
+    border-top: 1px solid var(--line);
+}
+
+.faq-list {
+    max-width: 820px;
+    margin-top: 36px;
+    border-top: 1px solid var(--line-strong);
+}
+
+.faq-list details {
+    border-bottom: 1px solid var(--line);
+}
+
+.faq-list summary {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    padding: 22px 0;
+    list-style: none;
+    cursor: pointer;
+    font-family: var(--serif);
+    font-size: 1.2rem;
+    line-height: 1.35;
+    color: var(--ink);
+    transition: color 0.4s var(--ease-out);
+}
+
+.faq-list summary::-webkit-details-marker {
+    display: none;
+}
+
+.faq-list summary::after {
+    content: "+";
+    flex-shrink: 0;
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid var(--line-strong);
+    border-radius: 50%;
+    font-family: var(--sans);
+    font-size: 1.1rem;
+    color: var(--accent);
+    transition: transform 0.5s var(--ease-out);
+}
+
+.faq-list details[open] summary::after {
+    transform: rotate(45deg);
+}
+
+.faq-list summary:hover {
+    color: var(--accent-deep);
+}
+
+.faq-list details p {
+    margin: 0;
+    padding: 0 52px 24px 0;
+    color: var(--ink-soft);
+    font-size: 1rem;
+    line-height: 1.7;
+    max-width: 62ch;
+}
+
 /* --- ANIMAZIONI --- */
 @keyframes fadeInUp {
     from { opacity: 0; transform: translateY(22px); }
