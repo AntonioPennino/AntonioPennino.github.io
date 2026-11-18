@@ -233,6 +233,37 @@
     });
 })();
 
+// --- EMBED INSTAGRAM: lo script di Instagram si carica solo vicino alla sezione ---
+(() => {
+    const box = document.querySelector('[data-instagram-embeds]');
+    if (!box) return;
+    let loaded = false;
+
+    const load = () => {
+        if (loaded) return;
+        loaded = true;
+        const script = document.createElement('script');
+        script.src = 'https://www.instagram.com/embed.js';
+        script.async = true;
+        script.onload = () => {
+            if (window.instgrm) window.instgrm.Embeds.process();
+        };
+        document.body.append(script);
+    };
+
+    if (!('IntersectionObserver' in window)) {
+        load();
+        return;
+    }
+    const io = new IntersectionObserver((entries) => {
+        if (entries.some((entry) => entry.isIntersecting)) {
+            io.disconnect();
+            load();
+        }
+    }, { rootMargin: '600px 0px' });
+    io.observe(box);
+})();
+
 // --- MENU MOBILE ---
 (() => {
     const menuToggle = document.querySelector('.menu-toggle');

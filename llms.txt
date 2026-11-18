@@ -1,27 +1,31 @@
-# Antonio Pennino - Video Editor & Visual Storyteller
+# Antonio Pennino - Video editor per creator, founder e consulenti
 
-Antonio Pennino è un video editor freelance (P.IVA 01896160627) con base a Benevento, attivo dal 2020. Monta video per creator, brand e professionisti: YouTube, reel, documentari e cortometraggi. Per documentari, cortometraggi e video aziendali cura anche riprese e regia. È laureato in Informatica per la Comunicazione Digitale all'Università di Camerino e, accanto al montaggio, sviluppa software. Dal 2022 al 2024 è stato Chief Marketing Officer di FeedEat.
+Antonio Pennino è un video editor freelance (P.IVA 01896160627) con base a Benevento, attivo dal 2020. Monta reel e video per creator, founder e consulenti con un abbonamento mensile: il cliente gira, lui cura ritmo, sottotitoli e consegna. Per documentari, cortometraggi e video aziendali cura anche riprese e regia. È laureato in Informatica per la Comunicazione Digitale all'Università di Camerino.
 
-## Cosa fa
-- **YouTube e creator:** montaggio di video lunghi per canali YouTube.
-- **Reel e social:** video verticali per Instagram e TikTok.
-- **Documentari e cortometraggi:** dalle riprese al montaggio finale.
-- **Video aziendali:** interviste e presentazioni per aziende e professionisti.
+## Risultati
+Monta i contenuti di Nikola Greku, creator da 239.000 follower. In 12 reel montati da lui: oltre 860.000 visualizzazioni, media di circa 72.000 a reel, il migliore a 237.000. Su YouTube, un video montato da lui ha superato le 65.000 visualizzazioni. Dati di Instagram e YouTube, aggiornati a novembre 2026.
 
-Strumenti: DaVinci Resolve, Premiere Pro, After Effects. Sound design e color grading.
+## Pacchetti (prezzi in euro al mese, contratto mensile)
+- **Base, €450/mese:** 8 reel al mese.
+- **Crescita, €690/mese:** 12 reel al mese, 1 variante pensata per gli annunci.
+- **Premium, €990/mese:** 16 reel al mese, 2 varianti per gli annunci, call strategica mensile sui contenuti.
+- **Incluso in tutti:** sottotitoli, ritmo e montaggio curati, musica, formato verticale 9:16, 2 giri di correzioni per ogni reel, consegna in 3-5 giorni lavorativi, call mensile di 20 minuti.
 
 ## Lavori
-- **L'alba del futuro - la tecnologia risveglia il passato:** mini documentario pubblicato da M106 Production. Ruolo: riprese, regia e montaggio. https://youtu.be/xM_u9ypltlE
-- **Il panorama a metà strada:** cortometraggio pubblicato da M106 Production. Ruolo: riprese, regia e montaggio. https://youtu.be/1PSJ95VHsow
-- **Nikola Greku:** montaggio di video YouTube e reel Instagram per il creator Nikola Greku. https://www.youtube.com/@NikolaGreku
+- **Nikola Greku:** montaggio dei reel Instagram e dei video YouTube. https://www.youtube.com/@NikolaGreku
 - **Cloudyo (Wear Your Dreams):** montaggio dei video TikTok per il brand di abbigliamento. https://www.cloudyo.me/
 - **Avv. Oreste Maria Petrillo:** montaggio dei reel Instagram di divulgazione legale.
-- **FeedEat:** riprese, regia e montaggio del video di presentazione e dell'intervista al team.
+- **FeedEat:** startup nata tra i banchi di scuola, di cui ha curato il marketing dal 2022 al 2024; riprese, regia e montaggio del video di presentazione e dell'intervista al team.
+- **L'alba del futuro - la tecnologia risveglia il passato:** mini documentario pubblicato da M106 Production. Ruolo: riprese, regia e montaggio. https://youtu.be/xM_u9ypltlE
+- **Il panorama a metà strada:** cortometraggio pubblicato da M106 Production. Ruolo: riprese, regia e montaggio. https://youtu.be/1PSJ95VHsow
+
+Strumento principale: DaVinci Resolve. Sound design e color grading.
 
 ## Lab
-- **SmartSubs:** plugin per DaVinci Resolve che automatizza la sottotitolazione, ideato e sviluppato da Antonio Pennino. https://smartsubspro.com/
+- **SmartSubs Pro:** plugin per DaVinci Resolve che velocizza i sottotitoli, ideato e sviluppato da Antonio Pennino. https://smartsubspro.com/
 
 ## Contatti
+- Prenota 20 minuti su WhatsApp: https://wa.me/393299826583
 - Email: info@antoniopennino.it
 - Telefono/WhatsApp: +39 329 982 6583
 - Sito Web: https://antoniopennino.it
